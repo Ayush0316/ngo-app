@@ -5,7 +5,6 @@ import 'package:ngo_app/screens/wrapper.dart';
 import 'package:ngo_app/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
