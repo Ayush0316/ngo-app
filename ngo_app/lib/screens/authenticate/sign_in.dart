@@ -13,6 +13,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
+  // RegExp passwordCheck =
+  // RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])$');
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,12 @@ class _SignInState extends State<SignIn> {
                 decoration: const InputDecoration(labelText: 'Password'),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
+                  // (val) {
+                  //   (val!.length < 8) ? "Must be 8 char long" : null;
+                  //   return passwordCheck.hasMatch(val)
+                  //       ? "Must contain 1 upper case, 1 lower case, 1 digit, 1 special char"
+                  //       : null;
+                  // }
                 ]),
               ),
               ElevatedButton(

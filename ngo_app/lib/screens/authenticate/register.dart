@@ -14,6 +14,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormBuilderState>();
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -68,13 +69,23 @@ class _RegisterState extends State<Register> {
                 _formKey.currentState?.save();
                 if (_formKey.currentState!.validate()) {
                   final formData = _formKey.currentState?.value;
-                  debugPrint(formData.toString());
-                  // dynamic result = await _auth.signInAnon();
-                  // formData = { 'field1': ..., 'field2': ..., 'field3': ... }
-                  // do something with the form data
+                  dynamic result = _auth.registerWithEmailAndPassword(
+                      formData?["email"], formData?["password"]);
+
+                  debugPrint(result.toString());
+                  if (result == null) {
+                    debugPrint("result returned as null");
+                    setState(() {
+                      error = "Unable to register";
+                    });
+                  }
                 }
               },
-              child: const Text("Register"))
+              child: const Text("Register")),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(error)
         ]),
       ),
     );
