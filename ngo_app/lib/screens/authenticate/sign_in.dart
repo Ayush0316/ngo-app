@@ -13,8 +13,7 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
-  // RegExp passwordCheck =
-  // RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])$');
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +70,6 @@ class _SignInState extends State<SignIn> {
                 decoration: const InputDecoration(labelText: 'Password'),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
-                  // (val) {
-                  //   (val!.length < 8) ? "Must be 8 char long" : null;
-                  //   return passwordCheck.hasMatch(val)
-                  //       ? "Must contain 1 upper case, 1 lower case, 1 digit, 1 special char"
-                  //       : null;
-                  // }
                 ]),
               ),
               ElevatedButton(
@@ -84,12 +77,23 @@ class _SignInState extends State<SignIn> {
                     _formKey.currentState?.save();
                     if (_formKey.currentState!.validate()) {
                       final formData = _formKey.currentState?.value;
-                      dynamic result = await _auth.signInAnon();
-                      // formData = { 'field1': ..., 'field2': ..., 'field3': ... }
-                      // do something with the form data
+                      dynamic result = await _auth.signInWithEmailAndPassword(
+                          formData?["email"], formData?["password"]);
+                      if (result == null) {
+                        setState(() {
+                          error = "Username or password is incorrect!!";
+                        });
+                      }
                     }
                   },
-                  child: const Text("Log in"))
+                  child: const Text("Log in")),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                error,
+                style: const TextStyle(color: Colors.red),
+              )
             ]),
           )
         ]));

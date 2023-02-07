@@ -15,6 +15,8 @@ class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormBuilderState>();
   String error = "";
+  RegExp passwordCheck =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])$');
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,12 @@ class _RegisterState extends State<Register> {
             decoration: const InputDecoration(labelText: 'Password'),
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
+              FormBuilderValidators.minLength(8,
+                  errorText: "Length must greater than 8"),
+              FormBuilderValidators.match(
+                  '(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])',
+                  errorText:
+                      "Must contain 1 upper case, 1 lower case, 1 digit, 1 special char")
             ]),
           ),
           const SizedBox(
@@ -69,15 +77,19 @@ class _RegisterState extends State<Register> {
                 _formKey.currentState?.save();
                 if (_formKey.currentState!.validate()) {
                   final formData = _formKey.currentState?.value;
-                  dynamic result = _auth.registerWithEmailAndPassword(
-                      formData?["email"], formData?["password"]);
-
-                  debugPrint(result.toString());
-                  if (result == null) {
-                    debugPrint("result returned as null");
+                  if (formData?["password"] != formData?["confirm_password"]) {
                     setState(() {
-                      error = "Unable to register";
+                      error = "Password must match confirm Password!!";
                     });
+                  } else {
+                    dynamic result = await _auth.registerWithEmailAndPassword(
+                        formData?["email"], formData?["password"]);
+
+                    if (result == null) {
+                      setState(() {
+                        error = "Invalid Email Id!!";
+                      });
+                    }
                   }
                 }
               },
@@ -85,7 +97,10 @@ class _RegisterState extends State<Register> {
           const SizedBox(
             height: 20,
           ),
-          Text(error)
+          Text(
+            error,
+            style: const TextStyle(color: Colors.red),
+          )
         ]),
       ),
     );

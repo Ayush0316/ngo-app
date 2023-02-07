@@ -11,7 +11,7 @@ class Authenticate extends StatefulWidget {
 
 class _AuthenticateState extends State<Authenticate> {
   // Toggling between sigin and registering route.
-  bool showSignIn = false;
+  bool showSignIn = true;
   void toggleView() {
     setState(() {
       showSignIn = !showSignIn;
