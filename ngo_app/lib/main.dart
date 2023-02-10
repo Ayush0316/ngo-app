@@ -26,7 +26,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Ngo-App',
         theme: ThemeData(
+          fontFamily: 'Roboto',
+          primarySwatch: Colors.blue,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          scaffoldBackgroundColor: Color(0xFF404040),
           useMaterial3: true,
         ),
         home: const Wrapper(),

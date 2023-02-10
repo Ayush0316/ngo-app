@@ -72,6 +72,8 @@ class _RegisterState extends State<Register> {
               FormBuilderValidators.required(),
             ]),
           ),
+
+          // FormBuilderCheckbox(name: name, title: title)
           ElevatedButton(
               onPressed: () async {
                 _formKey.currentState?.save();

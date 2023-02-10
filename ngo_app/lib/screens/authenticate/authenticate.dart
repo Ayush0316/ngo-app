@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ngo_app/screens/authenticate/login_screen.dart';
 import 'package:ngo_app/screens/authenticate/register.dart';
-import 'package:ngo_app/screens/authenticate/sign_in.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({super.key});
@@ -21,7 +21,7 @@ class _AuthenticateState extends State<Authenticate> {
   @override
   Widget build(BuildContext context) {
     if (showSignIn) {
-      return SignIn(toggleView);
+      return LoginScreen(toggleView);
     } else {
       return Register(
         toggleView,
