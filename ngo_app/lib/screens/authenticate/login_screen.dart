@@ -16,7 +16,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final AuthService _auth = AuthService();
   String error = "";
 
-  @override
   Widget buildLogo() {
     // final urlLogo = 'images/logo.svg';
 
@@ -27,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormBuilderState>();
 
