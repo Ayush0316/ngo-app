@@ -3,15 +3,15 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ngo_app/services/auth.dart';
 
-class Register extends StatefulWidget {
+class RegisterNgo extends StatefulWidget {
   final Function toggleView;
-  const Register(this.toggleView, {super.key});
+  const RegisterNgo(this.toggleView, {super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterNgo> createState() => _RegisterNgoState();
 }
 
-class _RegisterState extends State<Register> {
+class _RegisterNgoState extends State<RegisterNgo> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormBuilderState>();
   String error = "";
@@ -23,12 +23,12 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       backgroundColor: Colors.brown[50],
       appBar: AppBar(
-        title: const Text("Register"),
+        title: const Text("Register Ngo"),
         backgroundColor: Colors.brown[200],
         actions: <Widget>[
           TextButton.icon(
               onPressed: () {
-                widget.toggleView();
+                widget.toggleView(1);
               },
               icon: const Icon(Icons.person),
               label: const Text("Sign in"))

@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(child: Container(), flex: 0),
-              buildLogo(),
+              // buildLogo(),
               const SizedBox(height: 0),
               Text(
                 'Login',
@@ -230,7 +230,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         ElevatedButton(
-                          onPressed: () async {},
+                          onPressed: () {
+                            widget.toggleView(2);
+                          },
                           child: const Text("NGO's"),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFFFCD5CE),
@@ -244,7 +246,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 30,
                         ),
                         ElevatedButton(
-                          onPressed: () async {},
+                          onPressed: () {
+                            widget.toggleView(3);
+                          },
                           child: const Text("Donators"),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFFFCD5CE),

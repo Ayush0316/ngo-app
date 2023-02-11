@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/authenticate/login_screen.dart';
-import 'package:ngo_app/screens/authenticate/register.dart';
+import 'package:ngo_app/screens/authenticate/register_ngo.dart';
+import 'package:ngo_app/screens/authenticate/register_user.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({super.key});
@@ -11,21 +12,21 @@ class Authenticate extends StatefulWidget {
 
 class _AuthenticateState extends State<Authenticate> {
   // Toggling between sigin and registering route.
-  bool showSignIn = true;
-  void toggleView() {
+  int showSignIn = 1;
+  void toggleView(num) {
     setState(() {
-      showSignIn = !showSignIn;
+      showSignIn = num;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (showSignIn) {
+    if (showSignIn == 1) {
       return LoginScreen(toggleView);
+    } else if (showSignIn == 2) {
+      return RegisterNgo(toggleView);
     } else {
-      return Register(
-        toggleView,
-      );
+      return RegisterUser(toggleView);
     }
   }
 }
