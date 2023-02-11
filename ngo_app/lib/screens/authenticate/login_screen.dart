@@ -14,7 +14,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final AuthService _auth = AuthService();
+  bool obscure = true;
   String error = "";
+  final _formKey = GlobalKey<FormBuilderState>();
 
   Widget buildLogo() {
     // final urlLogo = 'images/logo.svg';
@@ -28,9 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormBuilderState>();
-
     return Scaffold(
+      backgroundColor: Color(0xFFB880E0),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Container(
@@ -94,12 +95,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   FormBuilderTextField(
                     name: "password",
-                    obscureText: true,
-                    decoration: const InputDecoration(
+                    obscureText: obscure,
+                    decoration: InputDecoration(
                       labelText: 'PASSWORD',
-                      suffixIcon: Icon(
-                        Icons.remove_red_eye_outlined,
-                      ),
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            _formKey.currentState?.save();
+                            setState(() {
+                              obscure = !obscure;
+                            });
+                          },
+                          icon: Icon(Icons.remove_red_eye_outlined)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
@@ -160,7 +166,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Text(
                     error,
-                    style: const TextStyle(color: Colors.red),
+                    style: const TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold),
                   ),
                   Row(children: <Widget>[
                     Expanded(
