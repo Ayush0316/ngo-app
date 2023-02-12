@@ -123,6 +123,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                     ),
                     FormBuilderTextField(
                       name: "confirm_password",
+                      obscureText: obscure_conf,
                       decoration: InputDecoration(
                         labelText: 'CONFIRM PASSWORD',
                         suffixIcon: IconButton(
