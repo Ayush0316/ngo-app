@@ -27,7 +27,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          "Register Ngo",
+          "Register NGO",
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Roboto-Black',
@@ -75,7 +75,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
       ),
       body: SafeArea(
         child: Container(
-            padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
+            padding: const EdgeInsets.only(top: 5, left: 32, right: 32),
             width: double.infinity,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -91,21 +91,11 @@ class _RegisterNgoState extends State<RegisterNgo> {
                         suffixIcon: Icon(
                           Icons.email,
                         ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 20.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
                       ),
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
                         FormBuilderValidators.email(),
                       ]),
-                    ),
-                    const SizedBox(
-                      height: 15,
                     ),
                     FormBuilderTextField(
                       name: "password",
@@ -120,13 +110,6 @@ class _RegisterNgoState extends State<RegisterNgo> {
                               });
                             },
                             icon: Icon(Icons.remove_red_eye_outlined)),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 20.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
                       ),
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
@@ -137,9 +120,6 @@ class _RegisterNgoState extends State<RegisterNgo> {
                             errorText:
                                 "Must contain 1 upper case, 1 lower case, 1 digit, 1 special char")
                       ]),
-                    ),
-                    const SizedBox(
-                      height: 12,
                     ),
                     FormBuilderTextField(
                       name: "confirm_password",
@@ -153,33 +133,17 @@ class _RegisterNgoState extends State<RegisterNgo> {
                               });
                             },
                             icon: Icon(Icons.remove_red_eye_outlined)),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 20.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
                       ),
                       validator: FormBuilderValidators.compose([
                         FormBuilderValidators.required(),
                       ]),
                     ),
-                    const SizedBox(height: 15),
                     FormBuilderTextField(
                       name: "ngo_name",
                       decoration: const InputDecoration(
                         labelText: 'NGO Name',
                         suffixIcon: Icon(
                           Icons.corporate_fare,
-                          // color: Colors.blue,
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 16.0, horizontal: 20.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
                         ),
                       ),
                       validator: FormBuilderValidators.compose([
