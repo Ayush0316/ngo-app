@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ngo_app/services/auth.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:adaptive_layout/adaptive_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   final Function toggleView;
@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(child: Container(), flex: 0),
-              // buildLogo(),
+              buildLogo(),
               const SizedBox(height: 0),
               Text(
                 'Login',
@@ -221,7 +221,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontSize: 20.0,
                       fontFamily: 'Roboto-Black',
                     ),
-                    textAlign: TextAlign.left,
                   ),
                   const SizedBox(
                     height: 30,
