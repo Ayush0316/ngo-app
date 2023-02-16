@@ -14,6 +14,10 @@ class RegisterUser extends StatefulWidget {
 
 class _RegisterUserState extends State<RegisterUser> {
   final AuthService _auth = AuthService();
+  bool obscure = true;
+  bool obscure_conf = true;
+  bool other1 = false;
+  bool other2 = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String error = "";
   RegExp passwordCheck =
@@ -85,6 +89,7 @@ class _RegisterUserState extends State<RegisterUser> {
                 child: Column(children: <Widget>[
                   FormBuilderTextField(
                     name: "user_email",
+                    keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'EMAIL',
                       suffixIcon: Icon(
@@ -98,14 +103,14 @@ class _RegisterUserState extends State<RegisterUser> {
                   ),
                   FormBuilderTextField(
                     name: "user_password",
-                    // obscureText: obscure,
+                    obscureText: obscure,
                     decoration: InputDecoration(
                       labelText: 'PASSWORD',
                       suffixIcon: IconButton(
                           onPressed: () {
                             _formKey.currentState?.save();
                             setState(() {
-                              // obscure = !obscure;
+                              obscure = !obscure;
                             });
                           },
                           icon: Icon(Icons.remove_red_eye_outlined)),
@@ -122,14 +127,14 @@ class _RegisterUserState extends State<RegisterUser> {
                   ),
                   FormBuilderTextField(
                     name: "user_confirm_password",
-                    // obscureText: obscure_conf,
+                    obscureText: obscure_conf,
                     decoration: InputDecoration(
                       labelText: 'CONFIRM PASSWORD',
                       suffixIcon: IconButton(
                           onPressed: () {
                             _formKey.currentState?.save();
                             setState(() {
-                              // obscure_conf = !obscure_conf;
+                              obscure_conf = !obscure_conf;
                             });
                           },
                           icon: Icon(Icons.remove_red_eye_outlined)),
@@ -143,10 +148,14 @@ class _RegisterUserState extends State<RegisterUser> {
                       labelText: 'DONATOR TYPE',
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
-                    // value: dropdownValue,
                     onChanged: (String? newValue) {
                       setState(() {
-                        // dropdownValue = newValue!;
+                        _formKey.currentState?.save();
+                        if (newValue == "Any Other") {
+                          other1 = true;
+                        } else {
+                          other1 = false;
+                        }
                       });
                     },
                     items: <String>[
@@ -161,6 +170,18 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       );
                     }).toList(),
+                  ),
+                  Visibility(
+                    visible: other1,
+                    child: FormBuilderTextField(
+                      name: "Other1",
+                      decoration: const InputDecoration(
+                        labelText: "If other(specify)",
+                      ),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                    ),
                   ),
                   FormBuilderTextField(
                     name: "user_name",
@@ -179,10 +200,14 @@ class _RegisterUserState extends State<RegisterUser> {
                       labelText: 'Volunteering Intrests',
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
-                    // value: dropdownValue,
                     onChanged: (String? newValue) {
                       setState(() {
-                        // dropdownValue = newValue!;
+                        _formKey.currentState?.save();
+                        if (newValue == "Any Other") {
+                          other2 = true;
+                        } else {
+                          other2 = false;
+                        }
                       });
                     },
                     items: <String>[
@@ -196,8 +221,23 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       );
                     }).toList(),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
                   ),
                   // FormBuilderCheckbox(name: name, title: title)
+                  Visibility(
+                    visible: other2,
+                    child: FormBuilderTextField(
+                      name: "Other2",
+                      decoration: const InputDecoration(
+                        labelText: "If other(specify)",
+                      ),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                    ),
+                  ),
                   FormBuilderPhoneField(
                     name: 'phone_number',
                     decoration: const InputDecoration(
@@ -206,7 +246,8 @@ class _RegisterUserState extends State<RegisterUser> {
                     ),
                     priorityListByIsoCode: ['KE'],
                     validator: FormBuilderValidators.compose([
-                      // FormBuilderValidators.required(context),
+                      FormBuilderValidators.numeric(),
+                      FormBuilderValidators.required(),
                     ]),
                   ),
                   FormBuilderTextField(
@@ -219,6 +260,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
+                      FormBuilderValidators.maxLength(100),
                     ]),
                   ),
                   FormBuilderTextField(
