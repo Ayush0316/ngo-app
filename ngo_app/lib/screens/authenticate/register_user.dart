@@ -21,7 +21,7 @@ class _RegisterUserState extends State<RegisterUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[50],
+      backgroundColor: Color(0xFFFCD5CE),
       appBar: AppBar(
         title: const Text("Register"),
         backgroundColor: Colors.brown[200],
@@ -40,6 +40,7 @@ class _RegisterUserState extends State<RegisterUser> {
           FormBuilderTextField(
             name: "email",
             decoration: const InputDecoration(labelText: 'Email'),
+            keyboardType: TextInputType.emailAddress,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
               FormBuilderValidators.email(),
