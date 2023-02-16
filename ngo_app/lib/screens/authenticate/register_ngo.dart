@@ -25,7 +25,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFCD5CE),
+      backgroundColor: Color(0xFFEFDBE3),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
@@ -156,16 +156,8 @@ class _RegisterNgoState extends State<RegisterNgo> {
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
                       labelText: 'SERVICE',
-                      //   enabledBorder: OutlineInputBorder(
-                      //       // borderSide: BorderSide(color: Colors.black, width: 2),
-                      //       ),
-                      //   focusedBorder: OutlineInputBorder(
-                      //       // borderSide: BorderSide(color: Colors.black, width: 2),
-                      //       ),
-                      //   filled: true,
-                      //   // fillColor: Colors.greenAccent,
                     ),
-                    // dropdownColor: Colors.greenAccent,
+                    dropdownColor: Color(0xFFEFDBE3),
                     // value: dropdownValue,
                     onChanged: (String? newValue) {
                       setState(() {
