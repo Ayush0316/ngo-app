@@ -25,26 +25,37 @@ class _RegisterNgoState extends State<RegisterNgo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color(0xFFEFDBE3),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          "Register NGO",
+          "Register User",
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Roboto-Black',
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Color(0xFFB880E0),
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(2.0),
-          child: Container(
-            padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
-            width: double.infinity,
-            color: Colors.black38,
-            height: 2.0,
+        flexibleSpace: Container(
+          padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFFB880E0),
+                Color(0xFFF385A4),
+                Color.fromARGB(247, 223, 128, 109),
+              ],
+              stops: [
+                0.3,
+                0.6,
+                1,
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
           ),
         ),
         actions: <Widget>[
@@ -65,22 +76,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFB880E0),
-              Color(0xFFF385A4),
-              Color.fromARGB(247, 223, 128, 109),
-            ],
-            stops: [
-              0.3,
-              0.6,
-              1,
-            ],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
-        ),
+        
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 5, left: 32, right: 32),
           // width: double.infinity,
