@@ -141,6 +141,7 @@ class _RegisterUserState extends State<RegisterUser> {
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
                       labelText: 'DONATOR TYPE',
+                      hintText: 'Select any category',
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
                     // value: dropdownValue,
@@ -176,7 +177,8 @@ class _RegisterUserState extends State<RegisterUser> {
                   ),
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
-                      labelText: 'Volunteering Intrests',
+                      labelText: 'Volunteering Interests',
+                      hintText: 'Select any category',
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
                     // value: dropdownValue,
@@ -233,7 +235,7 @@ class _RegisterUserState extends State<RegisterUser> {
                   FormBuilderTextField(
                     name: "user_city",
                     decoration: const InputDecoration(
-                      labelText: '  TOWN/CITY',
+                      labelText: 'TOWN/CITY',
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),

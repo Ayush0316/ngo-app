@@ -155,6 +155,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                   ),
                   DropdownButtonFormField(
                     decoration: const InputDecoration(
+                      hintText: 'Select any category',
                       labelText: 'SERVICE',
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
@@ -219,7 +220,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                   FormBuilderTextField(
                     name: "city",
                     decoration: const InputDecoration(
-                      labelText: '  TOWN/CITY',
+                      labelText: 'TOWN/CITY',
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
