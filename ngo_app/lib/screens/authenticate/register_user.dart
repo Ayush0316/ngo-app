@@ -18,6 +18,8 @@ class _RegisterUserState extends State<RegisterUser> {
   bool obscure_conf = true;
   bool other1 = false;
   bool other2 = false;
+  String? donator_type;
+  String? voluteering_intrust;
   final _formKey = GlobalKey<FormBuilderState>();
   String error = "";
   RegExp passwordCheck =
@@ -88,7 +90,7 @@ class _RegisterUserState extends State<RegisterUser> {
                 key: _formKey,
                 child: Column(children: <Widget>[
                   FormBuilderTextField(
-                    name: "user_email",
+                    name: "email",
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'EMAIL',
@@ -102,7 +104,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     ]),
                   ),
                   FormBuilderTextField(
-                    name: "user_password",
+                    name: "password",
                     obscureText: obscure,
                     decoration: InputDecoration(
                       labelText: 'PASSWORD',
@@ -126,7 +128,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     ]),
                   ),
                   FormBuilderTextField(
-                    name: "user_confirm_password",
+                    name: "confirm_password",
                     obscureText: obscure_conf,
                     decoration: InputDecoration(
                       labelText: 'CONFIRM PASSWORD',
@@ -150,6 +152,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
                     onChanged: (String? newValue) {
+                      donator_type = newValue;
                       setState(() {
                         _formKey.currentState?.save();
                         if (newValue == "Any Other") {
@@ -171,11 +174,14 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       );
                     }).toList(),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
                   ),
                   Visibility(
                     visible: other1,
                     child: FormBuilderTextField(
-                      name: "Other1",
+                      name: "Donator type",
                       decoration: const InputDecoration(
                         labelText: "If other(specify)",
                       ),
@@ -204,6 +210,7 @@ class _RegisterUserState extends State<RegisterUser> {
                     dropdownColor: Color(0xFFEFDBE3),
                     onChanged: (String? newValue) {
                       setState(() {
+                        voluteering_intrust = newValue;
                         _formKey.currentState?.save();
                         if (newValue == "Any Other") {
                           other2 = true;
@@ -231,7 +238,7 @@ class _RegisterUserState extends State<RegisterUser> {
                   Visibility(
                     visible: other2,
                     child: FormBuilderTextField(
-                      name: "Other2",
+                      name: "Volunteering Interests",
                       decoration: const InputDecoration(
                         labelText: "If other(specify)",
                       ),
@@ -308,16 +315,26 @@ class _RegisterUserState extends State<RegisterUser> {
                     onPressed: () async {
                       _formKey.currentState?.save();
                       if (_formKey.currentState!.validate()) {
-                        final formData = _formKey.currentState?.value;
-                        if (formData?["password"] !=
-                            formData?["confirm_password"]) {
+                        Map<String, dynamic> formData = {
+                          ..._formKey.currentState!.value
+                        };
+
+                        if (formData["password"] !=
+                            formData["confirm_password"]) {
                           setState(() {
                             error = "Password must match confirm Password!!";
                           });
                         } else {
-                          dynamic result =
-                              await _auth.registerWithEmailAndPassword(
-                                  formData?["email"], formData?["password"]);
+                          if (formData["Volunteering Interests"] == null) {
+                            formData["Volunteering Interests"] =
+                                voluteering_intrust;
+                          }
+                          if (formData["Donator type"] == null) {
+                            formData["Donator type"] = donator_type;
+                          }
+                          formData["type"] = "User";
+                          dynamic result = await _auth
+                              .registerWithEmailAndPassword(formData);
 
                           if (result == null) {
                             setState(() {

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ngo_app/modals/user.dart';
+import 'package:ngo_app/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,11 +17,24 @@ class AuthService {
   }
 
   // Register with email and password
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(Map<String, dynamic> data) async {
+    String email = data["email"];
+    String password = data["password"];
+    data.remove("email");
+    data.remove("password");
+    data.remove("confirm_password");
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+
+      // Create new user with uid.
+      if (data["type"] == "User") {
+        await DatabaseService(uid: user!.uid).updateUserData(data);
+      } else {
+        await DatabaseService(uid: user!.uid).updateNgoData(data);
+      }
+
       return _custUserFromUser(user);
     } catch (e) {
       debugPrint(e.toString());
