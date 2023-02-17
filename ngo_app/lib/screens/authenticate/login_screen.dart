@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(child: Container(), flex: 0),
-              buildLogo(),
+              // buildLogo(),
               const SizedBox(height: 0),
               Text(
                 'Login',
@@ -74,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(children: <Widget>[
                   FormBuilderTextField(
                     name: "email",
+                    keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'EMAIL',
                       suffixIcon: Icon(

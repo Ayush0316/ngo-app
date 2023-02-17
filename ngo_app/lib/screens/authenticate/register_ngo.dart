@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ngo_app/services/auth.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:form_builder_phone_field/form_builder_phone_field.dart';
 
 class RegisterNgo extends StatefulWidget {
@@ -17,6 +16,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
   final AuthService _auth = AuthService();
   bool obscure = true;
   bool obscure_conf = true;
+  bool other = false;
   final _formKey = GlobalKey<FormBuilderState>();
   String error = "";
   RegExp passwordCheck =
@@ -25,7 +25,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEFDBE3),
+      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
@@ -36,26 +36,15 @@ class _RegisterNgoState extends State<RegisterNgo> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFFB880E0),
         elevation: 0,
-        flexibleSpace: Container(
-          padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFFB880E0),
-                Color(0xFFF385A4),
-                Color.fromARGB(247, 223, 128, 109),
-              ],
-              stops: [
-                0.3,
-                0.6,
-                1,
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(2.0),
+          child: Container(
+            padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
+            width: double.infinity,
+            color: Colors.black38,
+            height: 2.0,
           ),
         ),
         actions: <Widget>[
@@ -75,7 +64,23 @@ class _RegisterNgoState extends State<RegisterNgo> {
               ))
         ],
       ),
-      body: SafeArea(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xFFB880E0),
+              Color(0xFFF385A4),
+              Color.fromARGB(247, 223, 128, 109),
+            ],
+            stops: [
+              0.3,
+              0.6,
+              1,
+            ],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),
+        ),
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 5, left: 32, right: 32),
           // width: double.infinity,
@@ -88,6 +93,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                 child: Column(children: <Widget>[
                   FormBuilderTextField(
                     name: "ngo_email",
+                    keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'EMAIL',
                       suffixIcon: Icon(
@@ -159,10 +165,14 @@ class _RegisterNgoState extends State<RegisterNgo> {
                       labelText: 'SERVICE',
                     ),
                     dropdownColor: Color(0xFFEFDBE3),
-                    // value: dropdownValue,
                     onChanged: (String? newValue) {
                       setState(() {
-                        // dropdownValue = newValue!;
+                        _formKey.currentState?.save();
+                        if (newValue == "Any Other") {
+                          other = true;
+                        } else {
+                          other = false;
+                        }
                       });
                     },
                     items: <String>[
@@ -183,8 +193,23 @@ class _RegisterNgoState extends State<RegisterNgo> {
                         ),
                       );
                     }).toList(),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
                   ),
                   // FormBuilderCheckbox(name: name, title: title)
+                  Visibility(
+                    visible: other,
+                    child: FormBuilderTextField(
+                      name: "Other",
+                      decoration: const InputDecoration(
+                          labelText: "If other(specify)",
+                          hintText: "Deatail about your Ngo work."),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                    ),
+                  ),
                   FormBuilderPhoneField(
                     name: 'phone_number',
                     decoration: const InputDecoration(
@@ -193,7 +218,8 @@ class _RegisterNgoState extends State<RegisterNgo> {
                     ),
                     priorityListByIsoCode: ['KE'],
                     validator: FormBuilderValidators.compose([
-                      // FormBuilderValidators.required(context),
+                      FormBuilderValidators.numeric(),
+                      FormBuilderValidators.required(),
                     ]),
                   ),
                   FormBuilderTextField(
@@ -206,6 +232,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
+                      FormBuilderValidators.maxLength(100),
                     ]),
                   ),
                   FormBuilderTextField(
