@@ -17,6 +17,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
   bool obscure = true;
   bool obscure_conf = true;
   bool other = false;
+  String? service;
   final _formKey = GlobalKey<FormBuilderState>();
   String error = "";
   RegExp passwordCheck =
@@ -88,7 +89,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                 key: _formKey,
                 child: Column(children: <Widget>[
                   FormBuilderTextField(
-                    name: "ngo_email",
+                    name: "email",
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'EMAIL',
@@ -163,6 +164,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                     dropdownColor: Color(0xFFEFDBE3),
                     onChanged: (String? newValue) {
                       setState(() {
+                        service = newValue;
                         _formKey.currentState?.save();
                         if (newValue == "Any Other") {
                           other = true;
@@ -197,7 +199,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                   Visibility(
                     visible: other,
                     child: FormBuilderTextField(
-                      name: "Other",
+                      name: "Service",
                       decoration: const InputDecoration(
                           labelText: "If other(specify)",
                           hintText: "Deatail about your Ngo work."),
@@ -274,16 +276,21 @@ class _RegisterNgoState extends State<RegisterNgo> {
                     onPressed: () async {
                       _formKey.currentState?.save();
                       if (_formKey.currentState!.validate()) {
-                        final formData = _formKey.currentState?.value;
-                        if (formData?["password"] !=
-                            formData?["confirm_password"]) {
+                        Map<String, dynamic> formData = {
+                          ..._formKey.currentState!.value
+                        };
+                        if (formData["password"] !=
+                            formData["confirm_password"]) {
                           setState(() {
                             error = "Password must match confirm Password!!";
                           });
                         } else {
-                          dynamic result =
-                              await _auth.registerWithEmailAndPassword(
-                                  formData?["email"], formData?["password"]);
+                          if (formData["Service"] == null) {
+                            formData["Service"] = service;
+                          }
+                          formData["type"] = "Ngo";
+                          dynamic result = await _auth
+                              .registerWithEmailAndPassword(formData);
 
                           if (result == null) {
                             setState(() {
