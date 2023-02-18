@@ -1,5 +1,10 @@
 import "package:flutter/material.dart";
 import "package:ngo_app/services/auth.dart";
+import 'package:ngo_app/screens/home/side menu/sideMenu.dart';
+import 'package:ngo_app/screens/home/search/search.dart';
+import 'package:ngo_app/screens/home/Ngo categories/categories.dart';
+import 'package:ngo_app/screens/home/Community options/community.dart';
+import 'package:ngo_app/screens/home/about us/about.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,25 +15,45 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
+  GlobalKey<ScaffoldState> _key = GlobalKey();
+  bool isHomePageSelected = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[50],
-      appBar: AppBar(
-        backgroundColor: Colors.brown[200],
-        title: const Text("Home"),
-        elevation: 0.0,
-        actions: <Widget>[
-          TextButton.icon(
-            icon: const Icon(Icons.person),
-            label: const Text("log out"),
-            onPressed: () async {
-              await _auth.signOut();
+        key: _key,
+        backgroundColor: Colors.blue[50],
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              _key.currentState?.openDrawer();
             },
-          )
-        ],
-      ),
-    );
+          ),
+          backgroundColor: Colors.blue,
+          title: const Text("Home"),
+          elevation: 0.0,
+          actions: <Widget>[
+            IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
+          ],
+        ),
+        drawer: sideMenu(),
+        body: Column(
+          children: [
+            searchBar(),
+            SizedBox(
+              height: 5,
+            ),
+            ngoCategories(),
+            SizedBox(
+              height: 5,
+            ),
+            communityOptions(),
+            SizedBox(
+              height: 5,
+            ),
+            aboutUS()
+          ],
+        ));
   }
 }
