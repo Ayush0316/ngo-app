@@ -30,7 +30,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          "Register User",
+          "Register NGO",
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Roboto-Black',
@@ -77,7 +77,6 @@ class _RegisterNgoState extends State<RegisterNgo> {
         ],
       ),
       body: Container(
-        
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 5, left: 32, right: 32),
           // width: double.infinity,
