@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   Widget buildLogo() {
-
     return CircleAvatar(
       backgroundColor: Color(0xFFFCD5CE),
       backgroundImage: AssetImage('images/logo.png'),
@@ -105,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               obscure = !obscure;
                             });
                           },
-                          icon: Icon(Icons.remove_red_eye_outlined)),
+                          icon: Icon(obscure
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
