@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   Widget buildLogo() {
-    // final urlLogo = 'images/logo.svg';
 
     return CircleAvatar(
       backgroundColor: Color(0xFFFCD5CE),

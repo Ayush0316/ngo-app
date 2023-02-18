@@ -30,7 +30,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          "Register Ngo",
+          "Register NGO",
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Roboto-Black',
