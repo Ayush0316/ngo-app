@@ -115,7 +115,9 @@ class _RegisterUserState extends State<RegisterUser> {
                               obscure = !obscure;
                             });
                           },
-                          icon: Icon(Icons.remove_red_eye_outlined)),
+                          icon: Icon(obscure
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined)),
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
@@ -139,7 +141,9 @@ class _RegisterUserState extends State<RegisterUser> {
                               obscure_conf = !obscure_conf;
                             });
                           },
-                          icon: Icon(Icons.remove_red_eye_outlined)),
+                          icon: Icon(obscure_conf
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined)),
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),

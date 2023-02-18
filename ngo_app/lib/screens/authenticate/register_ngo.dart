@@ -30,7 +30,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text(
-          "Register User",
+          "Register Ngo",
           style: TextStyle(
             fontSize: 24.0,
             fontFamily: 'Roboto-Black',
@@ -77,7 +77,6 @@ class _RegisterNgoState extends State<RegisterNgo> {
         ],
       ),
       body: Container(
-        
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 5, left: 32, right: 32),
           // width: double.infinity,
@@ -114,7 +113,10 @@ class _RegisterNgoState extends State<RegisterNgo> {
                               obscure = !obscure;
                             });
                           },
-                          icon: Icon(Icons.remove_red_eye_outlined)),
+                          // icon: Icon(Icons.)),
+                          icon: Icon(obscure
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined)),
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
@@ -138,7 +140,9 @@ class _RegisterNgoState extends State<RegisterNgo> {
                               obscure_conf = !obscure_conf;
                             });
                           },
-                          icon: Icon(Icons.remove_red_eye_outlined)),
+                          icon: Icon(obscure_conf
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined)),
                     ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(),
