@@ -11,10 +11,10 @@ class _ngoCategoriesState extends State<ngoCategories> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.orange,
+      // color: Colors.orange,
       width: double.infinity,
       height: 300,
-      child: Text("NGO Categories"),
+      // child: Text("NGO Categories"),
     );
   }
 }

@@ -19,47 +19,48 @@ class _HomeState extends State<Home> {
   bool isHomePageSelected = true;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        key: _key,
-        backgroundColor: Colors.blue[50],
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              _key.currentState?.openDrawer();
-            },
-          ),
-          backgroundColor: Colors.blue,
-          title: const Text("Home"),
-          elevation: 0.0,
-          actions: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
-          ],
-        ),
-        drawer: sideMenu(),
-        body: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.only(top: 5, left: 18, right: 18),
-            child: Column(
-              children: [
-                searchBar(),
-                SizedBox(
-                  height: 5,
-                ),
-                ngoCategories(),
-                SizedBox(
-                  height: 5,
-                ),
-                communityOptions(),
-                SizedBox(
-                  height: 5,
-                ),
-                aboutUS()
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            key: _key,
+            backgroundColor: Colors.blue[50],
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  _key.currentState?.openDrawer();
+                },
+              ),
+              backgroundColor: Colors.blue,
+              title: const Text("Home"),
+              elevation: 0.0,
+              actions: <Widget>[
+                IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
               ],
             ),
-          ),
-        ));
-  }
+            drawer: sideMenu(),
+            body: SafeArea(
+              child: Container(
+                padding: const EdgeInsets.only(top: 5, left: 18, right: 18),
+                child: Column(
+                  children: [
+                    searchBar(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    ngoCategories(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    communityOptions(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    aboutUS()
+                  ],
+                ),
+              ),
+            )),
+      );
 }
