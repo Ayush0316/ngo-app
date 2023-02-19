@@ -24,7 +24,7 @@ class _sideMenuState extends State<sideMenu> {
             ),
           ),
           ListTile(
-            title: Text('Item 1'),
+            title: Text('Home'),
             onTap: () {
               Navigator.pop(context);
             },

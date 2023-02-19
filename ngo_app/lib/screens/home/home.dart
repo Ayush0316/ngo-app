@@ -41,8 +41,8 @@ class _HomeState extends State<Home> {
             ),
             drawer: sideMenu(),
             body: SafeArea(
-              child: Container(
-                padding: const EdgeInsets.only(top: 5, left: 18, right: 18),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
                 child: Column(
                   children: [
                     searchBar(),
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 5,
                     ),
-                    aboutUS()
+                    aboutUS(),
                   ],
                 ),
               ),
