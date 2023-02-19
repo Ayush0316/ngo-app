@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         key: _key,
         backgroundColor: Colors.blue[50],
         appBar: AppBar(
@@ -38,22 +39,27 @@ class _HomeState extends State<Home> {
           ],
         ),
         drawer: sideMenu(),
-        body: Column(
-          children: [
-            searchBar(),
-            SizedBox(
-              height: 5,
+        body: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.only(top: 5, left: 18, right: 18),
+            child: Column(
+              children: [
+                searchBar(),
+                SizedBox(
+                  height: 5,
+                ),
+                ngoCategories(),
+                SizedBox(
+                  height: 5,
+                ),
+                communityOptions(),
+                SizedBox(
+                  height: 5,
+                ),
+                aboutUS()
+              ],
             ),
-            ngoCategories(),
-            SizedBox(
-              height: 5,
-            ),
-            communityOptions(),
-            SizedBox(
-              height: 5,
-            ),
-            aboutUS()
-          ],
+          ),
         ));
   }
 }

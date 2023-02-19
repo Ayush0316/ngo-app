@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return CircleAvatar(
       backgroundColor: Color(0xFFFCD5CE),
       backgroundImage: AssetImage('images/logo.png'),
-      radius: 80,
+      radius: 90,
     );
   }
 
@@ -49,12 +49,11 @@ class _LoginScreenState extends State<LoginScreen> {
             end: Alignment.bottomLeft,
           )),
           padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
-          width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(child: Container(), flex: 0),
-              // buildLogo(),
+              buildLogo(),
               const SizedBox(height: 0),
               Text(
                 'Login',
