@@ -14,7 +14,7 @@ class _searchBarState extends State<searchBar> {
       child: TextField(
         decoration: InputDecoration(
           hintText: "Search NGO by name",
-          hintStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w100),
+          hintStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w100),
           prefixIcon: const Icon(Icons.search),
           suffixIcon: IconButton(
             onPressed: () {
@@ -31,7 +31,7 @@ class _searchBarState extends State<searchBar> {
         ),
       ),
       width: double.infinity,
-      height: 60,
+      height: 45,
     );
   }
 }
