@@ -192,12 +192,29 @@ class _ngoCategoriesState extends State<ngoCategories> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFFF66C4), Color(0xFF5CE1E6)],
+                      stops: [
+                        0.3,
+                        1,
+                      ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                    )),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    Icon(
+                      Icons.festival_sharp,
+                      size: 45,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      "Tourism",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -208,12 +225,29 @@ class _ngoCategoriesState extends State<ngoCategories> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Color(0xFF26F7B2), Color(0xFF7CC644)],
+                      stops: [
+                        0.1,
+                        1,
+                      ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                    )),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    Icon(
+                      Icons.health_and_safety_sharp,
+                      size: 45,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      "Health",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -224,12 +258,29 @@ class _ngoCategoriesState extends State<ngoCategories> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFC0F0F7), Color(0xFF004AAD)],
+                      stops: [
+                        0.1,
+                        1,
+                      ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                    )),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    Icon(
+                      Icons.badge_sharp,
+                      size: 45,
+                      color: Colors.red,
+                    ),
+                    Text(
+                      "Employment",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -240,12 +291,29 @@ class _ngoCategoriesState extends State<ngoCategories> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey,
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFF93D3A), Color(0xFFFFCBC4)],
+                      stops: [
+                        0.1,
+                        1,
+                      ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                    )),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    // Icon(
+                    //   Icons.badge_sharp,
+                    //   size: 45,
+                    //   color: Colors.red,
+                    // ),
+                    Text(
+                      "Others",
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    )
+                  ],
                 ),
               ),
             ),
@@ -254,6 +322,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
         ),
       ),
+      height: 375,
     );
   }
 }
