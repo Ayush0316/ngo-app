@@ -24,20 +24,100 @@ class _sideMenuState extends State<sideMenu> {
             ),
           ),
           ListTile(
-            title: Text('Home'),
+            title: Text(
+              'Home',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: Text('Item 2'),
+            title: Text(
+              'Good Points',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text(
+              'History',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Account',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Help and Feedback',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
             leading: Icon(Icons.person),
-            title: Text("logout"),
+            title: Text(
+              "LogOut",
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
             onTap: () async {
               await _auth.signOut();
             },

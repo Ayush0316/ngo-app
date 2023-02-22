@@ -304,11 +304,6 @@ class _ngoCategoriesState extends State<ngoCategories> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Icon(
-                    //   Icons.badge_sharp,
-                    //   size: 45,
-                    //   color: Colors.red,
-                    // ),
                     Text(
                       "Others",
                       style: TextStyle(color: Colors.white, fontSize: 25),
