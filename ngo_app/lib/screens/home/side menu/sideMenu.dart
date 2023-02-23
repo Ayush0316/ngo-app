@@ -17,10 +17,28 @@ class _sideMenuState extends State<sideMenu> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            child: Text('Drawer Header'),
-            decoration: BoxDecoration(
-              color: Colors.blue,
+          UserAccountsDrawerHeader(
+            // decoration: BoxDecoration(
+            //     // color: Colors.white,
+            //     ),
+            accountEmail: Text(
+              'User_Email',
+              style: TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            accountName: Text(
+              'User_Name',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: AssetImage('images/logo.png'),
             ),
           ),
           ListTile(

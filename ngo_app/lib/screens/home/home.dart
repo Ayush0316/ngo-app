@@ -24,7 +24,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-            resizeToAvoidBottomInset: false,
             key: _key,
             backgroundColor: Colors.blue[50],
             appBar: AppBar(
@@ -44,6 +43,8 @@ class _HomeState extends State<Home> {
             drawer: sideMenu(),
             body: SafeArea(
               child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                 padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
                 child: Column(
                   children: [

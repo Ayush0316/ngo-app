@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:ngo_app/screens/home/home.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class communityOptions extends StatefulWidget {
   const communityOptions({super.key});
@@ -14,10 +15,8 @@ class _communityOptionsState extends State<communityOptions> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.blueGrey,
       height: 230,
       width: double.infinity,
-      // child: Text("community options"),
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: ListView(
@@ -103,6 +102,7 @@ class _communityOptionsState extends State<communityOptions> {
                 ),
               ),
             ),
+            const SizedBox(width: 10),
           ],
         ),
       ),
