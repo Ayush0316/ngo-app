@@ -14,7 +14,7 @@ class _aboutUSState extends State<aboutUS> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.yellow,
-      height: 40,
+      height: 400,
       width: double.infinity,
       child: Text("about us and our previous works"),
     );

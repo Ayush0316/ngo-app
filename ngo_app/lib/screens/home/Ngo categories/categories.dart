@@ -14,6 +14,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: GridView(
+          physics: new NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           children: [
             InkWell(
