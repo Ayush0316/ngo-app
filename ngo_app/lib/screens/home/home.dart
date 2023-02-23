@@ -4,7 +4,9 @@ import 'package:ngo_app/screens/home/side menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/search/search.dart';
 import 'package:ngo_app/screens/home/Ngo categories/categories.dart';
 import 'package:ngo_app/screens/home/Community options/community.dart';
+import 'package:ngo_app/screens/home/Community options/text_community.dart';
 import 'package:ngo_app/screens/home/about us/about.dart';
+import 'package:ngo_app/screens/home/about us/text_about.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -53,10 +55,12 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 5,
                     ),
+                    text_community(),
                     communityOptions(),
                     SizedBox(
                       height: 5,
                     ),
+                    text_about(),
                     aboutUS(),
                   ],
                 ),
