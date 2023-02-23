@@ -8,6 +8,11 @@ class AuthService {
 
   // Creating a CustUser based on the User.
   CustUser? _custUserFromUser(User? user) {
+    // print(user);
+    // if (user == null) {
+    //   return null;
+    // }
+
     return user != null ? CustUser(uid: user.uid) : null;
   }
 

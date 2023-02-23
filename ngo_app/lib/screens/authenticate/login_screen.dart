@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return CircleAvatar(
       backgroundColor: Color(0xFFFCD5CE),
       backgroundImage: AssetImage('images/logo.png'),
-      radius: 90,
+      radius: 10,
     );
   }
 
