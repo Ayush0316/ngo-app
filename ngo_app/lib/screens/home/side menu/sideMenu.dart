@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:ngo_app/services/auth.dart";
+import 'package:ngo_app/services/UserProvider.dart';
+import 'package:provider/provider.dart';
 
 class sideMenu extends StatefulWidget {
   const sideMenu({super.key});
@@ -22,7 +24,9 @@ class _sideMenuState extends State<sideMenu> {
             //     // color: Colors.white,
             //     ),
             accountEmail: Text(
-              'User_Email',
+              (Provider.of<Data>(context).data["email"] != null
+                  ? Provider.of<Data>(context).data["email"]
+                  : "User_Email"),
               style: TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
@@ -30,7 +34,9 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             accountName: Text(
-              'User_Name',
+              (Provider.of<Data>(context).data["user_name"] != null
+                  ? Provider.of<Data>(context).data["user_name"]
+                  : "User_Name"),
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,

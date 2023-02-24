@@ -25,7 +25,7 @@ class AuthService {
   Future registerWithEmailAndPassword(Map<String, dynamic> data) async {
     String email = data["email"];
     String password = data["password"];
-    data.remove("email");
+    // data.remove("email");
     data.remove("password");
     data.remove("confirm_password");
     try {
