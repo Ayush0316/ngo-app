@@ -30,7 +30,6 @@ class DatabaseService {
         await usersCollection.doc(uid).get().then((DocumentSnapshot doc) async {
       if (doc.exists) {
         print("It is a user");
-        print(doc);
         return doc.data() as Map<String, dynamic>;
       } else {
         print("It may be a ngo");

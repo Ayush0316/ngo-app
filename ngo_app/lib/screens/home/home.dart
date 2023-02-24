@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:ngo_app/services/auth.dart";
 import 'package:ngo_app/screens/home/side menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/search/search.dart';
 import 'package:ngo_app/screens/home/Ngo categories/categories.dart';
@@ -16,7 +15,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final AuthService _auth = AuthService();
   GlobalKey<ScaffoldState> _key = GlobalKey();
   bool isHomePageSelected = true;
 

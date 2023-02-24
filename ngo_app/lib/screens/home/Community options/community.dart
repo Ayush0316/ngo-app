@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:ngo_app/screens/home/home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
