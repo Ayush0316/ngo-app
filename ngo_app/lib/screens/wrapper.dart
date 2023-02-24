@@ -18,8 +18,6 @@ class Wrapper extends StatelessWidget {
     } else {
       Provider.of<Data>(context, listen: false).updateAccount(user.uid);
       return Home();
-      // return Home(uid: user.uid);
     }
-    // return const Home();
   }
 }

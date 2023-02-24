@@ -1,8 +1,8 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 
 class DatabaseService {
-  final String uid;
-  DatabaseService({required this.uid});
+  final String? uid;
+  DatabaseService({this.uid});
 
   // User collection refrence
   final CollectionReference usersCollection =
@@ -24,21 +24,31 @@ class DatabaseService {
 
   // Get info about Ngos/Users.
   Future<Map<String, dynamic>> getData() async {
-    print("funciton called!!");
     dynamic data;
     data =
         await usersCollection.doc(uid).get().then((DocumentSnapshot doc) async {
       if (doc.exists) {
-        print("It is a user");
         return doc.data() as Map<String, dynamic>;
       } else {
-        print("It may be a ngo");
         return await ngosCollection.doc(uid).get().then((DocumentSnapshot doc) {
           return doc.data() as Map<String, dynamic>;
         });
       }
     });
-    print(data);
+    return data;
+  }
+
+  List<String> getNgosName() {
+    List<String> data = [];
+    ngosCollection.get().then((snapshot) {
+      snapshot.docs.forEach(
+        (element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          data.add(tmp["ngo_name"]);
+        },
+      );
+      return data;
+    });
     return data;
   }
 }
