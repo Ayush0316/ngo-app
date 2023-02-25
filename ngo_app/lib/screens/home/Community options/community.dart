@@ -17,21 +17,33 @@ class _communityOptionsState extends State<communityOptions> {
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          children: [
+        child: CarouselSlider(
+          // scrollDirection: Axis.horizontal,
+          // shrinkWrap: true,
+
+          options: CarouselOptions(
+            pageSnapping: false,
+            enlargeCenterPage: true,
+            autoPlay: true,
+            // aspectRatio: 1,
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            viewportFraction: 0.8,
+            padEnds: false,
+          ),
+          items: [
             InkWell(
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Home()));
               },
               child: Container(
-                width: 200,
+                width: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 6,
+                    width: 4,
                   ),
                 ),
                 child: Column(
@@ -40,18 +52,17 @@ class _communityOptionsState extends State<communityOptions> {
                 ),
               ),
             ),
-            const SizedBox(width: 10),
             InkWell(
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Home()));
               },
               child: Container(
-                width: 200,
+                width: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 6,
+                    width: 4,
                   ),
                 ),
                 child: Column(
@@ -60,18 +71,17 @@ class _communityOptionsState extends State<communityOptions> {
                 ),
               ),
             ),
-            const SizedBox(width: 10),
             InkWell(
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Home()));
               },
               child: Container(
-                width: 200,
+                width: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 6,
+                    width: 4,
                   ),
                 ),
                 child: Column(
@@ -80,18 +90,17 @@ class _communityOptionsState extends State<communityOptions> {
                 ),
               ),
             ),
-            const SizedBox(width: 10),
             InkWell(
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Home()));
               },
               child: Container(
-                width: 200,
+                width: 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 6,
+                    width: 4,
                   ),
                 ),
                 child: Column(
@@ -100,7 +109,6 @@ class _communityOptionsState extends State<communityOptions> {
                 ),
               ),
             ),
-            const SizedBox(width: 10),
           ],
         ),
       ),
