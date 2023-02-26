@@ -227,6 +227,10 @@ class _RegisterUserState extends State<RegisterUser> {
                         },
                         items: <String>[
                           'Cleanliness Drives',
+                          'Teaching',
+                          'Medical',
+                          'Women Empowerment',
+                          'Pickup and Distribution',
                           'Any Other',
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(

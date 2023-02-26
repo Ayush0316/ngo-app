@@ -6,6 +6,8 @@ import 'package:ngo_app/screens/home/Community options/community.dart';
 import 'package:ngo_app/screens/home/Community options/text_community.dart';
 import 'package:ngo_app/screens/home/about us/about.dart';
 import 'package:ngo_app/screens/home/about us/text_about.dart';
+import 'package:ngo_app/screens/home/Community recommended/recommended.dart';
+import 'package:ngo_app/screens/home/Community recommended/text_recommended.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -57,8 +59,13 @@ class _HomeState extends State<Home> {
                     text_community(),
                     communityOptions(),
                     SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
+                    text_recommend(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Comu_recom(),
                     text_about(),
                     aboutUS(),
                   ],
