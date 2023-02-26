@@ -31,7 +31,9 @@ class DatabaseService {
         return doc.data() as Map<String, dynamic>;
       } else {
         return await ngosCollection.doc(uid).get().then((DocumentSnapshot doc) {
-          return doc.data() as Map<String, dynamic>;
+          return (doc.data() != null)
+              ? doc.data() as Map<String, dynamic>
+              : {"error": "result not found."};
         });
       }
     });
