@@ -11,10 +11,29 @@ class _end_textState extends State<end_text> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Color.fromARGB(15, 210, 114, 18), //this color should be same as the entire home screens background clolor
       height: 100,
       width: double.infinity,
-      child: Text("ending text of the home screen may be a quote "),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            child: Container(
+              child: const Padding(
+                padding: EdgeInsets.all(4.0),
+                child: Text(
+                  "There could be no definition of a successful life that does not include service to others. \n -President George H.W Bush",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 122, 114, 114),
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Roboto-Black',
+                    fontSize: 16.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
