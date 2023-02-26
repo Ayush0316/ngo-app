@@ -507,5 +507,10 @@ packages:
     source: hosted
     version: "5.4.1"
 sdks:
+<<<<<<< HEAD
   dart: ">2.19.0 <3.0.0"
   flutter: ">=3.7.0"
+=======
+  dart: ">=2.19.0 <4.0.0"
+  flutter: ">=3.0.0"
+>>>>>>> c460aa1899857f213bfef778182780ca2c05eea1

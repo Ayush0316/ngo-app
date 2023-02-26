@@ -16,6 +16,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else {
+      print(user.uid);
       Provider.of<Data>(context, listen: false).updateAccount(user.uid);
       return Home();
     }
