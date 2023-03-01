@@ -1,16 +1,16 @@
 import "package:flutter/material.dart";
-import 'package:ngo_app/screens/home/side menu/sideMenu.dart';
-import 'package:ngo_app/screens/home/search/search.dart';
-import 'package:ngo_app/screens/home/Ngo categories/categories.dart';
-import 'package:ngo_app/screens/home/Community options/community.dart';
-import 'package:ngo_app/screens/home/Community options/text_community.dart';
-import 'package:ngo_app/screens/home/about us/about.dart';
-import 'package:ngo_app/screens/home/about%20us/title_about.dart';
-import 'package:ngo_app/screens/home/Community recommended/recommended.dart';
-import 'package:ngo_app/screens/home/Community recommended/text_recommended.dart';
-import 'package:ngo_app/screens/home/about us/text_about.dart';
-import 'package:ngo_app/screens/home/Quote/text.dart';
-import 'package:ngo_app/screens/home/Quote/divider.dart';
+import 'package:ngo_app/screens/home/User/side menu/sideMenu.dart';
+import 'package:ngo_app/screens/home/User/search/search.dart';
+import 'package:ngo_app/screens/home/User/Ngo categories/categories.dart';
+import 'package:ngo_app/screens/home/User/Community options/community.dart';
+import 'package:ngo_app/screens/home/User/Community options/text_community.dart';
+import 'package:ngo_app/screens/home/User/about us/about.dart';
+import 'package:ngo_app/screens/home/User/about%20us/title_about.dart';
+import 'package:ngo_app/screens/home/User/Community recommended/recommended.dart';
+import 'package:ngo_app/screens/home/User/Community recommended/text_recommended.dart';
+import 'package:ngo_app/screens/home/User/about us/text_about.dart';
+import 'package:ngo_app/screens/home/User/Quote/text.dart';
+import 'package:ngo_app/screens/home/User/Quote/divider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

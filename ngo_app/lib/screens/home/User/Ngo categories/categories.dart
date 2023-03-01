@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_app/screens/home/home.dart';
+import 'package:ngo_app/screens/home/User/home.dart';
 
 class ngoCategories extends StatefulWidget {
   const ngoCategories({super.key});

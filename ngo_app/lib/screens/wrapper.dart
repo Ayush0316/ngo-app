@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/modals/user.dart';
 import 'package:ngo_app/screens/authenticate/authenticate.dart';
-import 'package:ngo_app/screens/home/home.dart';
+import 'package:ngo_app/screens/home/selector.dart';
 import 'package:provider/provider.dart';
 import 'package:ngo_app/services/UserProvider.dart';
 
@@ -16,9 +16,8 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return const Authenticate();
     } else {
-      print(user.uid);
       Provider.of<Data>(context, listen: false).updateAccount(user.uid);
-      return Home();
+      return Type_Selector();
     }
   }
 }
