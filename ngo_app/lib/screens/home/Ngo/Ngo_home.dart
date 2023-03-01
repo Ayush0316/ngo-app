@@ -13,29 +13,31 @@ class _NgoHomeState extends State<NgoHome> {
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
     return Scaffold(
-        body: Column(
-      children: [
-        const Text("Home screen for ngos."),
-        TextButton(
-          child: Row(
-            children: [
-              Icon(Icons.person),
-              Text(
-                "LogOut",
-                style: TextStyle(
-                  // decoration: TextDecoration.underline,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto-Black',
+        body: SafeArea(
+      child: Column(
+        children: [
+          const Text("Home screen for ngos."),
+          TextButton(
+            child: Row(
+              children: [
+                Icon(Icons.person),
+                Text(
+                  "LogOut",
+                  style: TextStyle(
+                    // decoration: TextDecoration.underline,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto-Black',
+                  ),
                 ),
-              ),
-            ],
-          ),
-          onPressed: () async {
-            await _auth.signOut();
-          },
-        )
-      ],
+              ],
+            ),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          )
+        ],
+      ),
     ));
   }
 }

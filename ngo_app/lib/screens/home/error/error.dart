@@ -7,29 +7,32 @@ class ShowError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
-    return Column(
-      children: [
-        const Text("This is error screen shows when type isn't defined."),
-        TextButton(
-          child: Row(
-            children: [
-              Icon(Icons.person),
-              Text(
-                "LogOut",
-                style: TextStyle(
-                  // decoration: TextDecoration.underline,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto-Black',
+    return Scaffold(
+        body: SafeArea(
+      child: Column(
+        children: [
+          const Text("Error screen for undefined type"),
+          TextButton(
+            child: Row(
+              children: [
+                Icon(Icons.person),
+                Text(
+                  "LogOut",
+                  style: TextStyle(
+                    // decoration: TextDecoration.underline,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto-Black',
+                  ),
                 ),
-              ),
-            ],
-          ),
-          onPressed: () async {
-            await _auth.signOut();
-          },
-        )
-      ],
-    );
+              ],
+            ),
+            onPressed: () async {
+              await _auth.signOut();
+            },
+          )
+        ],
+      ),
+    ));
   }
 }
