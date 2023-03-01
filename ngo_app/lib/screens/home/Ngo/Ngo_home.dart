@@ -12,7 +12,8 @@ class _NgoHomeState extends State<NgoHome> {
   @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
-    return Column(
+    return Scaffold(
+        body: Column(
       children: [
         const Text("Home screen for ngos."),
         TextButton(
@@ -35,6 +36,6 @@ class _NgoHomeState extends State<NgoHome> {
           },
         )
       ],
-    );
+    ));
   }
 }
