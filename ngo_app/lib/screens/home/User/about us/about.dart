@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_app/screens/home/User/home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_indicator/carousel_indicator.dart';
 
@@ -42,7 +41,7 @@ class _aboutUSState extends State<aboutUS> {
                     strokeAlign: BorderSide.strokeAlignInside,
                   ),
                   image: DecorationImage(
-                    image: AssetImage("images/Cleanliness_drive.jpeg"),
+                    image: AssetImage("images/about_us_employment.jpeg"),
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
                     opacity: 1.8,
@@ -62,7 +61,7 @@ class _aboutUSState extends State<aboutUS> {
                     strokeAlign: BorderSide.strokeAlignInside,
                   ),
                   image: DecorationImage(
-                    image: AssetImage("images/Cleanliness_drive.jpeg"),
+                    image: AssetImage("images/about_us_cleanliness.jpeg"),
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
                     opacity: 1.8,
@@ -82,7 +81,7 @@ class _aboutUSState extends State<aboutUS> {
                     strokeAlign: BorderSide.strokeAlignInside,
                   ),
                   image: DecorationImage(
-                    image: AssetImage("images/Cleanliness_drive.jpeg"),
+                    image: AssetImage("images/about_us_animals.jpeg"),
                     fit: BoxFit.cover,
                     alignment: Alignment.topCenter,
                     opacity: 1.8,
@@ -102,8 +101,8 @@ class _aboutUSState extends State<aboutUS> {
                     strokeAlign: BorderSide.strokeAlignInside,
                   ),
                   image: DecorationImage(
-                    image: AssetImage("images/Cleanliness_drive.jpeg"),
-                    fit: BoxFit.cover,
+                    image: AssetImage("images/about_us_women.jpeg"),
+                    fit: BoxFit.fill,
                     alignment: Alignment.topCenter,
                     opacity: 1.8,
                     isAntiAlias: true,
