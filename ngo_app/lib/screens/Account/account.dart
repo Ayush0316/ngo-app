@@ -26,9 +26,10 @@ class _AccountState extends State<Account> {
                 },
               ),
               backgroundColor: Colors.blue,
-              title: const Text("Home"),
+              title: const Text("My Account"),
               elevation: 0.0,
               actions: <Widget>[
+                IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
                 IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
               ],
             ),
@@ -37,11 +38,71 @@ class _AccountState extends State<Account> {
               child: SingleChildScrollView(
                 keyboardDismissBehavior:
                     ScrollViewKeyboardDismissBehavior.onDrag,
-                padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 3,
+                    Container(
+                      color: Colors.lightBlue[40],
+                      height: 200,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 25, left: 10),
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CircleAvatar(
+                                radius: 65,
+                                backgroundImage: AssetImage('images/logo.png'),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  Text(
+                                    "User_name",
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Roboto-Black',
+                                    ),
+                                  ),
+                                  Text(
+                                    "user_mail",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Roboto-Black',
+                                    ),
+                                  ),
+                                  Text("phone_number",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Roboto-Black',
+                                      ))
+                                ],
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15.0),
+                                child: OutlinedButton(
+                                    // style: But,
+                                    onPressed: () {},
+                                    child: Text("Edit Profile")),
+                              )
+                            ]),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
+                      height: 40,
                     )
                   ],
                 ),
