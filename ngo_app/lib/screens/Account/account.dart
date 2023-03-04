@@ -17,7 +17,7 @@ class _AccountState extends State<Account> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
             key: _key,
-            backgroundColor: Colors.blue[50],
+            backgroundColor: Color.fromARGB(249, 255, 255, 255),
             appBar: AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.menu),
@@ -41,7 +41,7 @@ class _AccountState extends State<Account> {
                 child: Column(
                   children: [
                     Container(
-                      color: Colors.lightBlue[40],
+                      color: Colors.lightBlue[50],
                       height: 200,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 25, left: 10),
@@ -97,13 +97,12 @@ class _AccountState extends State<Account> {
                       ),
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      height: 40,
-                    )
+                        height: 400,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(width: 1, color: Colors.black),
+                          ),
+                        ))
                   ],
                 ),
               ),
