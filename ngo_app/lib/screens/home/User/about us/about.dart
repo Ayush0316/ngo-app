@@ -20,7 +20,7 @@ class _aboutUSState extends State<aboutUS> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 230,
+      height: 240,
       width: double.infinity,
       child: Column(
         // padding: const EdgeInsets.all(5.0),
@@ -45,7 +45,7 @@ class _aboutUSState extends State<aboutUS> {
                   setState(() => activeIndex = index),
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           buildIndicator(),
         ],
       ),
@@ -62,8 +62,10 @@ class _aboutUSState extends State<aboutUS> {
   Widget buildIndicator() => AnimatedSmoothIndicator(
       activeIndex: activeIndex,
       count: urlImages.length,
-      effect: JumpingDotEffect(
+      effect: SlideEffect(
         dotWidth: 12,
         dotHeight: 12,
+        activeDotColor: Colors.blue,
+        dotColor: Colors.black26,
       ));
 }
