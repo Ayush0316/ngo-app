@@ -42,6 +42,7 @@ class _AccountState extends State<Account> {
               child: SingleChildScrollView(
                 keyboardDismissBehavior:
                     ScrollViewKeyboardDismissBehavior.onDrag,
+                padding: const EdgeInsets.only(top: 0, left: 10, right: 10),
                 child: Column(
                   children: [
                     Container(
@@ -135,7 +136,7 @@ class _AccountState extends State<Account> {
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 30,
+                                  size: 20,
                                 )
                               ],
                             )),
@@ -145,7 +146,7 @@ class _AccountState extends State<Account> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Account Deatials",
+                                  "Account Details",
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
@@ -155,7 +156,7 @@ class _AccountState extends State<Account> {
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 30,
+                                  size: 20,
                                 )
                               ],
                             )),
@@ -175,7 +176,7 @@ class _AccountState extends State<Account> {
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 30,
+                                  size: 20,
                                 )
                               ],
                             )),
@@ -195,7 +196,7 @@ class _AccountState extends State<Account> {
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 30,
+                                  size: 20,
                                 )
                               ],
                             )),
@@ -215,7 +216,7 @@ class _AccountState extends State<Account> {
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 30,
+                                  size: 20,
                                 )
                               ],
                             )),
@@ -226,7 +227,7 @@ class _AccountState extends State<Account> {
                           child: Row(children: [
                             Icon(
                               Icons.logout_sharp,
-                              size: 30,
+                              size: 20,
                             ),
                             SizedBox(
                               width: 15,
