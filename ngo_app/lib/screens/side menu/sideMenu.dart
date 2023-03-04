@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/Account/account.dart';
+import 'package:ngo_app/screens/home/selector.dart';
 import "package:ngo_app/services/auth.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +22,6 @@ class _sideMenuState extends State<sideMenu> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
-            // decoration: BoxDecoration(
-            //     // color: Colors.white,
-            //     ),
             accountEmail: Text(
               (Provider.of<Data>(context).data["email"] != null
                   ? Provider.of<Data>(context).data["email"]
@@ -59,7 +57,8 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Type_Selector()));
             },
           ),
           ListTile(

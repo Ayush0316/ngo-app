@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
+import "package:provider/provider.dart";
+import 'package:ngo_app/services/UserProvider.dart';
+import 'package:ngo_app/services/auth.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -11,6 +14,7 @@ class Account extends StatefulWidget {
 class _AccountState extends State<Account> {
   GlobalKey<ScaffoldState> _key = GlobalKey();
   bool isHomePageSelected = true;
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -62,7 +66,12 @@ class _AccountState extends State<Account> {
                                     height: 25,
                                   ),
                                   Text(
-                                    "User_name",
+                                    (Provider.of<Data>(context)
+                                                .data["user_name"] !=
+                                            null
+                                        ? Provider.of<Data>(context)
+                                            .data["user_name"]
+                                        : "User_name"),
                                     style: TextStyle(
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.bold,
@@ -70,13 +79,23 @@ class _AccountState extends State<Account> {
                                     ),
                                   ),
                                   Text(
-                                    "user_mail",
+                                    (Provider.of<Data>(context).data["email"] !=
+                                            null
+                                        ? Provider.of<Data>(context)
+                                            .data["email"]
+                                        : "User_Email"),
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Roboto-Black',
                                     ),
                                   ),
-                                  Text("phone_number",
+                                  Text(
+                                      (Provider.of<Data>(context)
+                                                  .data["phone_number"] !=
+                                              null
+                                          ? Provider.of<Data>(context)
+                                              .data["phone_number"]
+                                          : "Phone Number"),
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Roboto-Black',
@@ -201,7 +220,9 @@ class _AccountState extends State<Account> {
                               ],
                             )),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await _auth.signOut();
+                          },
                           child: Row(children: [
                             Icon(
                               Icons.logout_sharp,
