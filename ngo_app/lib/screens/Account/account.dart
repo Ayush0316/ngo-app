@@ -49,7 +49,7 @@ class _AccountState extends State<Account> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CircleAvatar(
-                                radius: 65,
+                                radius: 60,
                                 backgroundImage: AssetImage('images/logo.png'),
                               ),
                               SizedBox(
@@ -96,13 +96,133 @@ class _AccountState extends State<Account> {
                             ]),
                       ),
                     ),
-                    Container(
-                        height: 400,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            top: BorderSide(width: 1, color: Colors.black),
-                          ),
-                        ))
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                      child: Column(children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "History",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  size: 30,
+                                )
+                              ],
+                            )),
+                        TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Account Deatials",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  size: 30,
+                                )
+                              ],
+                            )),
+                        TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Manage Address",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  size: 30,
+                                )
+                              ],
+                            )),
+                        TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "FAQ's",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  size: 30,
+                                )
+                              ],
+                            )),
+                        TextButton(
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Settings",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_sharp,
+                                  size: 30,
+                                )
+                              ],
+                            )),
+                        TextButton(
+                          onPressed: () {},
+                          child: Row(children: [
+                            Icon(
+                              Icons.logout_sharp,
+                              size: 30,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              "LogOut",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Roboto-Black',
+                              ),
+                            )
+                          ]),
+                        )
+                      ]),
+                    ),
                   ],
                 ),
               ),
