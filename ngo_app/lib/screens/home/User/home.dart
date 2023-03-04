@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
                     text_aboutUS(),
                     aboutUS(),
                     SizedBox(
-                      height: 30,
+                      height: 10,
                     ),
                     divider_line(),
                     end_text(),

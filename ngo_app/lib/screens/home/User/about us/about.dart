@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_indicator/carousel_indicator.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class aboutUS extends StatefulWidget {
   const aboutUS({super.key});
@@ -10,109 +10,60 @@ class aboutUS extends StatefulWidget {
 }
 
 class _aboutUSState extends State<aboutUS> {
+  int activeIndex = 0;
+  final urlImages = [
+    "https://i.ibb.co/ZGCCM4z/about-us-employment.jpg",
+    "https://i.ibb.co/YNq5TBv/about-us-animals.jpg",
+    "https://i.ibb.co/60VwJr8/about-us-cleanliness.jpg",
+    "https://i.ibb.co/NNTVPRV/about-us-women.jpg"
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 230,
       width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: CarouselSlider(
-          options: CarouselOptions(
-            pageSnapping: false,
-            enlargeCenterPage: true,
-            autoPlay: true,
-            aspectRatio: 16 / 9,
-            autoPlayCurve: Curves.fastOutSlowIn,
-            enableInfiniteScroll: true,
-            autoPlayAnimationDuration: Duration(milliseconds: 700),
-            viewportFraction: 1,
-            padEnds: false,
+      child: Column(
+        // padding: const EdgeInsets.all(5.0),
+        children: [
+          CarouselSlider.builder(
+            itemCount: urlImages.length,
+            itemBuilder: (context, index, realIndex) {
+              final urlImage = urlImages[index];
+              return buildImage(urlImage, index);
+            },
+            options: CarouselOptions(
+              pageSnapping: true,
+              enlargeCenterPage: true,
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              autoPlay: true,
+              aspectRatio: 16 / 9,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: Duration(milliseconds: 700),
+              viewportFraction: 0.7,
+              onPageChanged: (index, reason) =>
+                  setState(() => activeIndex = index),
+            ),
           ),
-          items: [
-            InkWell(
-              child: Container(
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.black87,
-                    strokeAlign: BorderSide.strokeAlignInside,
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage("images/about_us_employment.jpeg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    opacity: 1.8,
-                    isAntiAlias: true,
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              child: Container(
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.black87,
-                    strokeAlign: BorderSide.strokeAlignInside,
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage("images/about_us_cleanliness.jpeg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    opacity: 1.8,
-                    isAntiAlias: true,
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              child: Container(
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.black87,
-                    strokeAlign: BorderSide.strokeAlignInside,
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage("images/about_us_animals.jpeg"),
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                    opacity: 1.8,
-                    isAntiAlias: true,
-                  ),
-                ),
-              ),
-            ),
-            InkWell(
-              child: Container(
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.black87,
-                    strokeAlign: BorderSide.strokeAlignInside,
-                  ),
-                  image: DecorationImage(
-                    image: AssetImage("images/about_us_women.jpeg"),
-                    fit: BoxFit.fill,
-                    alignment: Alignment.topCenter,
-                    opacity: 1.8,
-                    isAntiAlias: true,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          const SizedBox(height: 8),
+          buildIndicator(),
+        ],
       ),
     );
   }
+
+  Widget buildImage(String urlImage, int index) => Container(
+      margin: EdgeInsets.symmetric(horizontal: 12),
+      color: Colors.grey,
+      child: Image.network(
+        urlImage,
+        fit: BoxFit.cover,
+      ));
+  Widget buildIndicator() => AnimatedSmoothIndicator(
+      activeIndex: activeIndex,
+      count: urlImages.length,
+      effect: JumpingDotEffect(
+        dotWidth: 12,
+        dotHeight: 12,
+      ));
 }
