@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/services/auth.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
-import 'package:ngo_app/screens/home/User/Community options/community.dart';
-import 'package:ngo_app/screens/home/User/Community options/text_community.dart';
-import 'package:ngo_app/screens/home/User/Community recommended/recommended.dart';
-import 'package:ngo_app/screens/home/User/Community recommended/text_recommended.dart';
-import 'package:ngo_app/screens/home/User/Quote/text.dart';
-import 'package:ngo_app/screens/home/User/Quote/divider.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20options/community.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20options/text_community.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20recommended/recommended.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20recommended/text_recommended.dart';
+import 'package:ngo_app/screens/home/widgets/Quote/text.dart';
+import 'package:ngo_app/screens/home/widgets/Quote/divider.dart';
 import 'package:ngo_app/screens/home/Ngo/Notifications/notifications.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/post.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/title_post.dart';

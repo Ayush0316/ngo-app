@@ -2,15 +2,15 @@ import "package:flutter/material.dart";
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/User/search/search.dart';
 import 'package:ngo_app/screens/home/User/Ngo categories/categories.dart';
-import 'package:ngo_app/screens/home/User/Community options/community.dart';
-import 'package:ngo_app/screens/home/User/Community options/text_community.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20options/community.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20options/text_community.dart';
 import 'package:ngo_app/screens/home/User/about us/about.dart';
 import 'package:ngo_app/screens/home/User/about%20us/title_about.dart';
-import 'package:ngo_app/screens/home/User/Community recommended/recommended.dart';
-import 'package:ngo_app/screens/home/User/Community recommended/text_recommended.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20recommended/recommended.dart';
+import 'package:ngo_app/screens/home/widgets/Community%20recommended/text_recommended.dart';
 import 'package:ngo_app/screens/home/User/about us/text_about.dart';
-import 'package:ngo_app/screens/home/User/Quote/text.dart';
-import 'package:ngo_app/screens/home/User/Quote/divider.dart';
+import 'package:ngo_app/screens/home/widgets/Quote/text.dart';
+import 'package:ngo_app/screens/home/widgets/Quote/divider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
