@@ -54,17 +54,17 @@ class _AccountState extends State<Account> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CircleAvatar(
-                                radius: 60,
+                                radius: 70,
                                 backgroundImage: AssetImage('images/logo.png'),
                               ),
                               SizedBox(
-                                width: 15,
+                                width: 20,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    height: 25,
+                                    height: 10,
                                   ),
                                   Text(
                                     (Provider.of<Data>(context)
@@ -100,19 +100,16 @@ class _AccountState extends State<Account> {
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Roboto-Black',
-                                      ))
+                                      )),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  OutlinedButton(
+                                      // style: But,
+                                      onPressed: () {},
+                                      child: Text("Edit Profile")),
                                 ],
                               ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 15.0),
-                                child: OutlinedButton(
-                                    // style: But,
-                                    onPressed: () {},
-                                    child: Text("Edit Profile")),
-                              )
                             ]),
                       ),
                     ),
