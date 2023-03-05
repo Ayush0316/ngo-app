@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/services/auth.dart';
+import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
+import 'package:ngo_app/screens/home/User/Community options/community.dart';
+import 'package:ngo_app/screens/home/User/Community options/text_community.dart';
+import 'package:ngo_app/screens/home/User/Community recommended/recommended.dart';
+import 'package:ngo_app/screens/home/User/Community recommended/text_recommended.dart';
+import 'package:ngo_app/screens/home/User/Quote/text.dart';
+import 'package:ngo_app/screens/home/User/Quote/divider.dart';
+import 'package:ngo_app/screens/home/Ngo/Notifications/notifications.dart';
+import 'package:ngo_app/screens/home/Ngo/Posts/post.dart';
+import 'package:ngo_app/screens/home/Ngo/Posts/title_post.dart';
 
 class NgoHome extends StatefulWidget {
   const NgoHome({super.key});
@@ -9,35 +19,66 @@ class NgoHome extends StatefulWidget {
 }
 
 class _NgoHomeState extends State<NgoHome> {
+  GlobalKey<ScaffoldState> _key = GlobalKey();
+  bool isHomePageSelected = true;
   @override
-  Widget build(BuildContext context) {
-    final AuthService _auth = AuthService();
-    return Scaffold(
-        body: SafeArea(
-      child: Column(
-        children: [
-          const Text("Home screen for ngos."),
-          TextButton(
-            child: Row(
-              children: [
-                Icon(Icons.person),
-                Text(
-                  "LogOut",
-                  style: TextStyle(
-                    // decoration: TextDecoration.underline,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto-Black',
-                  ),
-                ),
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+            key: _key,
+            backgroundColor: Colors.blue[50],
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  _key.currentState?.openDrawer();
+                },
+              ),
+              backgroundColor: Colors.blue,
+              title: const Text("Home"),
+              elevation: 0.0,
+              actions: <Widget>[
+                IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
               ],
             ),
-            onPressed: () async {
-              await _auth.signOut();
-            },
-          )
-        ],
-      ),
-    ));
-  }
+            drawer: sideMenu(),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
+                child: Column(
+                  children: [
+                    notification_ngo(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    title_post(),
+                    post_ngo(),
+                    text_community(),
+                    communityOptions(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    text_recommend(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Comu_recom(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    divider_line(),
+                    end_text(),
+                  ],
+                ),
+              ),
+            )),
+      );
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/home/User/home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_indicator/carousel_indicator.dart';
 
 class communityOptions extends StatefulWidget {
   const communityOptions({super.key});
