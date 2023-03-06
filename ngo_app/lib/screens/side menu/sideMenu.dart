@@ -4,6 +4,7 @@ import 'package:ngo_app/screens/home/selector.dart';
 import "package:ngo_app/services/auth.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:ngo_app/screens/Account/settings.dart';
 
 class sideMenu extends StatefulWidget {
   const sideMenu({super.key});
@@ -101,7 +102,8 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const settings_user()));
             },
           ),
           ListTile(

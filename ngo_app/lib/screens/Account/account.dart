@@ -3,6 +3,8 @@ import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import "package:provider/provider.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/auth.dart';
+import 'package:ngo_app/screens/Account/settings.dart';
+import 'package:ngo_app/screens/Account/edit_profile.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -106,7 +108,12 @@ class _AccountState extends State<Account> {
                                   ),
                                   OutlinedButton(
                                       // style: But,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const profile_user()));
+                                      },
                                       child: Text("Edit Profile")),
                                 ],
                               ),
@@ -198,7 +205,10 @@ class _AccountState extends State<Account> {
                               ],
                             )),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const settings_user()));
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

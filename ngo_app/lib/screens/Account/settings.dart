@@ -18,13 +18,16 @@ class _settings_userState extends State<settings_user> {
           key: _key,
           backgroundColor: Color.fromARGB(249, 255, 255, 255),
           appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+            leading: BackButton(
+              onPressed: () => Navigator.of(context).pop(false),
             ),
+            // leading: IconButton(
+            //   icon: const Icon(Icons.arrow_back),
+
+            //   onPressed: () {},
+            // ),
             backgroundColor: Colors.blue,
-            title: const Text("Settings"),
-            elevation: 0.0,
+            title: const Text("Settings"), elevation: 0.0,
           ),
         ),
       );

@@ -18,12 +18,11 @@ class _profile_userState extends State<profile_user> {
           key: _key,
           backgroundColor: Color.fromARGB(249, 255, 255, 255),
           appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {},
+            leading: BackButton(
+              onPressed: () => Navigator.of(context).pop(false),
             ),
             backgroundColor: Colors.blue,
-            title: const Text("profile"),
+            title: const Text("Profile"),
             elevation: 0.0,
           ),
         ),
