@@ -36,6 +36,7 @@ class _settings_userState extends State<settings_user> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0)),
                   child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 5, left: 10),
@@ -52,17 +53,17 @@ class _settings_userState extends State<settings_user> {
                           children: const <TextSpan>[
                             TextSpan(
                               text:
-                                  "Turning off will disable all the\n notifications from Ngo's and and App",
+                                  "Turning off will disable all the\n notifications for the App",
                               style: TextStyle(
-                                  fontSize: 14.0,
+                                  fontSize: 12.0,
                                   fontFamily: 'Roboto-Black',
-                                  fontWeight: FontWeight.normal),
+                                  fontWeight: FontWeight.w300),
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(
-                        width: 60,
+                        width: 140,
                       ),
                       SlidingSwitch(
                         value: true,

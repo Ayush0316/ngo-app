@@ -35,7 +35,6 @@ class _AccountState extends State<Account> {
               title: const Text("My Account"),
               elevation: 0.0,
               actions: <Widget>[
-                IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
                 IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
               ],
             ),
@@ -56,7 +55,7 @@ class _AccountState extends State<Account> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CircleAvatar(
-                                radius: 70,
+                                radius: 60,
                                 backgroundImage: AssetImage('images/logo.png'),
                               ),
                               SizedBox(
@@ -77,7 +76,7 @@ class _AccountState extends State<Account> {
                                         : "User_name"),
                                     style: TextStyle(
                                       fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w400,
                                       fontFamily: 'Roboto-Black',
                                     ),
                                   ),
@@ -88,7 +87,7 @@ class _AccountState extends State<Account> {
                                             .data["email"]
                                         : "User_Email"),
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.normal,
                                       fontFamily: 'Roboto-Black',
                                     ),
                                   ),
@@ -100,21 +99,32 @@ class _AccountState extends State<Account> {
                                               .data["phone_number"]
                                           : "Phone Number"),
                                       style: TextStyle(
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.normal,
                                         fontFamily: 'Roboto-Black',
                                       )),
                                   SizedBox(
                                     height: 10,
                                   ),
                                   OutlinedButton(
-                                      // style: But,
+                                      style: OutlinedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)))),
                                       onPressed: () {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     const profile_user()));
                                       },
-                                      child: Text("Edit Profile")),
+                                      child: Text(
+                                        "EDIT PROFILE",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12.0,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Roboto-Black',
+                                        ),
+                                      )),
                                 ],
                               ),
                             ]),
@@ -122,7 +132,7 @@ class _AccountState extends State<Account> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       child: Column(children: [
                         TextButton(
                             onPressed: () {},
@@ -134,13 +144,13 @@ class _AccountState extends State<Account> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     fontFamily: 'Roboto-Black',
                                   ),
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 20,
+                                  size: 18,
                                 )
                               ],
                             )),
@@ -154,13 +164,13 @@ class _AccountState extends State<Account> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     fontFamily: 'Roboto-Black',
                                   ),
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 20,
+                                  size: 18,
                                 )
                               ],
                             )),
@@ -174,13 +184,13 @@ class _AccountState extends State<Account> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     fontFamily: 'Roboto-Black',
                                   ),
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 20,
+                                  size: 18,
                                 )
                               ],
                             )),
@@ -194,13 +204,13 @@ class _AccountState extends State<Account> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     fontFamily: 'Roboto-Black',
                                   ),
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 20,
+                                  size: 18,
                                 )
                               ],
                             )),
@@ -217,13 +227,13 @@ class _AccountState extends State<Account> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     fontFamily: 'Roboto-Black',
                                   ),
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios_sharp,
-                                  size: 20,
+                                  size: 18,
                                 )
                               ],
                             )),
@@ -234,7 +244,7 @@ class _AccountState extends State<Account> {
                           child: Row(children: [
                             Icon(
                               Icons.logout_sharp,
-                              size: 20,
+                              size: 22,
                             ),
                             SizedBox(
                               width: 15,
@@ -244,7 +254,7 @@ class _AccountState extends State<Account> {
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 22.0,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                                 fontFamily: 'Roboto-Black',
                               ),
                             )
