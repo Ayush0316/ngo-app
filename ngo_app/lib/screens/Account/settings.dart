@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import 'package:sliding_switch/sliding_switch.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 class settings_user extends StatefulWidget {
   const settings_user({super.key});
