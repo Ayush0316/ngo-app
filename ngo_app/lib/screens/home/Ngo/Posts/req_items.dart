@@ -40,7 +40,7 @@ class _req_donationsState extends State<req_donations> {
                           FormBuilderTextField(
                             name: 'title',
                             decoration: const InputDecoration(
-                              labelText: 'Donation Title',
+                              labelText: 'DONATION TITLE',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(10),
@@ -65,7 +65,7 @@ class _req_donationsState extends State<req_donations> {
                               maxLines: 4,
                               name: 'details',
                               decoration: const InputDecoration(
-                                labelText: 'Donation Details and Description',
+                                labelText: 'DONATION DETAILS AND DESCRIPTION',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(10),
@@ -83,7 +83,7 @@ class _req_donationsState extends State<req_donations> {
                           DropdownButtonFormField(
                             decoration: const InputDecoration(
                               hintText: 'Select any category',
-                              labelText: 'Donation Field',
+                              labelText: 'DONATION  FIELD',
                               border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10))),
