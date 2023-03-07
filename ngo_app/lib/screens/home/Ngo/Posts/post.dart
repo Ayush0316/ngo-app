@@ -13,7 +13,6 @@ class _post_ngoState extends State<post_ngo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: Colors.yellow,
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
       height: 190,
       width: double.infinity,
