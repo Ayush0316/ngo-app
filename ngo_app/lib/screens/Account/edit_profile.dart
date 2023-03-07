@@ -69,7 +69,7 @@ class _profile_userState extends State<profile_user> {
                 height: 10,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 0, left: 20),
+                padding: const EdgeInsets.only(top: 0, left: 30),
                 child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
