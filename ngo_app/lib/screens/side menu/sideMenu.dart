@@ -18,6 +18,9 @@ class _sideMenuState extends State<sideMenu> {
 
   @override
   Widget build(BuildContext context) {
+    String name = Provider.of<Data>(context).data["user_name"] != null
+        ? Provider.of<Data>(context).data["user_name"]
+        : "User_name";
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -34,9 +37,7 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             accountName: Text(
-              (Provider.of<Data>(context).data["user_name"] != null
-                  ? Provider.of<Data>(context).data["user_name"]
-                  : "User_Name"),
+              name,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
