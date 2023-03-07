@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ngo_app/screens/home/Ngo/Posts/req_volunteers.dart';
+import 'package:ngo_app/screens/home/Ngo/Posts/req_items.dart';
 
 class post_ngo extends StatefulWidget {
   const post_ngo({super.key});
@@ -20,7 +22,10 @@ class _post_ngoState extends State<post_ngo> {
           ButtonTheme(
             height: 20,
             child: ElevatedButton(
-              onPressed: () async {},
+              onPressed: () async {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const req_donations()));
+              },
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
@@ -50,7 +55,10 @@ class _post_ngoState extends State<post_ngo> {
           ButtonTheme(
             height: 20,
             child: ElevatedButton(
-              onPressed: () async {},
+              onPressed: () async {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const req_volunteers()));
+              },
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
