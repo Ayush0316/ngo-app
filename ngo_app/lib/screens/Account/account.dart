@@ -106,25 +106,26 @@ class _AccountState extends State<Account> {
                                     height: 10,
                                   ),
                                   OutlinedButton(
-                                      style: OutlinedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10)))),
-                                      onPressed: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const profile_user()));
-                                      },
-                                      child: Text(
-                                        "EDIT PROFILE",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 12.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Roboto-Black',
-                                        ),
-                                      )),
+                                    style: OutlinedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10)))),
+                                    onPressed: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const profile_user()));
+                                    },
+                                    child: Text(
+                                      "EDIT PROFILE",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Roboto-Black',
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ]),
