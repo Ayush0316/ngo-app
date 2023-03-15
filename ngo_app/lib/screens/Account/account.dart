@@ -240,6 +240,9 @@ class _AccountState extends State<Account> {
                             )),
                         TextButton(
                           onPressed: () async {
+                            while (Navigator.canPop(context)) {
+                              Navigator.pop(context);
+                            }
                             await _auth.signOut();
                           },
                           child: Row(children: [

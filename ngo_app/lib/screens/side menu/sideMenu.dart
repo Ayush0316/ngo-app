@@ -133,6 +133,9 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             onTap: () async {
+              while (Navigator.canPop(context)) {
+                Navigator.pop(context);
+              }
               await _auth.signOut();
             },
           )

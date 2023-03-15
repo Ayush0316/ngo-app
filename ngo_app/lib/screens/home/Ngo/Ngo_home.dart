@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_app/services/auth.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/widgets/Community%20options/community.dart';
 import 'package:ngo_app/screens/home/widgets/Community%20options/text_community.dart';

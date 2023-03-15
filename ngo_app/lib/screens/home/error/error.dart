@@ -28,6 +28,9 @@ class ShowError extends StatelessWidget {
               ],
             ),
             onPressed: () async {
+              while (Navigator.canPop(context)) {
+                Navigator.pop(context);
+              }
               await _auth.signOut();
             },
           )
