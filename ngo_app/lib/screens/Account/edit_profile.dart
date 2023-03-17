@@ -103,13 +103,10 @@ class _profile_userState extends State<profile_user> {
             ),
             ElevatedButton(
               onPressed: () async {
-                print(myController.text);
-                print(data);
-                print(user!.uid);
                 data["name"] = myController.text;
-                await DatabaseService(uid: user.uid).updateUserData(data);
+                await DatabaseService(uid: user?.uid).updateUserData(data);
                 await Provider.of<Data>(context, listen: false)
-                    .updateAccount(user.uid);
+                    .updateAccount(user?.uid);
                 setState(() {
                   status = "Username changed successfully";
                 });
