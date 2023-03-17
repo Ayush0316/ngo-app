@@ -8,6 +8,7 @@ import 'package:ngo_app/screens/Account/settings.dart';
 import 'package:ngo_app/screens/Account/edit_profile.dart';
 import 'package:ngo_app/screens/Account/account_details.dart';
 import 'package:ngo_app/screens/Account/manage_address.dart';
+import 'package:ngo_app/screens/Account/FAQ.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -159,6 +160,98 @@ class _AccountState extends State<Account> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) =>
                                       const ngo_acc_details()));
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Account Details",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'Roboto-Black',
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios_sharp,
+                                size: 18,
+                              )
+                            ],
+                          )),
+                      TextButton(
+                          onPressed: () {
+                            const manage_address();
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Manage Address",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'Roboto-Black',
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios_sharp,
+                                size: 18,
+                              )
+                            ],
+                          )),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const faq()));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "FAQ's",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'Roboto-Black',
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios_sharp,
+                                size: 18,
+                              )
+                            ],
+                          )),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const settings_user()));
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Settings",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'Roboto-Black',
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios_sharp,
+                                size: 18,
+                              )
+                            ],
+                          )),
+                      TextButton(
+                          onPressed: () async {
+                            while (Navigator.canPop(context)) {
+                              Navigator.pop(context);
                             }
                           },
                           child: Row(
