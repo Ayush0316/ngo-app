@@ -63,7 +63,7 @@ class DatabaseService {
     return await donations.add(request);
   }
 
-  Future<List<Map<String, dynamic>>> notifications() async {
+  List<Map<String, dynamic>> notifications() {
     List<Map<String, dynamic>> data = [];
     donations.get().then((snapshot) {
       snapshot.docs.forEach((element) {
@@ -71,6 +71,6 @@ class DatabaseService {
         data.add(tmp);
       });
     });
-    return await data;
+    return data;
   }
 }

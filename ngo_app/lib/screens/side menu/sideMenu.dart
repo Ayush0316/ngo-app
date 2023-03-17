@@ -28,7 +28,7 @@ class _sideMenuState extends State<sideMenu> {
             accountEmail: Text(
               (Provider.of<Data>(context).data["email"] != null
                   ? Provider.of<Data>(context).data["email"]
-                  : "User_Email"),
+                  : "Email"),
               style: TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:ngo_app/screens/home/User/notifications/notifications.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/User/search/search.dart';
 import 'package:ngo_app/screens/home/User/Ngo categories/categories.dart';
@@ -40,7 +41,12 @@ class _HomeState extends State<Home> {
               title: const Text("Home"),
               elevation: 0.0,
               actions: <Widget>[
-                IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => notifications()));
+                    },
+                    icon: Icon(Icons.notifications))
               ],
             ),
             drawer: sideMenu(),
