@@ -15,6 +15,8 @@ class DatabaseService {
   final CollectionReference donations =
       FirebaseFirestore.instance.collection("Donations");
 
+  // final CollectionReference voluteers
+
   // New user registration
   Future updateUserData(Map<String, dynamic> userData) async {
     return await usersCollection.doc(uid).set(userData);

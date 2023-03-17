@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
+import 'package:ngo_app/services/database.dart';
 
 class noti_user extends StatefulWidget {
   const noti_user({super.key});
@@ -8,32 +8,50 @@ class noti_user extends StatefulWidget {
 }
 
 class _noti_userState extends State<noti_user> {
-  // DataController dataController = Get.find<DataController>();
-  Widget build(BuildContext context) => GestureDetector(
+  List<Map<String, dynamic>> notifications = [];
+
+  Future<void> get_notifications() async {
+    notifications = await DatabaseService().notifications();
+  }
+
+  Widget build(BuildContext context) {
+    return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
           backgroundColor: Colors.blue[50],
           appBar: AppBar(
-            leading: BackButton(
-              onPressed: () => Navigator.of(context).pop(false),
-            ),
-            backgroundColor: Colors.blue,
-            title: const Text("Notifications"),
-            elevation: 0.0,
-          ),
+              title: Text("Notifications"),
+              elevation: 0.0,
+              backgroundColor: Colors.blue),
           body: SafeArea(
-            child: SingleChildScrollView(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-              // child: Obx(() => ListView.builder(
-              //       physics: NeverScrollableScrollPhysics(),
-              //       scrollDirection: Axis.vertical,
-              //       itemCount: 5,
-              //       shrinkWrap: true,
-              //       itemBuilder: (context, index) {},
-              //     )),
-            ),
+            child: FutureBuilder(
+                future: get_notifications(),
+                builder: ((context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else {
+                    return ListView.separated(
+                      itemBuilder: ((context, index) {
+                        return InkWell(
+                          child: ListTile(
+                            leading: CircleAvatar(child: Icon(Icons.person)),
+                            title: Text(notifications[index]["title"]),
+                            subtitle: Text(notifications[index]["name"]),
+                            trailing: Icon(Icons.forward),
+                          ),
+                        );
+                      }),
+                      itemCount: notifications.length,
+                      separatorBuilder: (context, index) => Divider(
+                        thickness: 2,
+                        color: Colors.white,
+                      ),
+                    );
+                  }
+                })),
           ),
-        ),
-      );
+        ));
+  }
 }
