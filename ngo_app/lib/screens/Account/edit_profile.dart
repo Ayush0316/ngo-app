@@ -106,7 +106,7 @@ class _profile_userState extends State<profile_user> {
                 print(myController.text);
                 print(data);
                 print(user!.uid);
-                data["user_name"] = myController.text;
+                data["name"] = myController.text;
                 await DatabaseService(uid: user.uid).updateUserData(data);
                 await Provider.of<Data>(context, listen: false)
                     .updateAccount(user.uid);
