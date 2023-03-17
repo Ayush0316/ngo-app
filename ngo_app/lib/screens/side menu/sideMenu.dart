@@ -78,6 +78,20 @@ class _sideMenuState extends State<sideMenu> {
           ),
           ListTile(
             title: Text(
+              'Notifications',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text(
               'Account',
               style: TextStyle(
                 // decoration: TextDecoration.underline,
