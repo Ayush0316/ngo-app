@@ -292,7 +292,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                                     "Password must match confirm Password!!";
                               });
                             } else {
-                              if (formData["Service"] == null) {
+                              if (service != "Any Other") {
                                 formData["Service"] = service;
                               }
                               formData["type"] = "Ngo";

@@ -12,6 +12,9 @@ class DatabaseService {
   final CollectionReference ngosCollection =
       FirebaseFirestore.instance.collection("Ngos");
 
+  final CollectionReference donations =
+      FirebaseFirestore.instance.collection("Donations");
+
   // New user registration
   Future updateUserData(Map<String, dynamic> userData) async {
     return await usersCollection.doc(uid).set(userData);
@@ -46,11 +49,28 @@ class DatabaseService {
       snapshot.docs.forEach(
         (element) {
           Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
-          data.add(tmp["ngo_name"]);
+          data.add(tmp["name"]);
         },
       );
       return data;
     });
     return data;
+  }
+
+  // ****** Notifications ********* //
+
+  Future don_Req(Map<String, dynamic> request) async {
+    return await donations.add(request);
+  }
+
+  Future<List<Map<String, dynamic>>> notifications() async {
+    List<Map<String, dynamic>> data = [];
+    donations.get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        data.add(tmp);
+      });
+    });
+    return await data;
   }
 }

@@ -336,11 +336,11 @@ class _RegisterUserState extends State<RegisterUser> {
                                     "Password must match confirm Password!!";
                               });
                             } else {
-                              if (formData["Volunteering Interests"] == null) {
+                              if (voluteering_intrust != "Any Other") {
                                 formData["Volunteering Interests"] =
                                     voluteering_intrust;
                               }
-                              if (formData["Donator type"] == null) {
+                              if (donator_type != "Any Other") {
                                 formData["Donator type"] = donator_type;
                               }
                               formData["type"] = "User";
