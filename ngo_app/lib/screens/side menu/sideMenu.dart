@@ -18,9 +18,8 @@ class _sideMenuState extends State<sideMenu> {
 
   @override
   Widget build(BuildContext context) {
-    String name = Provider.of<Data>(context).data["user_name"] != null
-        ? Provider.of<Data>(context).data["user_name"]
-        : "User_name";
+    final name_data = Provider.of<Data>(context).data["name"];
+    String name = name_data != null ? name_data : "Name";
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,

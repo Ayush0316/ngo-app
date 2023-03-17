@@ -21,9 +21,8 @@ class _profile_userState extends State<profile_user> {
   Widget build(BuildContext context) {
     final user = Provider.of<CustUser?>(context);
     final data = Provider.of<Data>(context).data;
-    String name = Provider.of<Data>(context).data["user_name"] != null
-        ? Provider.of<Data>(context).data["user_name"]
-        : "User_name";
+    final name_data = Provider.of<Data>(context).data["name"];
+    String name = name_data != null ? name_data : "Name";
 
     final myController = TextEditingController();
     myController.text = name;

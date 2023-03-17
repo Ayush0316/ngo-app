@@ -151,7 +151,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                         ]),
                       ),
                       FormBuilderTextField(
-                        name: "ngo_name",
+                        name: "name",
                         decoration: const InputDecoration(
                           labelText: 'NGO Name',
                           suffixIcon: Icon(

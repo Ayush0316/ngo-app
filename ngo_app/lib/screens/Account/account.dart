@@ -68,12 +68,11 @@ class _AccountState extends State<Account> {
                                     height: 10,
                                   ),
                                   Text(
-                                    (Provider.of<Data>(context)
-                                                .data["user_name"] !=
+                                    (Provider.of<Data>(context).data["name"] !=
                                             null
                                         ? Provider.of<Data>(context)
-                                            .data["user_name"]
-                                        : "User_name"),
+                                            .data["name"]
+                                        : "name"),
                                     style: TextStyle(
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.w400,

@@ -197,7 +197,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ),
                       ),
                       FormBuilderTextField(
-                        name: "user_name",
+                        name: "name",
                         decoration: const InputDecoration(
                           labelText: 'Name',
                           suffixIcon: Icon(
@@ -270,7 +270,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ]),
                       ),
                       FormBuilderTextField(
-                        name: "user_address",
+                        name: "address",
                         decoration: const InputDecoration(
                           labelText: 'ADDRESS',
                           suffixIcon: Icon(
@@ -283,7 +283,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ]),
                       ),
                       FormBuilderTextField(
-                        name: "user_pin_code",
+                        name: "pin_code",
                         decoration: const InputDecoration(
                           labelText: 'POSTAL CODE/ZIP',
                         ),
@@ -292,7 +292,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ]),
                       ),
                       FormBuilderTextField(
-                        name: "user_city",
+                        name: "city",
                         decoration: const InputDecoration(
                           labelText: 'TOWN/CITY',
                         ),
@@ -301,7 +301,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ]),
                       ),
                       FormBuilderTextField(
-                        name: "user_state",
+                        name: "state",
                         decoration: const InputDecoration(
                           labelText: 'STATE',
                         ),
@@ -310,7 +310,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         ]),
                       ),
                       FormBuilderTextField(
-                        name: "user_country",
+                        name: "country",
                         decoration: const InputDecoration(
                           labelText: 'COUNTRY',
                         ),
