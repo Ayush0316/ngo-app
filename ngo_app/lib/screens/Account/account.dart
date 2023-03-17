@@ -182,7 +182,8 @@ class _AccountState extends State<Account> {
                           )),
                       TextButton(
                           onPressed: () {
-                            const manage_address();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const manage_address()));
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -207,96 +208,6 @@ class _AccountState extends State<Account> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => const faq()));
                           },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "FAQ's",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'Roboto-Black',
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_sharp,
-                                size: 18,
-                              )
-                            ],
-                          )),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const settings_user()));
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Settings",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'Roboto-Black',
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_sharp,
-                                size: 18,
-                              )
-                            ],
-                          )),
-                      TextButton(
-                          onPressed: () async {
-                            while (Navigator.canPop(context)) {
-                              Navigator.pop(context);
-                            }
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Account Details",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'Roboto-Black',
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_sharp,
-                                size: 18,
-                              )
-                            ],
-                          )),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const manage_address()));
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Manage Address",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,
-                                  fontFamily: 'Roboto-Black',
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_sharp,
-                                size: 18,
-                              )
-                            ],
-                          )),
-                      TextButton(
-                          onPressed: () {},
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
