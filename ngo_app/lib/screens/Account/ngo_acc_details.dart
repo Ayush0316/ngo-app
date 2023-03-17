@@ -62,7 +62,7 @@ class _ngo_acc_detailsState extends State<ngo_acc_details> {
                       // initialValue: data["email"],
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: 'Email',
+                        labelText: 'EMAIL',
                         border: OutlineInputBorder(
                           gapPadding: 10.0,
                           borderRadius: BorderRadius.all(
@@ -158,6 +158,66 @@ class _ngo_acc_detailsState extends State<ngo_acc_details> {
                   ]),
                 ),
                 const SizedBox(
+                  height: 20,
+                ),
+                Scrollbar(
+                  thickness: 8,
+                  // scrollbarOrientation:
+                  radius: Radius.circular(10),
+                  child: FormBuilderTextField(
+                    keyboardType: TextInputType.multiline,
+                    scrollPadding: const EdgeInsets.all(20.0),
+                    // textCapitalization: TextCapitalization.sentences,
+                    maxLines: 5,
+                    name: 'details',
+                    decoration: const InputDecoration(
+                      labelText: 'ABOUT THE NGO',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                    ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormBuilderTextField(
+                  name: "name",
+                  // initialValue: data["name"],
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.link_sharp),
+                    labelText: 'WEBSITE',
+                    border: OutlineInputBorder(
+                      gapPadding: 10.0,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormBuilderTextField(
+                  name: "name",
+                  // initialValue: data["name"],
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.group),
+                    labelText: 'SOCIALS',
+                    border: OutlineInputBorder(
+                      gapPadding: 10.0,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
                   height: 10,
                 ),
                 OutlinedButton(
@@ -178,9 +238,6 @@ class _ngo_acc_detailsState extends State<ngo_acc_details> {
                         fontFamily: 'Roboto-Black',
                       ),
                     )),
-                const SizedBox(
-                  height: 10,
-                ),
                 ElevatedButton(
                   onPressed: () async {},
                   child: const Text(
