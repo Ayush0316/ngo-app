@@ -5,6 +5,8 @@ import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/auth.dart';
 import 'package:ngo_app/screens/Account/settings.dart';
 import 'package:ngo_app/screens/Account/edit_profile.dart';
+import 'package:ngo_app/screens/Account/account_details.dart';
+import 'package:ngo_app/screens/Account/manage_address.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -155,7 +157,10 @@ class _AccountState extends State<Account> {
                               ],
                             )),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const acc_details()));
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -175,7 +180,11 @@ class _AccountState extends State<Account> {
                               ],
                             )),
                         TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      const manage_address()));
+                            },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
