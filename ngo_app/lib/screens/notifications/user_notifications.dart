@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/database.dart';
+import 'package:provider/provider.dart';
 
 class noti_user extends StatefulWidget {
   const noti_user({super.key});
@@ -11,7 +13,21 @@ class _noti_userState extends State<noti_user> {
   List<Map<String, dynamic>> notifications = [];
 
   Future<void> get_notifications() async {
-    notifications = await DatabaseService().notifications();
+    dynamic interests = [
+      'Cleanliness Drives',
+      'Teaching',
+      'Medical',
+      'Women Empowerment',
+      'Pickup and Distribution',
+      'Any Other',
+    ];
+    String ins =
+        await Provider.of<Data>(context).data["Volunteering Interests"];
+
+    if (!interests.contains(ins)) {
+      ins = "Any Other";
+    }
+    notifications = await DatabaseService().notifications(ins);
   }
 
   Widget build(BuildContext context) {

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:ngo_app/screens/home/User/notifications/notifications.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/User/search/search.dart';
 import 'package:ngo_app/screens/home/User/Ngo categories/categories.dart';

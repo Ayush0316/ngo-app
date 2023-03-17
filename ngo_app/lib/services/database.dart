@@ -15,7 +15,8 @@ class DatabaseService {
   final CollectionReference donations =
       FirebaseFirestore.instance.collection("Donations");
 
-  // final CollectionReference voluteers
+  final CollectionReference voluteers =
+      FirebaseFirestore.instance.collection("Volunteers");
 
   // New user registration
   Future updateUserData(Map<String, dynamic> userData) async {
@@ -65,7 +66,11 @@ class DatabaseService {
     return await donations.add(request);
   }
 
-  Future<List<Map<String, dynamic>>> notifications() async {
+  Future vol_req(Map<String, dynamic> request) async {
+    return await voluteers.add(request);
+  }
+
+  Future<List<Map<String, dynamic>>> notifications(String interest) async {
     List<Map<String, dynamic>> data = [];
     await donations.get().then((snapshot) {
       snapshot.docs.forEach((element) {
@@ -73,6 +78,14 @@ class DatabaseService {
         data.add(tmp);
       });
     });
+
+    await voluteers.where("Field", isEqualTo: interest).get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        data.add(tmp);
+      });
+    });
+
     return data;
   }
 }
