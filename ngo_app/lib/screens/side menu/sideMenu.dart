@@ -23,6 +23,7 @@ class _sideMenuState extends State<sideMenu> {
     String name = name_data != null ? name_data : "Name";
     return Drawer(
       child: ListView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(

@@ -9,6 +9,7 @@ import 'package:ngo_app/screens/Account/edit_profile.dart';
 import 'package:ngo_app/screens/Account/account_details.dart';
 import 'package:ngo_app/screens/Account/manage_address.dart';
 import 'package:ngo_app/screens/Account/FAQ.dart';
+import 'package:ngo_app/screens/notifications/user_notifications.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -41,7 +42,12 @@ class _AccountState extends State<Account> {
             title: const Text("My Account"),
             elevation: 0.0,
             actions: <Widget>[
-              IconButton(onPressed: () {}, icon: Icon(Icons.notifications))
+              IconButton(
+                  onPressed: () async {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const noti_user()));
+                  },
+                  icon: Icon(Icons.notifications))
             ],
           ),
           drawer: sideMenu(),
