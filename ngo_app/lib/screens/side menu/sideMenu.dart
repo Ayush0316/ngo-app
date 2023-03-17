@@ -5,6 +5,7 @@ import "package:ngo_app/services/auth.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:ngo_app/screens/Account/settings.dart';
+import 'package:ngo_app/screens/notifications/user_notifications.dart';
 
 class sideMenu extends StatefulWidget {
   const sideMenu({super.key});
@@ -86,8 +87,9 @@ class _sideMenuState extends State<sideMenu> {
                 fontFamily: 'Roboto-Black',
               ),
             ),
-            onTap: () {
-              Navigator.pop(context);
+            onTap: () async {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const noti_user()));
             },
           ),
           ListTile(

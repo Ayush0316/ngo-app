@@ -25,7 +25,7 @@ class _faqState extends State<faq> {
           body: SafeArea(
             child: SingleChildScrollView(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
               child: Column(children: <Widget>[
                 GFAccordion(
                   // collapsedIcon: Icon(Icons.add),
