@@ -70,7 +70,7 @@ class DatabaseService {
     return await voluteers.add(request);
   }
 
-  Future<List<Map<String, dynamic>>> notifications(String interest) async {
+  Future<List<Map<String, dynamic>>> notifications() async {
     List<Map<String, dynamic>> data = [];
     await donations.get().then((snapshot) {
       snapshot.docs.forEach((element) {
@@ -79,13 +79,17 @@ class DatabaseService {
       });
     });
 
+    return data;
+  }
+
+  Future<List<Map<String, dynamic>>> vol_notifications(String interest) async {
+    List<Map<String, dynamic>> data = [];
     await voluteers.where("Field", isEqualTo: interest).get().then((snapshot) {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
         data.add(tmp);
       });
     });
-
     return data;
   }
 }

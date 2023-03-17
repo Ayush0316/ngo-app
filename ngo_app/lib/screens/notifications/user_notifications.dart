@@ -11,6 +11,7 @@ class noti_user extends StatefulWidget {
 
 class _noti_userState extends State<noti_user> {
   List<Map<String, dynamic>> notifications = [];
+  List<Map<String, dynamic>> vol_not = [];
 
   Future<void> get_notifications() async {
     dynamic interests = [
@@ -27,7 +28,8 @@ class _noti_userState extends State<noti_user> {
     if (!interests.contains(ins)) {
       ins = "Any Other";
     }
-    notifications = await DatabaseService().notifications(ins);
+    notifications = await DatabaseService().notifications();
+    vol_not = await DatabaseService().vol_notifications(ins);
   }
 
   Widget build(BuildContext context) {
