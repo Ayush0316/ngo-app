@@ -63,9 +63,9 @@ class DatabaseService {
     return await donations.add(request);
   }
 
-  List<Map<String, dynamic>> notifications() {
+  Future<List<Map<String, dynamic>>> notifications() async {
     List<Map<String, dynamic>> data = [];
-    donations.get().then((snapshot) {
+    await donations.get().then((snapshot) {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
         data.add(tmp);
