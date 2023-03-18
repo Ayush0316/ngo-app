@@ -62,7 +62,7 @@ class _ngo_acc_detailsState extends State<ngo_acc_details> {
                       // initialValue: data["email"],
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: 'Email',
+                        labelText: 'EMAIL',
                         border: OutlineInputBorder(
                           gapPadding: 10.0,
                           borderRadius: BorderRadius.all(
@@ -96,7 +96,167 @@ class _ngo_acc_detailsState extends State<ngo_acc_details> {
                     const SizedBox(
                       height: 20,
                     ),
+                    DropdownButtonFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Select any category',
+                        labelText: 'SERVICE',
+                        border: OutlineInputBorder(
+                          gapPadding: 10.0,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8),
+                          ),
+                        ),
+                      ),
+                      dropdownColor: Color.fromARGB(255, 189, 236, 243),
+                      onChanged: (String? newValue) {
+                        setState(() {});
+                      },
+                      items: <String>[
+                        'Nutrition',
+                        'Environment and Forest',
+                        'Education and Literacy',
+                        'Tribal Affairs',
+                        'Water Resources',
+                        'Sports',
+                        'Tourism',
+                        'Human Rights',
+                        'Any Other',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(
+                            value,
+                          ),
+                        );
+                      }).toList(),
+                      validator: FormBuilderValidators.compose([
+                        FormBuilderValidators.required(),
+                      ]),
+                    ),
+                    // FormBuilderCheckbox(name: name, title: title)
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Visibility(
+                      // visible: other,
+                      child: FormBuilderTextField(
+                        name: "Service",
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(
+                              gapPadding: 10.0,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(8),
+                              ),
+                            ),
+                            labelText: "If other(specify)",
+                            hintText: "Deatail about your Ngo work."),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                        ]),
+                      ),
+                    ),
                   ]),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Scrollbar(
+                  thickness: 8,
+                  // scrollbarOrientation:
+                  radius: Radius.circular(10),
+                  child: FormBuilderTextField(
+                    keyboardType: TextInputType.multiline,
+                    scrollPadding: const EdgeInsets.all(20.0),
+                    // textCapitalization: TextCapitalization.sentences,
+                    maxLines: 5,
+                    name: 'details',
+                    decoration: const InputDecoration(
+                      labelText: 'ABOUT THE NGO',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                    ),
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(),
+                    ]),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormBuilderTextField(
+                  name: "name",
+                  // initialValue: data["name"],
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.link_sharp),
+                    labelText: 'WEBSITE',
+                    border: OutlineInputBorder(
+                      gapPadding: 10.0,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormBuilderTextField(
+                  name: "name",
+                  // initialValue: data["name"],
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(Icons.group),
+                    labelText: 'SOCIALS',
+                    border: OutlineInputBorder(
+                      gapPadding: 10.0,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(8)))),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const edit_password()));
+                    },
+                    child: Text(
+                      "CHANGE PASSWORD",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto-Black',
+                      ),
+                    )),
+                ElevatedButton(
+                  onPressed: () async {},
+                  child: const Text(
+                    "SAVE DETAILS",
+                    style: TextStyle(
+                        letterSpacing: 0.3,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w200,
+                        color: Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    elevation: 0.0,
+                    backgroundColor: Colors.blue,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 120, vertical: 10),
+                  ),
                 ),
               ],
             ),
