@@ -23,8 +23,8 @@ class _sideMenuState extends State<sideMenu> {
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<Data>(context).data;
-    final name_data = Provider.of<Data>(context).data["name"];
-    String name = name_data != null ? name_data : "Name";
+    String name = data["name"] != null ? data["name"] : "Name";
+    String url = data["Imgurl"] != null ? data["Imgurl"] : " ";
     return Drawer(
       child: ListView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -32,9 +32,7 @@ class _sideMenuState extends State<sideMenu> {
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountEmail: Text(
-              (Provider.of<Data>(context).data["email"] != null
-                  ? Provider.of<Data>(context).data["email"]
-                  : "Email"),
+              (data["email"] != null ? data["email"] : "Email"),
               style: TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
@@ -49,9 +47,14 @@ class _sideMenuState extends State<sideMenu> {
                 fontFamily: 'Roboto-Black',
               ),
             ),
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage('images/logo.png'),
-            ),
+            currentAccountPicture: (url == " ")
+                ? CircleAvatar(
+                    backgroundImage: AssetImage("images/logo.png"),
+                  )
+                : CircleAvatar(
+                    backgroundColor: Colors.purple[800],
+                    backgroundImage: NetworkImage(url),
+                  ),
           ),
           ListTile(
             title: Text(
