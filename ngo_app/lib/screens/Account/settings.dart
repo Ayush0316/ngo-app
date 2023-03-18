@@ -35,6 +35,7 @@ class _settings_userState extends State<settings_user> {
             padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
             child: Container(
               height: 100,
+              width: width,
               child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0)),
@@ -65,9 +66,11 @@ class _settings_userState extends State<settings_user> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      //  width: Responsive.isSmallScreen(context) ? width : width / 2,
-                      width: 140,
+                    SizedBox(
+                      // width: Responsive.isSmallScreen(context)
+                      //     ? width
+                      //     : width / 10,
+                      width: width / 3,
                     ),
                     GFToggle(
                       enabledThumbColor: Colors.white,
