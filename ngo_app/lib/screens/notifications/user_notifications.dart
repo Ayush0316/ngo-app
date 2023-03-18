@@ -42,33 +42,41 @@ class _noti_userState extends State<noti_user> {
               elevation: 0.0,
               backgroundColor: Colors.blue),
           body: SafeArea(
-            child: FutureBuilder(
-                future: get_notifications(),
-                builder: ((context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    return ListView.separated(
-                      itemBuilder: ((context, index) {
-                        return InkWell(
-                          child: ListTile(
-                            leading: CircleAvatar(child: Icon(Icons.person)),
-                            title: Text(notifications[index]["title"]),
-                            subtitle: Text(notifications[index]["name"]),
-                            trailing: Icon(Icons.forward),
-                          ),
-                        );
-                      }),
-                      itemCount: notifications.length,
-                      separatorBuilder: (context, index) => Divider(
-                        thickness: 2,
-                        color: Colors.white,
-                      ),
-                    );
-                  }
-                })),
+            child: Container(
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+              child: FutureBuilder(
+                  future: get_notifications(),
+                  builder: ((context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return ListView.separated(
+                        itemBuilder: ((context, index) {
+                          return InkWell(
+                            onTap: () => {},
+                            child: Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                leading:
+                                    CircleAvatar(child: Icon(Icons.person)),
+                                title: Text(notifications[index]["title"]),
+                                subtitle: Text(notifications[index]["name"]),
+                                // trailing: Icon(Icons.forward),
+                              ),
+                            ),
+                          );
+                        }),
+                        itemCount: notifications.length,
+                        separatorBuilder: (context, index) => Divider(
+                          thickness: 0,
+                          color: Colors.white,
+                        ),
+                      );
+                    }
+                  })),
+            ),
           ),
         ));
   }

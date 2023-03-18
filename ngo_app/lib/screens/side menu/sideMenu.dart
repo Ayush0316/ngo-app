@@ -138,7 +138,10 @@ class _sideMenuState extends State<sideMenu> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.logout_sharp),
+            leading: Icon(
+              Icons.logout_sharp,
+              color: Colors.deepPurple,
+            ),
             title: Text(
               "LogOut",
               style: TextStyle(
