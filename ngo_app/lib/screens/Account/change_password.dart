@@ -100,12 +100,12 @@ class _edit_passwordState extends State<edit_password> {
                               horizontal: 90, vertical: 15),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(status,
-                            style: const TextStyle(color: Colors.white)),
-                      ),
                     ]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(status,
+                        style: const TextStyle(color: Colors.black)),
                   ),
                 ],
               ),
