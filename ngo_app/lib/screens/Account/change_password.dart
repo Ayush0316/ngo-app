@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:form_builder_phone_field/form_builder_phone_field.dart';
+import 'package:ngo_app/services/auth.dart';
 
 class edit_password extends StatefulWidget {
   const edit_password({super.key});
@@ -11,6 +12,9 @@ class edit_password extends StatefulWidget {
 }
 
 class _edit_passwordState extends State<edit_password> {
+  String status = " ";
+  final _formKey = GlobalKey<FormBuilderState>();
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -33,20 +37,10 @@ class _edit_passwordState extends State<edit_password> {
                 children: [
                   Flexible(child: Container(), flex: 0),
                   FormBuilder(
-                    // key: _formKey,
+                    key: _formKey,
                     child: Column(children: <Widget>[
                       FormBuilderTextField(
-                        name: "name",
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          labelText: 'Old Password *',
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      FormBuilderTextField(
-                        name: "name",
+                        name: "password",
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'New Password *',
@@ -56,7 +50,7 @@ class _edit_passwordState extends State<edit_password> {
                         height: 20,
                       ),
                       FormBuilderTextField(
-                        name: "name",
+                        name: "confirm",
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'Confirm New Password *',
@@ -66,7 +60,28 @@ class _edit_passwordState extends State<edit_password> {
                         height: 30,
                       ),
                       ElevatedButton(
-                        onPressed: () async {},
+                        onPressed: () async {
+                          _formKey.currentState?.save();
+                          if (_formKey.currentState!.validate()) {
+                            final formData = _formKey.currentState?.value;
+                            if (formData!["password"] == formData["confirm"]) {
+                              final result = await _auth
+                                  .changePassword(formData["password"]);
+                              setState(() {
+                                status = result;
+                              });
+                            } else {
+                              setState(() {
+                                status =
+                                    "Confirm password must match new password";
+                              });
+                            }
+                          } else {
+                            setState(() {
+                              status = "Invalid inputs";
+                            });
+                          }
+                        },
                         child: const Text(
                           "CHANGE PASSWORD",
                           style: TextStyle(
@@ -84,6 +99,11 @@ class _edit_passwordState extends State<edit_password> {
                           padding: EdgeInsets.symmetric(
                               horizontal: 90, vertical: 15),
                         ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(status,
+                            style: const TextStyle(color: Colors.white)),
                       ),
                     ]),
                   ),

@@ -82,9 +82,10 @@ class AuthService {
     try {
       User user = _auth.currentUser!;
       await user.updatePassword(new_pass);
+      return "Password changed successfully";
     } catch (e) {
       debugPrint(e.toString());
-      return null;
+      return "Error! Please try again later";
     }
   }
 

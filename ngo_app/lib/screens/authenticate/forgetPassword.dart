@@ -71,6 +71,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       setState(() {
                         status = result;
                       });
+                    } else {
+                      setState(() {
+                        status = "Invalid email id!!";
+                      });
                     }
                   },
                 ),
