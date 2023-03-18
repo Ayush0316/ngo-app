@@ -41,6 +41,9 @@ class _noti_userState extends State<noti_user> {
         child: Scaffold(
           backgroundColor: Colors.blue[50],
           appBar: AppBar(
+              leading: BackButton(
+                onPressed: () => Navigator.of(context).pop(false),
+              ),
               title: Text("Notifications"),
               elevation: 0.0,
               backgroundColor: Colors.blue),
