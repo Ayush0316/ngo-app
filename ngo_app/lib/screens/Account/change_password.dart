@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:form_builder_phone_field/form_builder_phone_field.dart';
+import 'package:get/get.dart';
 import 'package:ngo_app/services/auth.dart';
 
 class edit_password extends StatefulWidget {
@@ -12,6 +13,8 @@ class edit_password extends StatefulWidget {
 }
 
 class _edit_passwordState extends State<edit_password> {
+  bool obscure = true;
+  bool obscure1 = true;
   String status = " ";
   final _formKey = GlobalKey<FormBuilderState>();
   final AuthService _auth = AuthService();
@@ -41,19 +44,50 @@ class _edit_passwordState extends State<edit_password> {
                     child: Column(children: <Widget>[
                       FormBuilderTextField(
                         name: "password",
+                        obscureText: obscure,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'New Password *',
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                _formKey.currentState?.save();
+                                setState(() {
+                                  obscure = !obscure;
+                                });
+                              },
+                              icon: Icon(obscure
+                                  ? Icons.remove_red_eye_outlined
+                                  : Icons.visibility_off_outlined)),
                         ),
+                        validator: FormBuilderValidators.compose([
+                          FormBuilderValidators.required(),
+                          FormBuilderValidators.minLength(8,
+                              errorText: "Length must greater than 8"),
+                          FormBuilderValidators.match(
+                              '(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])',
+                              errorText:
+                                  "Must contain 1 upper case, 1 lower case, 1 digit, 1 special char")
+                        ]),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       FormBuilderTextField(
                         name: "confirm",
+                        obscureText: obscure1,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           labelText: 'Confirm New Password *',
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                _formKey.currentState?.save();
+                                setState(() {
+                                  obscure1 = !obscure1;
+                                });
+                              },
+                              icon: Icon(obscure1
+                                  ? Icons.remove_red_eye_outlined
+                                  : Icons.visibility_off_outlined)),
                         ),
                       ),
                       const SizedBox(
