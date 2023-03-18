@@ -10,6 +10,8 @@ import 'package:ngo_app/screens/Account/account_details.dart';
 import 'package:ngo_app/screens/Account/manage_address.dart';
 import 'package:ngo_app/screens/Account/FAQ.dart';
 import 'package:ngo_app/screens/notifications/user_notifications.dart';
+import 'package:ngo_app/screens/History/history_user.dart';
+import 'package:ngo_app/screens/History/history_ngo.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -137,7 +139,15 @@ class _AccountState extends State<Account> {
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Column(children: [
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (data["type"] == "User") {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const history()));
+                            } else {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const Ngo_History()));
+                            }
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

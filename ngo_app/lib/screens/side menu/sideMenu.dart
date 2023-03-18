@@ -6,7 +6,8 @@ import 'package:ngo_app/services/UserProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:ngo_app/screens/Account/settings.dart';
 import 'package:ngo_app/screens/notifications/user_notifications.dart';
-import 'package:ngo_app/screens/History/history.dart';
+import 'package:ngo_app/screens/History/history_user.dart';
+import 'package:ngo_app/screens/History/history_ngo.dart';
 import 'package:ngo_app/screens/Help and Feedback/help_feedback.dart';
 
 class sideMenu extends StatefulWidget {
@@ -21,6 +22,7 @@ class _sideMenuState extends State<sideMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final data = Provider.of<Data>(context).data;
     final name_data = Provider.of<Data>(context).data["name"];
     String name = name_data != null ? name_data : "Name";
     return Drawer(
@@ -77,8 +79,13 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const history()));
+              if (data["type"] == "User") {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const history()));
+              } else {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Ngo_History()));
+              }
             },
           ),
           ListTile(
