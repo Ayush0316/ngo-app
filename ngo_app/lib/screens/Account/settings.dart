@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:sliding_switch/sliding_switch.dart';
+
 import 'package:getwidget/getwidget.dart';
 import 'package:ngo_app/responsive.dart';
 
@@ -16,6 +16,7 @@ class _settings_userState extends State<settings_user> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -35,7 +36,6 @@ class _settings_userState extends State<settings_user> {
             padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
             child: Container(
               height: 100,
-              width: width,
               child: Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0)),
@@ -67,10 +67,8 @@ class _settings_userState extends State<settings_user> {
                       ),
                     ),
                     SizedBox(
-                      // width: Responsive.isSmallScreen(context)
-                      //     ? width
-                      //     : width / 10,
-                      width: width / 3,
+                      width: width / 4,
+                      
                     ),
                     GFToggle(
                       enabledThumbColor: Colors.white,
@@ -78,6 +76,7 @@ class _settings_userState extends State<settings_user> {
                       onChanged: (val) {},
                       value: true,
                       type: GFToggleType.ios,
+                      duration: const Duration(milliseconds: 100),
                     )
                   ],
                 ),
