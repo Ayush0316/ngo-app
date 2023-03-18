@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import "package:flutter/material.dart";
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ngo_app/modals/user.dart';
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/database.dart';
@@ -16,6 +20,60 @@ class _profile_userState extends State<profile_user> {
   GlobalKey<ScaffoldState> _key = GlobalKey();
   bool isHomePageSelected = true;
   String status = " ";
+
+  File? imageFile;
+
+  void selectImage(ImageSource source) async {
+    XFile? pickedFile = await ImagePicker().pickImage(source: source);
+
+    if (pickedFile != null) {
+      cropImage(pickedFile);
+    }
+  }
+
+  void cropImage(XFile file) async {
+    CroppedFile? croppedImage = await ImageCropper().cropImage(
+        sourcePath: file.path,
+        aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+        compressQuality: 20);
+
+    if (croppedImage != null) {
+      setState(() {
+        imageFile = File(croppedImage.path);
+      });
+    }
+  }
+
+  void showPhotoOptions() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Upload Profile Picture"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  onTap: () {
+                    Navigator.pop(context);
+                    selectImage(ImageSource.gallery);
+                  },
+                  leading: Icon(Icons.photo_album),
+                  title: Text("Select from Gallery"),
+                ),
+                ListTile(
+                  onTap: () {
+                    Navigator.pop(context);
+                    selectImage(ImageSource.camera);
+                  },
+                  leading: Icon(Icons.camera_alt),
+                  title: Text("Take a photo"),
+                ),
+              ],
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +111,13 @@ class _profile_userState extends State<profile_user> {
                 Expanded(
                   child: CircleAvatar(
                       radius: 60,
+                      backgroundImage:
+                          (imageFile != null) ? FileImage(imageFile!) : null,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(50),
-                        child: Image.asset("images/logo.png"),
+                        child: imageFile == null
+                            ? Image.asset("images/logo.png")
+                            : null,
                       )),
                 ),
                 SizedBox(width: 10),
@@ -87,7 +149,9 @@ class _profile_userState extends State<profile_user> {
                   style: OutlinedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
-                  onPressed: () {},
+                  onPressed: () {
+                    showPhotoOptions();
+                  },
                   child: Text(
                     "CHANGE PICTURE",
                     style: TextStyle(
@@ -103,6 +167,17 @@ class _profile_userState extends State<profile_user> {
             ),
             ElevatedButton(
               onPressed: () async {
+                // trying to upload a img.
+                String? Imgurl;
+                if (imageFile != null) {
+                  Imgurl = await DatabaseService(uid: user?.uid)
+                      .uploadImage(imageFile);
+                }
+
+                data["Imgurl"] = Imgurl;
+                print(Imgurl);
+
+                // username changes
                 data["name"] = myController.text;
                 if (data["type"] == "Ngo") {
                   await DatabaseService(uid: user?.uid).updateNgoData(data);
@@ -112,7 +187,7 @@ class _profile_userState extends State<profile_user> {
                 await Provider.of<Data>(context, listen: false)
                     .updateAccount(user?.uid);
                 setState(() {
-                  status = "Username changed successfully";
+                  status = "Profile changed successfully";
                 });
               },
               child: const Text(
