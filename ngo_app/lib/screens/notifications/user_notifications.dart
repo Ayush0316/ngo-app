@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class noti_user extends StatefulWidget {
   const noti_user({super.key});
@@ -33,6 +34,8 @@ class _noti_userState extends State<noti_user> {
   }
 
   Widget build(BuildContext context) {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('EEE d MMM\nkk:mm').format(now);
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
@@ -64,6 +67,10 @@ class _noti_userState extends State<noti_user> {
                                 title: Text(notifications[index]["title"]),
                                 subtitle: Text(notifications[index]["name"]),
                                 // trailing: Icon(Icons.forward),
+                                trailing: Text(
+                                  formattedDate,
+                                  style: TextStyle(fontSize: 10),
+                                ),
                               ),
                             ),
                           );
