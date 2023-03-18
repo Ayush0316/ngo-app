@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/req_volunteers.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/req_items.dart';
+import 'package:ngo_app/responsive.dart';
 
 class post_ngo extends StatefulWidget {
   const post_ngo({super.key});
@@ -12,9 +13,12 @@ class post_ngo extends StatefulWidget {
 class _post_ngoState extends State<post_ngo> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      height: 190,
+      height: height / 4.5,
+      // height: Responsive.isSmallScreen(context) ? height : height / 500,
       width: double.infinity,
       child: Column(
         children: [

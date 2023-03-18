@@ -54,7 +54,13 @@ class _NgoHomeState extends State<NgoHome> {
                     ),
                     title_post(),
                     post_ngo(),
+                    SizedBox(
+                      height: 5,
+                    ),
                     text_community(),
+                    SizedBox(
+                      height: 5,
+                    ),
                     communityOptions(),
                     SizedBox(
                       height: 10,
@@ -64,12 +70,6 @@ class _NgoHomeState extends State<NgoHome> {
                       height: 10,
                     ),
                     Comu_recom(),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     SizedBox(
                       height: 10,
                     ),
