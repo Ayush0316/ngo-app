@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ngo_app/services/auth.dart';
+import "package:ngo_app/screens/authenticate/forgetPassword.dart";
 import 'package:adaptive_layout/adaptive_layout.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -124,17 +125,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
-                        child: Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            decorationColor: Color(0xFF0800F0),
-                            fontSize: 18.0,
-                            fontFamily: 'Roboto-Black',
-                            color: Color(0xFF0800F0),
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ForgotPassword()));
+                            },
+                            child: Text(
+                              'Forgot Password',
+                              style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                decorationColor: Color(0xFF0800F0),
+                                fontSize: 18.0,
+                                fontFamily: 'Roboto-Black',
+                                color: Color(0xFF0800F0),
+                              ),
+                              textAlign: TextAlign.left,
+                            )),
                       ),
                     ),
                     const SizedBox(
