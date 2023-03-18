@@ -80,8 +80,18 @@ class AuthService {
   // change password
   Future changePassword(String new_pass) async {
     try {
-      User user = await FirebaseAuth.instance.currentUser!;
+      User user = _auth.currentUser!;
       await user.updatePassword(new_pass);
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
+  // reset password
+  Future resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
     } catch (e) {
       debugPrint(e.toString());
       return null;
