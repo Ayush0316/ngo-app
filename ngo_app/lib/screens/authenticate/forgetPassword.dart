@@ -66,9 +66,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     _formKey.currentState?.save();
                     if (_formKey.currentState!.validate()) {
                       final formData = _formKey.currentState?.value;
-                      await _auth.resetPassword(formData!["email"]);
+                      final result =
+                          await _auth.resetPassword(formData!["email"]);
                       setState(() {
-                        status = "Email resent to reset password!!";
+                        status = result;
                       });
                     }
                   },
@@ -76,7 +77,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child:
-                      Text(status, style: const TextStyle(color: Colors.green)),
+                      Text(status, style: const TextStyle(color: Colors.white)),
                 ),
                 TextButton(
                   child: Text('Sign In'),

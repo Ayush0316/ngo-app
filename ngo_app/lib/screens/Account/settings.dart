@@ -70,7 +70,7 @@ class _settings_userState extends State<settings_user> {
                       // width: Responsive.isSmallScreen(context)
                       //     ? width
                       //     : width / 10,
-                      width: width / 3,
+                      width: width / 4,
                     ),
                     GFToggle(
                       enabledThumbColor: Colors.white,

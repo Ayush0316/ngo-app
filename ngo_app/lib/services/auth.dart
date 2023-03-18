@@ -92,9 +92,10 @@ class AuthService {
   Future resetPassword(String email) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
+      return "Email resent to reset password!!";
     } catch (e) {
       debugPrint(e.toString());
-      return null;
+      return "User not found!!";
     }
   }
 }
