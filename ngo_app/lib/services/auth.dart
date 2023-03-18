@@ -76,4 +76,15 @@ class AuthService {
       return null;
     }
   }
+
+  // change password
+  Future changePassword(String new_pass) async {
+    try {
+      User user = await FirebaseAuth.instance.currentUser!;
+      await user.updatePassword(new_pass);
+    } catch (e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
 }
