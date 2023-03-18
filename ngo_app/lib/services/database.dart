@@ -1,4 +1,5 @@
 import "package:cloud_firestore/cloud_firestore.dart";
+import 'package:firebase_storage/firebase_storage.dart';
 
 class DatabaseService {
   final String? uid;
@@ -27,6 +28,9 @@ class DatabaseService {
   Future updateNgoData(Map<String, dynamic> ngoData) async {
     return await ngosCollection.doc(uid).set(ngoData);
   }
+
+  // Image Storage ref
+  Reference images = FirebaseStorage.instance.ref("profilepictures");
 
   // Get info about Ngos/Users.
   Future<Map<String, dynamic>> getData() async {
@@ -91,5 +95,17 @@ class DatabaseService {
       });
     });
     return data;
+  }
+
+  Future<String?> uploadImage(dynamic imageFile) async {
+    UploadTask uploadTask = images.child(uid!).putFile(imageFile!);
+    print(1);
+
+    TaskSnapshot snapshot = await uploadTask;
+    print(2);
+
+    String? imageUrl = await snapshot.ref.getDownloadURL();
+    print(3);
+    return imageUrl;
   }
 }
