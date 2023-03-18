@@ -38,11 +38,12 @@ class _acc_detailsState extends State<acc_details> {
   dynamic data;
   bool first = true;
   String status = " ";
+  dynamic user;
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<CustUser?>(context);
     if (first) {
+      user = Provider.of<CustUser?>(context);
       first = false;
       data = Provider.of<Data>(context).data;
       donator_type = data["Donator type"];

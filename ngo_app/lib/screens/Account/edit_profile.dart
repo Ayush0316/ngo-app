@@ -104,7 +104,11 @@ class _profile_userState extends State<profile_user> {
             ElevatedButton(
               onPressed: () async {
                 data["name"] = myController.text;
-                await DatabaseService(uid: user?.uid).updateUserData(data);
+                if (data["type"] == "Ngo") {
+                  await DatabaseService(uid: user?.uid).updateNgoData(data);
+                } else {
+                  await DatabaseService(uid: user?.uid).updateUserData(data);
+                }
                 await Provider.of<Data>(context, listen: false)
                     .updateAccount(user?.uid);
                 setState(() {

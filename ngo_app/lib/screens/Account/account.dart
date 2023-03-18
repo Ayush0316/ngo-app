@@ -20,7 +20,6 @@ class Account extends StatefulWidget {
 
 class _AccountState extends State<Account> {
   GlobalKey<ScaffoldState> _key = GlobalKey();
-  bool isHomePageSelected = true;
   final AuthService _auth = AuthService();
 
   @override
