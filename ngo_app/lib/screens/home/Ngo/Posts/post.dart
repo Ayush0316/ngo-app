@@ -16,9 +16,8 @@ class _post_ngoState extends State<post_ngo> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      height: height / 4.5,
-      // height: Responsive.isSmallScreen(context) ? height : height / 500,
+      padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+      height: Responsive.isSmallScreen(context) ? height / 4 : height,
       width: double.infinity,
       child: Column(
         children: [
