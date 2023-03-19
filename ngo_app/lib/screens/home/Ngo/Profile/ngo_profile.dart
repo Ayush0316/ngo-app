@@ -70,34 +70,30 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Text(
-                        (data["address"]),
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontFamily: 'Roboto-Black',
-                        ),
-                      ),
-                      Text(
-                        (data["city"] +
-                            " , " +
-                            data["state"] +
-                            " , " +
-                            data["country"]),
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontFamily: 'Roboto-Black',
-                        ),
-                      ),
-                      Text(
                         (data["Service"] != null
                             ? data["Service"]
                             : "Services of the Ngo"),
                         style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Roboto-Black',
+                          fontSize: 15,
+                        ),
+                      ),
+                      Text(
+                        (data["email"] != null ? data["email"] : "Email"),
+                        style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
                       Text(
-                        (data["email"] != null ? data["email"] : "Email"),
+                        (data["address"] +
+                            " , " +
+                            data["city"] +
+                            " , " +
+                            data["state"] +
+                            " , " +
+                            data["country"]),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
