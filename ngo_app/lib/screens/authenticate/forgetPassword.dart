@@ -29,7 +29,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         body: Center(
           child: SafeArea(
             child: Container(
-              height: Responsive.isSmallScreen(context) ? height / 2 : height,
+              height: Responsive.isSmallScreen(context) ? height / 1.8 : height,
               // decoration: BoxDecoration(color: Colors.deepOrange),
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Card(
