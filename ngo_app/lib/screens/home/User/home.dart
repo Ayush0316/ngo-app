@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:ngo_app/screens/chatRoom/recentChats.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/User/search/search.dart';
 import 'package:ngo_app/screens/home/User/Ngo categories/categories.dart';
@@ -46,7 +47,13 @@ class _HomeState extends State<Home> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const noti_user()));
                     },
-                    icon: Icon(Icons.notifications))
+                    icon: Icon(Icons.notifications)),
+                IconButton(
+                    onPressed: () async {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const recentChats()));
+                    },
+                    icon: Icon(Icons.chat_outlined))
               ],
             ),
             drawer: sideMenu(),

@@ -53,7 +53,7 @@ class _sideMenuState extends State<sideMenu> {
                     backgroundImage: AssetImage("images/logo.png"),
                   )
                 : CircleAvatar(
-                    backgroundColor: Colors.purple[800],
+                    backgroundColor: Colors.blue[300],
                     backgroundImage: NetworkImage(url),
                   ),
           ),
