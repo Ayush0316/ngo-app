@@ -27,6 +27,7 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<Data>(context).data;
+    String url = data["Imgurl"] != null ? data["Imgurl"] : " ";
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
