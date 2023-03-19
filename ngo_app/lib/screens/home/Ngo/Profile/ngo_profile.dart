@@ -212,6 +212,10 @@ class _profileState extends State<profile> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Write a Message',
+                              suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.send_rounded),
+                              ),
                             ),
                           ),
                         ),
