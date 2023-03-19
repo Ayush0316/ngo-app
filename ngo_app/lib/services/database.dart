@@ -1,5 +1,9 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:ngo_app/modals/chatRoomModel.dart';
+import 'package:uuid/uuid.dart';
+
+dynamic uuid = uuid();
 
 class DatabaseService {
   final String? uid;
@@ -107,5 +111,41 @@ class DatabaseService {
     String? imageUrl = await snapshot.ref.getDownloadURL();
     print(3);
     return imageUrl;
+  }
+
+  Future<ChatRoomModel?> getChatroomModel(dynamic target) async {
+    ChatRoomModel? chatRoom;
+
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection("chatrooms")
+        .where("participants.${uid}", isEqualTo: true)
+        .where("participants.${target.uid}", isEqualTo: true)
+        .get();
+
+    if (snapshot.docs.length > 0) {
+      // Fetch the existing one
+      var docData = snapshot.docs[0].data();
+      ChatRoomModel existingChatroom =
+          ChatRoomModel.fromMap(docData as Map<String, dynamic>);
+
+      chatRoom = existingChatroom;
+    } else {
+      ChatRoomModel newChatroom = ChatRoomModel(
+        chatroomid: uuid.v1(),
+        participants: {
+          uid.toString(): true,
+          target.uid.toString(): true,
+        },
+      );
+
+      await FirebaseFirestore.instance
+          .collection("chatrooms")
+          .doc(newChatroom.chatroomid)
+          .set(newChatroom.toMap());
+
+      chatRoom = newChatroom;
+    }
+
+    return chatRoom;
   }
 }
