@@ -24,7 +24,9 @@ class _req_volunteersState extends State<req_volunteers> {
   Widget build(BuildContext context) {
     final user = Provider.of<CustUser?>(context);
     final uid = user!.uid;
-    final name = Provider.of<Data>(context).data["name"];
+    final data = Provider.of<Data>(context).data;
+    final name = data["name"];
+    final Imgurl = data["Imgurl"];
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -139,6 +141,7 @@ class _req_volunteersState extends State<req_volunteers> {
                                   formData["Field"] = field;
                                   formData["name"] = name;
                                   formData["uid"] = uid;
+                                  formData["Imgurl"] = Imgurl;
                                   await DatabaseService().vol_req(formData);
                                   setState(() {
                                     error = "Request posted successfully!!";

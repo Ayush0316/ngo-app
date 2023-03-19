@@ -30,15 +30,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Ngo-App',
         theme: ThemeData(
-          secondaryHeaderColor: Colors.blueAccent,
           fontFamily: 'Roboto',
           primarySwatch: Colors.blue,
-          primaryColor: Colors.blue,
-          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-          colorScheme: Theme.of(context)
-              .colorScheme
-              .copyWith(secondary: Colors.blue[300]),
-          scaffoldBackgroundColor: Colors.white,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          scaffoldBackgroundColor: Color(0xFF404040),
           useMaterial3: true,
         ),
         home: const Wrapper(),

@@ -26,7 +26,10 @@ class _req_donationsState extends State<req_donations> {
   Widget build(BuildContext context) {
     final user = Provider.of<CustUser?>(context);
     final uid = user!.uid;
-    final name = Provider.of<Data>(context).data["name"];
+    final data = Provider.of<Data>(context).data;
+    final name = data["name"];
+    final Imgurl = data["Imgurl"];
+
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
@@ -160,6 +163,7 @@ class _req_donationsState extends State<req_donations> {
                                   }
                                   formData['name'] = name;
                                   formData["uid"] = uid;
+                                  formData['Imgurl'] = Imgurl;
                                   await DatabaseService().don_Req(formData);
                                   setState(() {
                                     error = "Request posted successfully!!";

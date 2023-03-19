@@ -3,6 +3,7 @@ import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:ngo_app/screens/home/User/details/details.dart';
 
 class noti_user extends StatefulWidget {
   const noti_user({super.key});
@@ -61,7 +62,15 @@ class _noti_userState extends State<noti_user> {
                       return ListView.separated(
                         itemBuilder: ((context, index) {
                           return InkWell(
-                            onTap: () => {},
+                            onTap: () => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return details(
+                                      notification: notifications[index]);
+                                }),
+                              )
+                            },
                             child: Card(
                               elevation: 0.0,
                               child: ListTile(

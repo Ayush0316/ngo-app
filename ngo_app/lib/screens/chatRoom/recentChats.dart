@@ -23,9 +23,10 @@ class _recentChatsState extends State<recentChats> {
     if (first) {
       first = false;
       User = Provider.of<Data>(context).data;
-      User["uid"] = Provider.of<CustUser?>(context);
+      User["uid"] = Provider.of<CustUser?>(context)!.uid;
     }
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
@@ -107,12 +108,10 @@ class _recentChatsState extends State<recentChats> {
                     },
                   );
                 } else if (snapshot.hasError) {
-                  print("haha");
                   return Center(
                     child: Text(snapshot.error.toString()),
                   );
                 } else {
-                  print("hehe");
                   return Center(
                     child: Text("No Chats"),
                   );

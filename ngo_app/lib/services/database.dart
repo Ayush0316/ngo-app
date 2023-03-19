@@ -113,7 +113,7 @@ class DatabaseService {
     return imageUrl;
   }
 
-  Future<ChatRoomModel?> getChatroomModel(dynamic target) async {
+  Future<ChatRoomModel> getChatroomModel(dynamic target) async {
     ChatRoomModel? chatRoom;
 
     QuerySnapshot snapshot = await FirebaseFirestore.instance

@@ -21,9 +21,10 @@ import 'package:provider/provider.dart';
 class ChatRoomPage extends StatefulWidget {
   final Map<String, dynamic> targetUser;
   final ChatRoomModel chatroom;
+  String? startingMsg;
 
-  const ChatRoomPage(
-      {Key? key, required this.targetUser, required this.chatroom})
+  ChatRoomPage(
+      {Key? key, required this.targetUser, required this.chatroom, startingMsg})
       : super(key: key);
 
   @override
@@ -64,7 +65,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   @override
   void initState() {
     User = Provider.of<Data>(context).data;
-    User["uid"] = Provider.of<CustUser?>(context);
+    User["uid"] = Provider.of<CustUser?>(context)!.uid;
     super.initState();
   }
 
