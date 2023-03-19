@@ -188,7 +188,6 @@ class _profileState extends State<profile> {
                           padding: const EdgeInsets.only(
                               top: 20, left: 20, right: 20, bottom: 10),
                           child: TextField(
-                            obscureText: true,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Write a Message',
