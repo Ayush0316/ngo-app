@@ -72,20 +72,23 @@ class _sideMenuState extends State<sideMenu> {
                   builder: (context) => const Type_Selector()));
             },
           ),
-          ListTile(
-            title: Text(
-              'Profile',
-              style: TextStyle(
-                // decoration: TextDecoration.underline,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto-Black',
+          Visibility(
+            visible: (data["type"] == "Ngo"),
+            child: ListTile(
+              title: Text(
+                'Profile',
+                style: TextStyle(
+                  // decoration: TextDecoration.underline,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto-Black',
+                ),
               ),
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const profile()));
+              },
             ),
-            onTap: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const profile()));
-            },
           ),
           ListTile(
             title: Text(

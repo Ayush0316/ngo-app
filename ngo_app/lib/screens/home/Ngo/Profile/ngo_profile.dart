@@ -17,8 +17,6 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<Data>(context).data;
@@ -36,7 +34,7 @@ class _profileState extends State<profile> {
             ),
             backgroundColor: Colors.blue,
             title: Text(
-              (data["name"] != null ? data["name"] : "name"),
+              name,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400,
@@ -52,13 +50,19 @@ class _profileState extends State<profile> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Flexible(child: Container(), flex: 0),
-                      CircleAvatar(
-                        radius: 70,
-                        backgroundImage: NetworkImage(url),
-                      ),
+                      (url == " ")
+                          ? CircleAvatar(
+                              radius: 70,
+                              backgroundImage: AssetImage("images/logo.png"),
+                            )
+                          : CircleAvatar(
+                              radius: 70,
+                              backgroundColor: Colors.purple[800],
+                              backgroundImage: NetworkImage(url),
+                            ),
                       SizedBox(height: 10),
                       Text(
-                        (data["name"] != null ? data["name"] : "name"),
+                        name,
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.w500,
@@ -66,14 +70,27 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Text(
-                        ('Location of the NGO'),
+                        (data["address"]),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
                       Text(
-                        ('Service of the NGO'),
+                        (data["city"] +
+                            " , " +
+                            data["state"] +
+                            " , " +
+                            data["country"]),
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontFamily: 'Roboto-Black',
+                        ),
+                      ),
+                      Text(
+                        (data["Service"] != null
+                            ? data["Service"]
+                            : "Services of the Ngo"),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
@@ -117,8 +134,9 @@ class _profileState extends State<profile> {
                         ),
 
                         child: Text(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incilaborumdidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis"
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incilaborumdidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis",
+                          (data["about"] != null
+                              ? data["about"]
+                              : "About the works/servics of Ngo"),
                           style: TextStyle(
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,
@@ -127,7 +145,10 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Text(
-                        'Website',
+                        // data["website"],
+                        data["website"] != null && data["website"] != ""
+                            ? data["website"]
+                            : 'Website not avaliable',
                         style: TextStyle(
                             fontSize: 18.0,
                             fontFamily: 'Roboto-Black',
@@ -150,7 +171,7 @@ class _profileState extends State<profile> {
                           onPressed: () => {},
                           onLongPress: () async {
                             Clipboard.setData(
-                                    ClipboardData(text: '+91 9876217785'))
+                                    ClipboardData(text: data["website"]))
                                 .then((value) {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
