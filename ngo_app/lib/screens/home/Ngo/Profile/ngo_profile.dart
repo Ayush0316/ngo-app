@@ -3,6 +3,11 @@ import 'package:provider/provider.dart';
 import "package:ngo_app/services/auth.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/responsive.dart';
+import 'package:flutter/services.dart';
+
+final snackBar = SnackBar(
+  content: const Text('url Copied to clipboard'),
+);
 
 class profile extends StatefulWidget {
   const profile({super.key});
@@ -100,7 +105,7 @@ class _profileState extends State<profile> {
                               Responsive.isSmallScreen(context) ? width : width,
                         ), //BoxConstraints
 
-                        margin: const EdgeInsets.all(20.0),
+                        margin: const EdgeInsets.all(15.0),
                         padding: const EdgeInsets.only(
                             left: 15, right: 15, top: 15, bottom: 15),
                         decoration: BoxDecoration(
@@ -118,6 +123,62 @@ class _profileState extends State<profile> {
                             fontSize: 14.0,
                             fontWeight: FontWeight.w500,
                             fontFamily: 'Roboto-Black',
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Website',
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontFamily: 'Roboto-Black',
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(height: 10),
+                      SizedBox(
+                        height: 60,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              side: BorderSide(
+                                color: Colors.blue,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                          // olor: Colors.blue,
+                          // elevation: 0.0,
+                          onPressed: () => {},
+                          onLongPress: () async {
+                            Clipboard.setData(
+                                    ClipboardData(text: '+91 9876217785'))
+                                .then((value) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 10, right: 10, bottom: 10),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Website link here',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.link,
+                                  size: 30,
+                                  color: Colors.white,
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
