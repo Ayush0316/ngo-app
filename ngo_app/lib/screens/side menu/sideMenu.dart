@@ -9,6 +9,7 @@ import 'package:ngo_app/screens/notifications/user_notifications.dart';
 import 'package:ngo_app/screens/History/history_user.dart';
 import 'package:ngo_app/screens/History/history_ngo.dart';
 import 'package:ngo_app/screens/Help and Feedback/help_feedback.dart';
+import 'package:ngo_app/screens/home/Ngo/Profile/ngo_profile.dart';
 
 class sideMenu extends StatefulWidget {
   const sideMenu({super.key});
@@ -69,6 +70,21 @@ class _sideMenuState extends State<sideMenu> {
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const Type_Selector()));
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Profile',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const profile()));
             },
           ),
           ListTile(

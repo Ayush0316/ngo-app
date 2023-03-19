@@ -100,13 +100,14 @@ class _AccountState extends State<Account> {
                                   ),
                                 ),
                                 Text(
-                                    (data["phone_number"] != null
-                                        ? data["phone_number"]
-                                        : "Phone Number"),
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontFamily: 'Roboto-Black',
-                                    )),
+                                  (data["phone_number"] != null
+                                      ? data["phone_number"]
+                                      : "Phone Number"),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
                                 SizedBox(
                                   height: 10,
                                 ),

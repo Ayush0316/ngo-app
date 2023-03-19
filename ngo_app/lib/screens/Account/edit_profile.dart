@@ -110,15 +110,16 @@ class _profile_userState extends State<profile_user> {
                 Padding(padding: const EdgeInsets.only(top: 0, left: 0)),
                 Expanded(
                   child: CircleAvatar(
-                      radius: 60,
-                      backgroundImage:
-                          (imageFile != null) ? FileImage(imageFile!) : null,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: imageFile == null
-                            ? Image.asset("images/logo.png")
-                            : null,
-                      )),
+                    radius: 60,
+                    backgroundImage:
+                        (imageFile != null) ? FileImage(imageFile!) : null,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: imageFile == null
+                          ? Image.asset("images/logo.png")
+                          : null,
+                    ),
+                  ),
                 ),
                 SizedBox(width: 10),
                 Expanded(
