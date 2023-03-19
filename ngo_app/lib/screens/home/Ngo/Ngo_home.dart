@@ -53,7 +53,10 @@ class _NgoHomeState extends State<NgoHome> {
                       height: 5,
                     ),
                     title_post(),
-                    post_ngo(),
+                    Container(
+                      child: post_ngo(),
+                      height: 255,
+                    ),
                     text_community(),
                     SizedBox(
                       height: 5,

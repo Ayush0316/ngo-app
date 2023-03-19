@@ -66,7 +66,7 @@ class _post_ngoState extends State<post_ngo> {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           ButtonTheme(
             height: 20,
