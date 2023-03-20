@@ -6,7 +6,7 @@ import 'package:ngo_app/responsive.dart';
 import 'package:flutter/services.dart';
 
 final snackBar = SnackBar(
-  content: const Text('url Copied to clipboard'),
+  content: const Text('URl Copied to clipboard'),
 );
 
 class profile extends StatefulWidget {
@@ -116,7 +116,8 @@ class _profileState extends State<profile> {
                               : height,
                           maxWidth:
                               Responsive.isSmallScreen(context) ? width : width,
-                          minWidth: Responsive.isSmallScreen(context) ? width : width,
+                          minWidth:
+                              Responsive.isSmallScreen(context) ? width : width,
                         ), //BoxConstraints
 
                         margin: const EdgeInsets.all(15.0),
@@ -142,14 +143,12 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Text(
-                        // data["website"],
-                        data["website"] != null && data["website"] != ""
-                            ? data["website"]
-                            : 'Website not avaliable',
+                        'Website',
                         style: TextStyle(
-                            fontSize: 18.0,
-                            fontFamily: 'Roboto-Black',
-                            fontWeight: FontWeight.bold),
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Roboto-Black',
+                        ),
                       ),
                       SizedBox(height: 10),
                       SizedBox(
@@ -182,7 +181,12 @@ class _profileState extends State<profile> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Website link here',
+                                  // data["website"],
+                                  data["website"] != null &&
+                                          data["website"] != ""
+                                      ? data["website"]
+                                      : 'Website not avaliable',
+
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18.0,
@@ -200,23 +204,86 @@ class _profileState extends State<profile> {
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 20, left: 20, right: 20, bottom: 10),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Write a Message',
-                              suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.send_rounded),
+                      SizedBox(height: 10),
+                      Text(
+                        'Socials',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Roboto-Black',
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      SizedBox(
+                        height: 60,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              side: BorderSide(
+                                color: Colors.blue,
                               ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                          // olor: Colors.blue,
+                          // elevation: 0.0,
+                          onPressed: () => {},
+                          onLongPress: () async {
+                            Clipboard.setData(
+                                    ClipboardData(text: data["website"]))
+                                .then((value) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 10, right: 10, bottom: 10),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  // data["website"],
+                                  data["socials"] != null &&
+                                          data["socials"] != ""
+                                      ? data["socials"]
+                                      : 'Website not avaliable',
+
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Roboto-Black',
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.people_alt_rounded,
+                                  size: 30,
+                                  color: Colors.white,
+                                )
+                              ],
                             ),
                           ),
                         ),
                       ),
+                      // Align(
+                      //   alignment: Alignment.bottomCenter,
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.only(
+                      //         top: 20, left: 20, right: 20, bottom: 10),
+                      //     child: TextField(
+                      //       decoration: InputDecoration(
+                      //         border: OutlineInputBorder(),
+                      //         labelText: 'Write a Message',
+                      //         suffixIcon: IconButton(
+                      //           onPressed: () {},
+                      //           icon: Icon(Icons.send_rounded),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ))),
         ));
