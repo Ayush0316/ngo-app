@@ -17,102 +17,104 @@ class _post_ngoState extends State<post_ngo> {
     double height = MediaQuery.of(context).size.height;
     return Container(
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
-      height: Responsive.isSmallScreen(context) ? height / 3 : height,
+      height: Responsive.isSmallScreen(context) ? height / 4 : height,
       width: double.infinity,
-      child: Column(
-        children: [
-          ButtonTheme(
-            height: 20,
-            child: ElevatedButton(
-              onPressed: () async {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const req_donations()));
-              },
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Post regarding requirement of Donations\n',
-                    style: TextStyle(
-                      height: 1.5,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto-Black',
-                      color: Colors.white,
-                    ),
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text:
-                            "more text just for the description of this option \n like what actually this option does",
-                        style: TextStyle(
-                            color: Colors.black,
-                            height: 1.2,
-                            fontSize: 12.0,
-                            fontFamily: 'Roboto-Black',
-                            fontWeight: FontWeight.w300),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ButtonTheme(
+              height: 20,
+              child: ElevatedButton(
+                onPressed: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const req_donations()));
+                },
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Post regarding requirement of Donations\n',
+                      style: TextStyle(
+                        height: 1.5,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto-Black',
+                        color: Colors.white,
                       ),
-                    ],
+                      children: const <TextSpan>[
+                        TextSpan(
+                          text:
+                              "more text just for the description of this option \n like what actually this option does",
+                          style: TextStyle(
+                              color: Colors.black,
+                              height: 1.2,
+                              fontSize: 12.0,
+                              fontFamily: 'Roboto-Black',
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  elevation: 0.0,
+                  backgroundColor: Colors.blue,
+                  padding: EdgeInsets.only(top: 10, left: 10, bottom: 5),
                 ),
-                elevation: 0.0,
-                backgroundColor: Colors.blue,
-                padding: EdgeInsets.only(top: 10, left: 10, bottom: 5),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ButtonTheme(
-            height: 20,
-            child: ElevatedButton(
-              onPressed: () async {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const req_volunteers()));
-              },
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Post regarding requirement of Volunteers \n',
-                    style: TextStyle(
-                      height: 1.5,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto-Black',
-                      color: Colors.white,
-                    ),
-                    children: const <TextSpan>[
-                      TextSpan(
-                        text:
-                            "more text just for the description of this option \n like what actually this option does",
-                        style: TextStyle(
-                            color: Colors.black,
-                            height: 1.2,
-                            fontSize: 12.0,
-                            fontFamily: 'Roboto-Black',
-                            fontWeight: FontWeight.w300),
+            SizedBox(
+              height: 20,
+            ),
+            ButtonTheme(
+              height: 20,
+              child: ElevatedButton(
+                onPressed: () async {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const req_volunteers()));
+                },
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Post regarding requirement of Volunteers \n',
+                      style: TextStyle(
+                        height: 1.5,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto-Black',
+                        color: Colors.white,
                       ),
-                    ],
+                      children: const <TextSpan>[
+                        TextSpan(
+                          text:
+                              "more text just for the description of this option \n like what actually this option does",
+                          style: TextStyle(
+                              color: Colors.black,
+                              height: 1.2,
+                              fontSize: 12.0,
+                              fontFamily: 'Roboto-Black',
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  elevation: 0.0,
+                  backgroundColor: Colors.blue,
+                  padding: EdgeInsets.only(top: 10, left: 10, bottom: 5),
                 ),
-                elevation: 0.0,
-                backgroundColor: Colors.blue,
-                padding: EdgeInsets.only(top: 10, left: 10, bottom: 5),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
