@@ -66,7 +66,12 @@ class _recentChatsState extends State<recentChats> {
                               ConnectionState.done) {
                             if (userData.data != null) {
                               Map<String, dynamic> targetUser = userData.data!;
-
+                              //     print("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+                              //     print(targetUser);
+                              //     print("qqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+                              //     return Text("hellho");
+                              //   } // delete
+                              // } //delete
                               return ListTile(
                                 onTap: () {
                                   Navigator.push(
@@ -79,10 +84,14 @@ class _recentChatsState extends State<recentChats> {
                                     }),
                                   );
                                 },
-                                leading: CircleAvatar(
-                                  backgroundImage:
-                                      NetworkImage(targetUser["Imgurl"]),
-                                ),
+                                leading: (targetUser["Imgurl"] != null)
+                                    ? CircleAvatar(
+                                        backgroundImage:
+                                            NetworkImage(targetUser["Imgurl"]),
+                                      )
+                                    : CircleAvatar(
+                                        child: Icon(Icons.person),
+                                      ),
                                 title: Text(targetUser["name"]),
                                 subtitle: (chatRoomModel.lastMessage
                                             .toString() !=
@@ -103,6 +112,7 @@ class _recentChatsState extends State<recentChats> {
                           } else {
                             return Container();
                           }
+                          // return Container();
                         },
                       );
                     },

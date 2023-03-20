@@ -3,7 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:ngo_app/modals/chatRoomModel.dart';
 import 'package:uuid/uuid.dart';
 
-dynamic uuid = uuid();
+dynamic uuid = Uuid();
 
 class DatabaseService {
   final String? uid;
@@ -119,7 +119,7 @@ class DatabaseService {
     QuerySnapshot snapshot = await FirebaseFirestore.instance
         .collection("chatrooms")
         .where("participants.${uid}", isEqualTo: true)
-        .where("participants.${target.uid}", isEqualTo: true)
+        .where("participants.${target["uid"]}", isEqualTo: true)
         .get();
 
     if (snapshot.docs.length > 0) {
@@ -134,7 +134,7 @@ class DatabaseService {
         chatroomid: uuid.v1(),
         participants: {
           uid.toString(): true,
-          target.uid.toString(): true,
+          target["uid"]: true,
         },
       );
 

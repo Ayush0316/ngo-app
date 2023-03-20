@@ -43,7 +43,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
       // Send Message
       MessageModel newMessage = MessageModel(
           messageid: uuid.v1(),
-          sender: User.uid,
+          sender: User["uid"],
           createdon: DateTime.now(),
           text: msg,
           seen: false);
@@ -55,6 +55,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
           .doc(newMessage.messageid)
           .set(newMessage.toMap());
 
+      widget.chatroom.lastMessage = msg;
       FirebaseFirestore.instance
           .collection("chatrooms")
           .doc(widget.chatroom.chatroomid)
@@ -62,23 +63,24 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
     }
   }
 
-  @override
-  void initState() {
-    User = Provider.of<Data>(context).data;
-    User["uid"] = Provider.of<CustUser?>(context)!.uid;
-    super.initState();
-  }
+  bool first = true;
 
   @override
   Widget build(BuildContext context) {
+    if (first) {
+      User = Provider.of<Data>(context).data;
+      User["uid"] = Provider.of<CustUser?>(context)!.uid;
+    }
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Row(
           children: [
             (widget.targetUser["Imgurl"] == "" ||
                     widget.targetUser["Imgurl"] == null)
                 ? CircleAvatar(
-                    backgroundImage: AssetImage("images/logo.png"),
+                    child: Icon(Icons.person),
                   )
                 : CircleAvatar(
                     backgroundColor: Colors.purple[800],
@@ -87,7 +89,10 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
             SizedBox(
               width: 10,
             ),
-            Text(widget.targetUser["name"]),
+            Text(
+              widget.targetUser["name"],
+              style: TextStyle(color: Colors.white),
+            ),
           ],
         ),
       ),
@@ -138,9 +143,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                         color: (currentMessage.sender ==
                                                 User["uid"])
                                             ? Colors.grey
-                                            : Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
+                                            : Colors.blue,
                                         borderRadius: BorderRadius.circular(5),
                                       ),
                                       child: Text(

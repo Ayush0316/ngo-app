@@ -79,6 +79,7 @@ class _profile_userState extends State<profile_user> {
   dynamic data;
   dynamic name_data;
   String? name;
+  dynamic url;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,7 @@ class _profile_userState extends State<profile_user> {
       data = Provider.of<Data>(context).data;
       name_data = Provider.of<Data>(context).data["name"];
       name = name_data != null ? name_data : "Name";
-      imageFile = data["Imgurl"];
+      url = data["Imgurl"];
       first = false;
     }
 
@@ -118,17 +119,23 @@ class _profile_userState extends State<profile_user> {
               children: <Widget>[
                 Padding(padding: const EdgeInsets.only(top: 0, left: 0)),
                 Expanded(
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundImage:
-                        (imageFile != null) ? FileImage(imageFile!) : null,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: imageFile == null
-                          ? Image.asset("images/logo.png")
-                          : null,
-                    ),
-                  ),
+                  child: (url == null)
+                      ? CircleAvatar(
+                          radius: 60,
+                          backgroundImage: (imageFile != null)
+                              ? FileImage(imageFile!)
+                              : null,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: imageFile == null
+                                ? Image.asset("images/logo.png")
+                                : null,
+                          ),
+                        )
+                      : CircleAvatar(
+                          radius: 60,
+                          backgroundImage: NetworkImage(url),
+                        ),
                 ),
                 SizedBox(width: 10),
                 Expanded(
