@@ -67,10 +67,17 @@ class _AccountState extends State<Account> {
                       child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
-                              radius: 60,
-                              backgroundImage: AssetImage('images/logo.png'),
-                            ),
+                            (url == " ")
+                                ? CircleAvatar(
+                                    radius: 60,
+                                    backgroundImage:
+                                        AssetImage("images/logo.png"),
+                                  )
+                                : CircleAvatar(
+                                    radius: 60,
+                                    backgroundColor: Colors.blue[300],
+                                    backgroundImage: NetworkImage(url),
+                                  ),
                             SizedBox(
                               width: 20,
                             ),

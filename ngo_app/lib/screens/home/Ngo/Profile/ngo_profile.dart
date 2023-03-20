@@ -116,6 +116,7 @@ class _profileState extends State<profile> {
                               : height,
                           maxWidth:
                               Responsive.isSmallScreen(context) ? width : width,
+                          minWidth: Responsive.isSmallScreen(context) ? width : width,
                         ), //BoxConstraints
 
                         margin: const EdgeInsets.all(15.0),

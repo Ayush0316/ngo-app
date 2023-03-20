@@ -75,15 +75,25 @@ class _profile_userState extends State<profile_user> {
         });
   }
 
+  bool first = true;
+  dynamic user;
+  dynamic data;
+  dynamic name_data;
+  String? name;
+
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<CustUser?>(context);
-    final data = Provider.of<Data>(context).data;
-    final name_data = Provider.of<Data>(context).data["name"];
-    String name = name_data != null ? name_data : "Name";
+    if (first) {
+      user = Provider.of<CustUser?>(context);
+      data = Provider.of<Data>(context).data;
+      name_data = Provider.of<Data>(context).data["name"];
+      name = name_data != null ? name_data : "Name";
+      imageFile = data["Imgurl"];
+      first = false;
+    }
 
     final myController = TextEditingController();
-    myController.text = name;
+    myController.text = name!;
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
