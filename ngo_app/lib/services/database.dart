@@ -54,18 +54,22 @@ class DatabaseService {
     return data;
   }
 
-  List<String> getNgosName() {
+  Future getNgosName() async {
+    Map<String, String> uid = {};
     List<String> data = [];
-    ngosCollection.get().then((snapshot) {
+    Map<String, dynamic> result = {};
+    await ngosCollection.get().then((snapshot) {
       snapshot.docs.forEach(
         (element) {
           Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
           data.add(tmp["name"]);
+          uid[tmp["name"]] = element.id;
         },
       );
-      return data;
     });
-    return data;
+    result["data"] = data;
+    result["uid"] = uid;
+    return result;
   }
 
   // ****** Notifications ********* //
@@ -103,13 +107,10 @@ class DatabaseService {
 
   Future<String?> uploadImage(dynamic imageFile) async {
     UploadTask uploadTask = images.child(uid!).putFile(imageFile!);
-    print(1);
 
     TaskSnapshot snapshot = await uploadTask;
-    print(2);
 
     String? imageUrl = await snapshot.ref.getDownloadURL();
-    print(3);
     return imageUrl;
   }
 
