@@ -62,9 +62,9 @@ class _searchBarState extends State<searchBar> {
                         searchTextField?.textField?.controller?.text = item;
                         dynamic targetUid = result["uid"][item];
                         dynamic targetData =
-                            DatabaseService(uid: targetUid).getData();
+                            await DatabaseService(uid: targetUid).getData();
+                        print(targetData);
                         targetData["uid"] = targetUid;
-                        print("a");
                         final ChatRoomModel chatroom =
                             await DatabaseService(uid: userUid)
                                 .getChatroomModel(targetData);
