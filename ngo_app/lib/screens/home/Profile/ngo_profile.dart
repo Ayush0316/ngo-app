@@ -1,16 +1,23 @@
 import "package:flutter/material.dart";
-import 'package:provider/provider.dart';
-import "package:ngo_app/services/auth.dart";
-import 'package:ngo_app/services/UserProvider.dart';
+import 'package:ngo_app/modals/chatRoomModel.dart';
+import 'package:ngo_app/modals/user.dart';
+// import 'package:provider/provider.dart';
+// import "package:ngo_app/services/auth.dart";
+// import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/responsive.dart';
 import 'package:flutter/services.dart';
+import 'package:ngo_app/screens/chatRoom/chatRoomPage.dart';
+import 'package:ngo_app/services/database.dart';
+import 'package:provider/provider.dart';
 
 final snackBar = SnackBar(
   content: const Text('URl Copied to clipboard'),
 );
 
 class profile extends StatefulWidget {
-  const profile({super.key});
+  dynamic data;
+  bool user = false;
+  profile({super.key, required this.data, user});
 
   @override
   State<profile> createState() => _profileState();
@@ -19,9 +26,13 @@ class profile extends StatefulWidget {
 class _profileState extends State<profile> {
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<Data>(context).data;
-    String name = data["name"] != null ? data["name"] : "Name";
-    String url = data["Imgurl"] != null ? data["Imgurl"] : " ";
+    // final data = Provider.of<Data>(context).data;
+    String userUid = " ";
+    if (widget.user) {
+      userUid = Provider.of<CustUser?>(context)!.uid;
+    }
+    String name = widget.data["name"] != null ? widget.data["name"] : "Name";
+    String url = widget.data["Imgurl"] != null ? widget.data["Imgurl"] : " ";
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
@@ -70,8 +81,8 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Text(
-                        (data["Service"] != null
-                            ? data["Service"]
+                        (widget.data["Service"] != null
+                            ? widget.data["Service"]
                             : "Services of the Ngo"),
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -80,28 +91,30 @@ class _profileState extends State<profile> {
                         ),
                       ),
                       Text(
-                        (data["email"] != null ? data["email"] : "Email"),
+                        (widget.data["email"] != null
+                            ? widget.data["email"]
+                            : "Email"),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
                       Text(
-                        (data["address"] +
+                        (widget.data["address"] +
                             " , " +
-                            data["city"] +
+                            widget.data["city"] +
                             " , " +
-                            data["state"] +
+                            widget.data["state"] +
                             " , " +
-                            data["country"]),
+                            widget.data["country"]),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
                       Text(
-                        (data["phone_number"] != null
-                            ? data["phone_number"]
+                        (widget.data["phone_number"] != null
+                            ? widget.data["phone_number"]
                             : "Phone Number"),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
@@ -132,8 +145,8 @@ class _profileState extends State<profile> {
                         ),
 
                         child: Text(
-                          (data["about"] != null
-                              ? data["about"]
+                          (widget.data["about"] != null
+                              ? widget.data["about"]
                               : "About the works/servics of Ngo"),
                           style: TextStyle(
                             fontSize: 14.0,
@@ -167,7 +180,7 @@ class _profileState extends State<profile> {
                           onPressed: () => {},
                           onLongPress: () async {
                             Clipboard.setData(
-                                    ClipboardData(text: data["website"]))
+                                    ClipboardData(text: widget.data["website"]))
                                 .then((value) {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
@@ -182,9 +195,9 @@ class _profileState extends State<profile> {
                               children: [
                                 Text(
                                   // data["website"],
-                                  data["website"] != null &&
-                                          data["website"] != ""
-                                      ? data["website"]
+                                  widget.data["website"] != null &&
+                                          widget.data["website"] != ""
+                                      ? widget.data["website"]
                                       : 'Website not avaliable',
 
                                   style: TextStyle(
@@ -230,7 +243,7 @@ class _profileState extends State<profile> {
                           onPressed: () => {},
                           onLongPress: () async {
                             Clipboard.setData(
-                                    ClipboardData(text: data["website"]))
+                                    ClipboardData(text: widget.data["website"]))
                                 .then((value) {
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
@@ -245,10 +258,10 @@ class _profileState extends State<profile> {
                               children: [
                                 Text(
                                   // data["website"],
-                                  data["socials"] != null &&
-                                          data["socials"] != ""
-                                      ? data["socials"]
-                                      : 'Website not avaliable',
+                                  widget.data["socials"] != null &&
+                                          widget.data["socials"] != ""
+                                      ? widget.data["socials"]
+                                      : 'Socials not avaliable',
 
                                   style: TextStyle(
                                     color: Colors.white,
@@ -267,23 +280,37 @@ class _profileState extends State<profile> {
                           ),
                         ),
                       ),
-                      // Align(
-                      //   alignment: Alignment.bottomCenter,
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(
-                      //         top: 20, left: 20, right: 20, bottom: 10),
-                      //     child: TextField(
-                      //       decoration: InputDecoration(
-                      //         border: OutlineInputBorder(),
-                      //         labelText: 'Write a Message',
-                      //         suffixIcon: IconButton(
-                      //           onPressed: () {},
-                      //           icon: Icon(Icons.send_rounded),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
+                      (widget.user)
+                          ? Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 20, left: 20, right: 20, bottom: 10),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Write a Message',
+                                    suffixIcon: IconButton(
+                                      onPressed: () async {
+                                        final ChatRoomModel chatroom =
+                                            await DatabaseService(uid: userUid)
+                                                .getChatroomModel(widget.data);
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return ChatRoomPage(
+                                            targetUser: widget.data,
+                                            chatroom: chatroom,
+                                          );
+                                        }));
+                                      },
+                                      icon: Icon(Icons.send_rounded),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Container(),
                     ],
                   ))),
         ));

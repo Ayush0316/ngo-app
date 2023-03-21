@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ngo_app/modals/chatRoomModel.dart';
 import 'package:ngo_app/modals/user.dart';
 import 'package:ngo_app/screens/chatRoom/ChatRoomPage.dart';
+import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
 import "package:ngo_app/services/database.dart";
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,6 @@ class searchBar extends StatefulWidget {
 class _searchBarState extends State<searchBar> {
   GlobalKey<AutoCompleteTextFieldState<String>> key = new GlobalKey();
   dynamic result;
-  dynamic userUid;
 
   AutoCompleteTextField? searchTextField;
 
@@ -26,7 +26,6 @@ class _searchBarState extends State<searchBar> {
 
   @override
   Widget build(BuildContext context) {
-    userUid = Provider.of<CustUser?>(context)!.uid;
     return FutureBuilder(
         future: DatabaseService().getNgosName(),
         builder: (context, userData) {
@@ -63,19 +62,13 @@ class _searchBarState extends State<searchBar> {
                         dynamic targetUid = result["uid"][item];
                         dynamic targetData =
                             await DatabaseService(uid: targetUid).getData();
-                        print(targetData);
+
                         targetData["uid"] = targetUid;
-                        final ChatRoomModel chatroom =
-                            await DatabaseService(uid: userUid)
-                                .getChatroomModel(targetData);
-                        print("g");
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ChatRoomPage(
-                            targetUser: targetData,
-                            chatroom: chatroom,
-                          );
-                        }));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => profile(
+                                  data: targetData,
+                                  user: true,
+                                )));
                       },
                       key: key,
                       clearOnSubmit: true,
