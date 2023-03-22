@@ -17,8 +17,8 @@ final snackBar = SnackBar(
 // ignore: must_be_immutable
 class profile extends StatefulWidget {
   dynamic data;
-  bool user = false;
-  profile({super.key, required this.data, user});
+  bool user;
+  profile({super.key, required this.data, this.user = false});
 
   @override
   State<profile> createState() => _profileState();
@@ -29,6 +29,7 @@ class _profileState extends State<profile> {
   Widget build(BuildContext context) {
     // final data = Provider.of<Data>(context).data;
     String userUid = " ";
+    print(widget.user);
     if (widget.user) {
       userUid = Provider.of<CustUser?>(context)!.uid;
     }

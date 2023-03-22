@@ -27,6 +27,7 @@ class _detailsState extends State<details> {
       body: SafeArea(
           child: Column(
         children: [
+          Text(widget.notification["Imgurl"].toString()),
           Text(widget.notification["name"]),
           Text(widget.notification["Field"]),
           Text(widget.notification["details"]),
