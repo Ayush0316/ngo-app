@@ -5,6 +5,8 @@ import 'package:ngo_app/screens/Community/community_option.dart';
 import 'package:ngo_app/screens/Community/community_option.dart';
 
 String option = "";
+String description = "";
+var textList = [];
 
 class communityOptions extends StatefulWidget {
   const communityOptions({super.key});
@@ -37,8 +39,12 @@ class _communityOptionsState extends State<communityOptions> {
             InkWell(
               onTap: () async {
                 option = "Teaching";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => community_option(text: option)));
+                    builder: (context) => community_option(
+                          textList: [option, description],
+                        )));
               },
               child: Stack(
                 children: <Widget>[
@@ -87,14 +93,14 @@ class _communityOptionsState extends State<communityOptions> {
               ),
             ),
             InkWell(
-              onTap: () {
+              onTap: () async {
                 option = "Cleanliness Drives";
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(),
-                  ),
-                );
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => community_option(
+                          textList: [option, description],
+                        )));
               },
               child: Stack(
                 children: <Widget>[
@@ -143,9 +149,14 @@ class _communityOptionsState extends State<communityOptions> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Women Empowerment";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => community_option(
+                          textList: [option, description],
+                        )));
               },
               child: Stack(
                 children: <Widget>[
@@ -194,9 +205,14 @@ class _communityOptionsState extends State<communityOptions> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Medical";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => community_option(
+                          textList: [option, description],
+                        )));
               },
               child: Stack(
                 children: <Widget>[
@@ -245,9 +261,14 @@ class _communityOptionsState extends State<communityOptions> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "PickUp and Distribution";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => community_option(
+                          textList: [option, description],
+                        )));
               },
               child: Stack(
                 children: <Widget>[
@@ -296,9 +317,14 @@ class _communityOptionsState extends State<communityOptions> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "More";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => community_option(
+                          textList: [option, description],
+                        )));
               },
               child: Stack(
                 children: <Widget>[
