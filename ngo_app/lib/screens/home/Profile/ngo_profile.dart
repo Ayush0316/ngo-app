@@ -25,11 +25,11 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // final data = Provider.of<Data>(context).data;
     String userUid = " ";
-    print(widget.user);
     if (widget.user) {
       userUid = Provider.of<CustUser?>(context)!.uid;
     }
@@ -289,20 +289,25 @@ class _profileState extends State<profile> {
                                 padding: const EdgeInsets.only(
                                     top: 20, left: 20, right: 20, bottom: 10),
                                 child: TextField(
+                                  controller: controller,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
                                     labelText: 'Write a Message',
                                     suffixIcon: IconButton(
                                       onPressed: () async {
+                                        CircularProgressIndicator();
+                                        String text = controller.text;
                                         final ChatRoomModel chatroom =
                                             await DatabaseService(uid: userUid)
                                                 .getChatroomModel(widget.data);
+                                        controller.clear();
                                         Navigator.push(context,
                                             MaterialPageRoute(
                                                 builder: (context) {
                                           return ChatRoomPage(
                                             targetUser: widget.data,
                                             chatroom: chatroom,
+                                            startingMsg: text,
                                           );
                                         }));
                                       },

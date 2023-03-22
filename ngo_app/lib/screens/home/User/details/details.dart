@@ -39,6 +39,8 @@ class _detailsState extends State<details> {
                   return ChatRoomPage(
                     targetUser: widget.notification,
                     chatroom: chatroom,
+                    startingMsg: "Hey there, \nHow can we help you?",
+                    reverse: true,
                   );
                 }));
               },

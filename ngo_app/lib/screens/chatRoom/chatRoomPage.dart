@@ -23,9 +23,14 @@ class ChatRoomPage extends StatefulWidget {
   final Map<String, dynamic> targetUser;
   final ChatRoomModel chatroom;
   String? startingMsg;
+  bool reverse;
 
   ChatRoomPage(
-      {Key? key, required this.targetUser, required this.chatroom, startingMsg})
+      {Key? key,
+      required this.targetUser,
+      required this.chatroom,
+      this.startingMsg,
+      this.reverse = false})
       : super(key: key);
 
   @override
@@ -36,15 +41,20 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   TextEditingController messageController = TextEditingController();
   dynamic User;
 
-  void sendMessage() async {
-    String msg = messageController.text.trim();
-    messageController.clear();
+  void sendMessage(sender, {preMsg}) async {
+    String msg;
+    if (preMsg != null) {
+      msg = preMsg;
+    } else {
+      msg = messageController.text.trim();
+      messageController.clear();
+    }
 
     if (msg != "") {
       // Send Message
       MessageModel newMessage = MessageModel(
           messageid: uuid.v1(),
-          sender: User["uid"],
+          sender: sender,
           createdon: DateTime.now(),
           text: msg,
           seen: false);
@@ -71,6 +81,16 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
     if (first) {
       User = Provider.of<Data>(context).data;
       User["uid"] = Provider.of<CustUser?>(context)!.uid;
+      first = false;
+    }
+    if (widget.startingMsg != null && widget.startingMsg != "") {
+      if (widget.reverse) {
+        sendMessage(widget.targetUser["uid"], preMsg: widget.startingMsg);
+        widget.reverse = false;
+      } else {
+        sendMessage(User["uid"], preMsg: widget.startingMsg);
+      }
+      widget.startingMsg = "";
     }
     return Scaffold(
       backgroundColor: Colors.white,
@@ -193,7 +213,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                     ),
                     IconButton(
                       onPressed: () {
-                        sendMessage();
+                        sendMessage(User["uid"]);
                       },
                       icon: Icon(
                         Icons.send,
