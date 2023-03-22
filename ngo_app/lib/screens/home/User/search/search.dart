@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_app/modals/chatRoomModel.dart';
-import 'package:ngo_app/modals/user.dart';
-import 'package:ngo_app/screens/chatRoom/ChatRoomPage.dart';
 import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
 import "package:ngo_app/services/database.dart";
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
-import 'package:provider/provider.dart';
 
 class searchBar extends StatefulWidget {
   const searchBar({super.key});

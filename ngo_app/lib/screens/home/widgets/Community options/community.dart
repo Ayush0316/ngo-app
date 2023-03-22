@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_app/screens/home/User/home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ngo_app/screens/Community/community_option.dart';
 import 'package:ngo_app/screens/Community/community_option.dart';
 
 String option = "";

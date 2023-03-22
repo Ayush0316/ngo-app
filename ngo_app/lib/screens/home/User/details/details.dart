@@ -5,6 +5,7 @@ import 'package:ngo_app/screens/chatRoom/chatRoomPage.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class details extends StatefulWidget {
   Map<String, dynamic> notification;
 

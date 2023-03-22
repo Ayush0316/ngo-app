@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:getwidget/getwidget.dart';
-import 'package:ngo_app/responsive.dart';
+// import 'package:ngo_app/responsive.dart';
 
 class settings_user extends StatefulWidget {
   const settings_user({super.key});
@@ -15,7 +15,7 @@ class _settings_userState extends State<settings_user> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(

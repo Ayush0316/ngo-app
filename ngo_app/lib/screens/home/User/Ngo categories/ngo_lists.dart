@@ -1,12 +1,13 @@
 import "package:flutter/material.dart";
 import 'package:ngo_app/responsive.dart';
+
 class ngo_list extends StatelessWidget {
   final List<String> textList;
   const ngo_list({super.key, required this.textList});
 
   @override
   Widget build(BuildContext context) {
-double width = MediaQuery.of(context).size.width;
+// double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       //add search bar

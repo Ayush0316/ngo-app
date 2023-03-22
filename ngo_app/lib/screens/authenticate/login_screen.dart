@@ -3,7 +3,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:ngo_app/services/auth.dart';
 import "package:ngo_app/screens/authenticate/forgetPassword.dart";
-import 'package:adaptive_layout/adaptive_layout.dart';
+// import 'package:adaptive_layout/adaptive_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   final Function toggleView;

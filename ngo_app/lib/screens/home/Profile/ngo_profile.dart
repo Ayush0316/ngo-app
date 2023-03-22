@@ -14,6 +14,7 @@ final snackBar = SnackBar(
   content: const Text('URl Copied to clipboard'),
 );
 
+// ignore: must_be_immutable
 class profile extends StatefulWidget {
   dynamic data;
   bool user = false;
