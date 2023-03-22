@@ -2,7 +2,8 @@ import "package:flutter/material.dart";
 import 'package:ngo_app/responsive.dart';
 
 class community_option extends StatelessWidget {
-  const community_option({super.key});
+  final String text;
+  const community_option({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class community_option extends StatelessWidget {
             backgroundColor: Colors.blue,
             title: Text(
               // name,
-              'name of the option',
+              text,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w400,

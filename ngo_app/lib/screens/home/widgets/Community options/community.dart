@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/home/User/home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ngo_app/screens/Community/community_option.dart';
+import 'package:ngo_app/screens/Community/community_option.dart';
+
+String option = "";
 
 class communityOptions extends StatefulWidget {
   const communityOptions({super.key});
@@ -33,8 +36,9 @@ class _communityOptionsState extends State<communityOptions> {
           items: [
             InkWell(
               onTap: () async {
+                option = "Teaching";
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const community_option()));
+                    builder: (context) => community_option(text: option)));
               },
               child: Stack(
                 children: <Widget>[
@@ -84,6 +88,7 @@ class _communityOptionsState extends State<communityOptions> {
             ),
             InkWell(
               onTap: () {
+                option = "Cleanliness Drives";
                 Navigator.push(
                   context,
                   MaterialPageRoute(
