@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/home/User/home.dart';
+import 'package:ngo_app/screens/home/User/Ngo categories/ngo_lists.dart';
+
+String option = "";
+String description = "";
+var textList = [];
 
 class ngoCategories extends StatefulWidget {
   const ngoCategories({super.key});
@@ -18,9 +23,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
           shrinkWrap: true,
           children: [
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Nutrition";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -54,9 +64,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Environment";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -88,9 +103,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Education";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -121,9 +141,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Human Rights";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -154,9 +179,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Sports";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -187,9 +217,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Tourism";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -220,9 +255,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Health";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -253,9 +293,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Employment";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -286,9 +331,14 @@ class _ngoCategoriesState extends State<ngoCategories> {
               ),
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+              onTap: () async {
+                option = "Others";
+                description =
+                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ngo_list(
+                          textList: [option, description],
+                        )));
               },
               child: Container(
                 decoration: BoxDecoration(
