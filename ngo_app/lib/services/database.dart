@@ -199,4 +199,27 @@ class DatabaseService {
 
     return chatRoom;
   }
+
+  // ************ History ********** //
+  Future<List<Map<String, dynamic>>> getHistory(String type) async {
+    List<Map<String, dynamic>> data = [];
+    await interests.where(type, isEqualTo: uid).get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        data.add(tmp);
+      });
+    });
+    return data;
+  }
+
+  // Future<List<Map<String, dynamic>>> getHistoryNgo() async {
+  //   List<Map<String, dynamic>> data = [];
+  //   await interests.where("ngo", isEqualTo: uid).get().then((snapshot) {
+  //     snapshot.docs.forEach((element) {
+  //       Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+  //       data.add(tmp);
+  //     });
+  //   });
+  //   return data;
+  // }
 }
