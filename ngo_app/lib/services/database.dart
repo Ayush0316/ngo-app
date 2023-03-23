@@ -122,8 +122,15 @@ class DatabaseService {
     return data;
   }
 
-  Future iAmInterested(String name) async {
-    return await interests.add({"user": uid, "name": name});
+  Future iAmInterested(
+      String targetNgo, String name, String type, DateTime now) async {
+    return await interests.add({
+      "user": uid,
+      "ngo": targetNgo,
+      "name": name,
+      "createdon": now,
+      "type": type
+    });
   }
 
   Future<String?> uploadImage(dynamic imageFile) async {

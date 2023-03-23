@@ -88,7 +88,12 @@ class _recentChatsState extends State<recentChats> {
                                       ),
                                 title: Text(targetUser["name"]),
                                 subtitle: (chatRoomModel.lastMessage != null)
-                                    ? Text(chatRoomModel.lastMessage.toString())
+                                    ? Text(
+                                        chatRoomModel.lastMessage.toString(),
+                                        style: TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 12),
+                                      )
                                     : Text(
                                         "Say hi!!",
                                         style: TextStyle(

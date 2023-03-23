@@ -56,8 +56,11 @@ class _detailsState extends State<details> {
           ElevatedButton(
               onPressed: () async {
                 showLoaderDialog(context);
-                await DatabaseService(uid: uid)
-                    .iAmInterested(widget.notification["name"]);
+                await DatabaseService(uid: uid).iAmInterested(
+                    widget.notification["uid"],
+                    widget.notification["title"],
+                    "donation",
+                    DateTime.now());
                 final ChatRoomModel chatroom = await DatabaseService(uid: uid)
                     .getChatroomModel(widget.notification);
                 Navigator.pushReplacement(context,

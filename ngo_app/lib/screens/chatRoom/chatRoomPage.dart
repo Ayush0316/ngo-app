@@ -1,14 +1,3 @@
-// **************To activate a chat room we must call this function and do the follwing steps.
-
-// Navigator.push(context,MaterialPageRoute(
-//   builder: (context) {
-//     return chatRoomPage(
-//       targetUser : ---------,
-//       chatroom : DatabaseService(uid).getChatRoomModel(target);,
-//     )
-//   }
-// ))
-
 import 'package:ngo_app/modals/chatRoomModel.dart';
 import 'package:ngo_app/modals/messageModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -134,7 +123,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.active) {
-                        if (snapshot.hasData) {
+                        if (snapshot.hasData && !snapshot.data!.docs.isEmpty) {
                           QuerySnapshot dataSnapshot =
                               snapshot.data as QuerySnapshot;
 

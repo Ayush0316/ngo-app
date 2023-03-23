@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/chatRoom/recentChats.dart';
+import 'package:ngo_app/screens/notifications/ngo_notifications.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/widgets/Community%20options/community.dart';
 import 'package:ngo_app/screens/home/widgets/Community%20options/text_community.dart';
@@ -38,7 +39,12 @@ class _NgoHomeState extends State<NgoHome> {
               title: const Text("Home"),
               elevation: 0.0,
               actions: <Widget>[
-                IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ngoNotifications()));
+                    },
+                    icon: Icon(Icons.notifications)),
                 IconButton(
                     onPressed: () async {
                       Navigator.of(context).push(MaterialPageRoute(
