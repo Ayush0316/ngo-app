@@ -181,13 +181,13 @@ class _RegisterNgoState extends State<RegisterNgo> {
                         },
                         items: <String>[
                           'Nutrition',
-                          'Environment and Forest',
-                          'Education and Literacy',
-                          'Tribal Affairs',
-                          'Water Resources',
+                          'Environment',
+                          'Education',
+                          'Human Rights',
                           'Sports',
                           'Tourism',
-                          'Human Rights',
+                          'Health',
+                          'Employment',
                           'Any Other',
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
