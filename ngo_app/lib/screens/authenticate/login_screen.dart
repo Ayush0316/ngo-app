@@ -32,37 +32,31 @@ class _LoginScreenState extends State<LoginScreen> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: Color(0xFFB880E0),
+        backgroundColor: Colors.blue[50],
         resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-              colors: [
-                Color(0xFFB880E0),
-                Color(0xFFF385A4),
-                Color.fromARGB(247, 223, 128, 109),
-              ],
-              stops: [
-                0.3,
-                0.6,
-                1,
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            )),
-            padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
+            padding: const EdgeInsets.only(top: 50, left: 32, right: 32),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Flexible(child: Container(), flex: 0),
-                buildLogo(),
-                const SizedBox(height: 0),
+                // buildLogo(),
+                Text(
+                  'Careezy.comm',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 42.0,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Roboto-BoldItalic',
+                  ),
+                ),
+                const SizedBox(height: 30),
                 Text(
                   'Login',
                   style: TextStyle(
                     decoration: TextDecoration.underline,
-                    fontSize: 42.0,
+                    fontSize: 38.0,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Roboto-Black',
                     letterSpacing: 1.0,
@@ -79,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         labelText: 'EMAIL',
                         suffixIcon: Icon(
                           Icons.email,
+                          color: Colors.blue,
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
@@ -100,15 +95,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: InputDecoration(
                         labelText: 'PASSWORD',
                         suffixIcon: IconButton(
-                            onPressed: () {
-                              _formKey.currentState?.save();
-                              setState(() {
-                                obscure = !obscure;
-                              });
-                            },
-                            icon: Icon(obscure
-                                ? Icons.remove_red_eye_outlined
-                                : Icons.visibility_off_outlined)),
+                          onPressed: () {
+                            _formKey.currentState?.save();
+                            setState(() {
+                              obscure = !obscure;
+                            });
+                          },
+                          icon: Icon(obscure
+                              ? Icons.remove_red_eye_outlined
+                              : Icons.visibility_off_outlined),
+                          color: Colors.blue,
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(10),
@@ -161,13 +158,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         }
                       },
-                      child: const Text("Log in"),
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w200,
+                            color: Colors.white),
+                      ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFFCD5CE),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 0.0,
+                        backgroundColor: Colors.blue,
                         padding:
-                            EdgeInsets.symmetric(horizontal: 44, vertical: 12),
-                        textStyle: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                       ),
                     ),
                     const SizedBox(
@@ -241,13 +246,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               widget.toggleView(2);
                             },
-                            child: const Text("NGO's"),
+                            child: const Text(
+                              "NGO's",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w200,
+                                  color: Colors.white),
+                            ),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFFFCD5CE),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              elevation: 0.0,
+                              backgroundColor: Colors.blue,
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 44, vertical: 12),
-                              textStyle: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  horizontal: 50, vertical: 10),
                             ),
                           ),
                           const SizedBox(
@@ -257,13 +270,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               widget.toggleView(3);
                             },
-                            child: const Text("Donators"),
+                            child: const Text(
+                              "Donators",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w200,
+                                  color: Colors.white),
+                            ),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFFFCD5CE),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              elevation: 0.0,
+                              backgroundColor: Colors.blue,
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 40, vertical: 12),
-                              textStyle: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                  horizontal: 45, vertical: 10),
                             ),
                           ),
                         ])
