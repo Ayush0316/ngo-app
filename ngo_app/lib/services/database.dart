@@ -76,16 +76,38 @@ class DatabaseService {
   }
 
   Future getNgosNameByService(String service) async {
+    List<String> options = [
+      'Nutrition',
+      'Environment',
+      'Human Rights',
+      'Sports',
+      'Education',
+      'Tourism',
+      'Health',
+      'Employment'
+    ];
     List<Map<String, dynamic>> data = [];
-    await ngosCollection
-        .where("Service", isEqualTo: service)
-        .get()
-        .then((snapshot) {
-      snapshot.docs.forEach((element) {
-        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
-        data.add(tmp);
+    if (service != "Others") {
+      await ngosCollection
+          .where("Service", isEqualTo: service)
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          data.add(tmp);
+        });
       });
-    });
+    } else {
+      await ngosCollection
+          .where("Service", whereNotIn: options)
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          data.add(tmp);
+        });
+      });
+    }
     return data;
   }
 
