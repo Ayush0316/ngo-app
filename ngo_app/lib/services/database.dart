@@ -72,6 +72,20 @@ class DatabaseService {
     return result;
   }
 
+  Future getNgosNameByService(String service) async {
+    List<Map<String, dynamic>> data = [];
+    await ngosCollection
+        .where("Service", isEqualTo: service)
+        .get()
+        .then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        data.add(tmp);
+      });
+    });
+    return data;
+  }
+
   // ****** Notifications ********* //
 
   Future don_Req(Map<String, dynamic> request) async {

@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:ngo_app/responsive.dart';
+import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
+import 'package:ngo_app/services/database.dart';
 
 class ngo_list extends StatelessWidget {
   final List<String> textList;
@@ -9,10 +11,16 @@ class ngo_list extends StatelessWidget {
   Widget build(BuildContext context) {
 // double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
+    List ngoNames = [];
+    Future getNames() async {
+      ngoNames = await DatabaseService().getNgosNameByService(textList[0]);
+    }
+
     return GestureDetector(
-      //add search bar
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
+        //add search bar
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
           backgroundColor: Color.fromARGB(249, 255, 255, 255),
           appBar: AppBar(
             toolbarHeight:
@@ -40,14 +48,61 @@ class ngo_list extends StatelessWidget {
             elevation: 0.0,
           ),
           body: SafeArea(
-              child: SingleChildScrollView(
-                  padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //this will contain the entire list of the ngos in this rerspective section
-                    ],
-                  )))),
-    );
+              child: FutureBuilder(
+            future: getNames(),
+            builder: ((context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.separated(
+                  itemBuilder: ((context, index) {
+                    return InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return profile(data: ngoNames[index], user: true);
+                            // return details(
+                            //     notification: notifications[index]);
+                          }),
+                        )
+                      },
+                      child: Card(
+                        elevation: 0.0,
+                        child: ListTile(
+                          leading: ngoNames[index]["Imgurl"] != null
+                              ? CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(ngoNames[index]["Imgurl"]))
+                              : CircleAvatar(child: Icon(Icons.person)),
+                          title: Text(ngoNames[index]["name"]),
+                          subtitle: Text(ngoNames[index]["address"] +
+                              " " +
+                              ngoNames[index]["city"] +
+                              ", " +
+                              ngoNames[index]["state"]),
+                        ),
+                      ),
+                    );
+                  }),
+                  itemCount: ngoNames.length,
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: 2,
+                  ),
+                );
+              }
+            }),
+            // child: SingleChildScrollView(
+            // padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+            // child: Column(
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     //this will contain the entire list of the ngos in this rerspective section
+            //   ],
+            // ))
+          )),
+        ));
   }
 }
