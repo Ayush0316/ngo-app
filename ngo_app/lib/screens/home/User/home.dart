@@ -13,6 +13,7 @@ import 'package:ngo_app/screens/home/User/about us/text_about.dart';
 import 'package:ngo_app/screens/home/widgets/Quote/text.dart';
 import 'package:ngo_app/screens/home/widgets/Quote/divider.dart';
 import 'package:ngo_app/screens/notifications/user_notifications.dart';
+import 'package:ngo_app/services/ML/preprocessing.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -44,8 +45,10 @@ class _HomeState extends State<Home> {
               actions: <Widget>[
                 IconButton(
                     onPressed: () async {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const noti_user()));
+                      await ml("Teaching",
+                          "Teaching is one of the best professions via which we can built the future of any society.");
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => const noti_user()));
                     },
                     icon: Icon(Icons.notifications)),
                 IconButton(
