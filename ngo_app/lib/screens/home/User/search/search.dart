@@ -40,12 +40,6 @@ class _searchBarState extends State<searchBar> {
                             fontSize: 18, fontWeight: FontWeight.w100),
                         prefixIcon: const Icon(Icons.search),
                         filled: true,
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {});
-                          },
-                          icon: Icon(Icons.mic),
-                        ),
                         contentPadding: EdgeInsets.all(12),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(
