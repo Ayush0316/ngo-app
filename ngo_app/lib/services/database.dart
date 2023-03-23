@@ -23,6 +23,9 @@ class DatabaseService {
   final CollectionReference voluteers =
       FirebaseFirestore.instance.collection("Volunteers");
 
+  final CollectionReference interests =
+      FirebaseFirestore.instance.collection("Interests");
+
   // New user registration
   Future updateUserData(Map<String, dynamic> userData) async {
     return await usersCollection.doc(uid).set(userData);
@@ -117,6 +120,10 @@ class DatabaseService {
       });
     });
     return data;
+  }
+
+  Future iAmInterested(String name) async {
+    return await interests.add({"user": uid, "name": name});
   }
 
   Future<String?> uploadImage(dynamic imageFile) async {

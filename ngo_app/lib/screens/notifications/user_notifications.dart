@@ -3,7 +3,7 @@ import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:ngo_app/screens/home/User/details/details.dart';
+import 'package:ngo_app/screens/notifications/details/details.dart';
 
 class noti_user extends StatefulWidget {
   const noti_user({super.key});
@@ -74,8 +74,13 @@ class _noti_userState extends State<noti_user> {
                             child: Card(
                               elevation: 0.0,
                               child: ListTile(
-                                leading:
-                                    CircleAvatar(child: Icon(Icons.person)),
+                                leading: (notifications[index]["Imgurl"] !=
+                                        null)
+                                    ? CircleAvatar(
+                                        backgroundImage: NetworkImage(
+                                            notifications[index]["Imgurl"]),
+                                      )
+                                    : CircleAvatar(child: Icon(Icons.person)),
                                 title: Text(notifications[index]["title"]),
                                 subtitle: Text(notifications[index]["name"]),
                                 // trailing: Icon(Icons.forward),

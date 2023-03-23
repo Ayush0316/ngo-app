@@ -4,6 +4,7 @@ import 'package:ngo_app/modals/user.dart';
 import 'package:ngo_app/screens/chatRoom/chatRoomPage.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
+// import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 // ignore: must_be_immutable
 class details extends StatefulWidget {
@@ -16,7 +17,28 @@ class details extends StatefulWidget {
 }
 
 class _detailsState extends State<details> {
-  String? uid;
+  String uid = "";
+  // bool _saving = false;
+
+  showLoaderDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(
+              margin: EdgeInsets.only(left: 7), child: Text("Loading...")),
+        ],
+      ),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     uid = Provider.of<CustUser?>(context)!.uid;
@@ -33,9 +55,13 @@ class _detailsState extends State<details> {
           Text(widget.notification["details"]),
           ElevatedButton(
               onPressed: () async {
+                showLoaderDialog(context);
+                await DatabaseService(uid: uid)
+                    .iAmInterested(widget.notification["name"]);
                 final ChatRoomModel chatroom = await DatabaseService(uid: uid)
                     .getChatroomModel(widget.notification);
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
                   return ChatRoomPage(
                     targetUser: widget.notification,
                     chatroom: chatroom,
@@ -49,4 +75,15 @@ class _detailsState extends State<details> {
       )),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return new Scaffold(
+  //     appBar: new AppBar(
+  //       title: new Text('Flutter Progress Indicator Demo'),
+  //       backgroundColor: Colors.blue,
+  //     ),
+  //     body: ModalProgressHUD(child: _buildWidget(), inAsyncCall: _saving),
+  //   );
+  // }
 }
