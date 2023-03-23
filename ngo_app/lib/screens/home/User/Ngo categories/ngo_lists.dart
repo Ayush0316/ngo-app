@@ -70,6 +70,7 @@ class ngo_list extends StatelessWidget {
                         )
                       },
                       child: Card(
+                        color: Colors.blue[50],
                         elevation: 0.0,
                         child: ListTile(
                           leading: ngoNames[index]["Imgurl"] != null
