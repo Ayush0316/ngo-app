@@ -27,7 +27,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          backgroundColor: Color(0xFFEFDBE3),
+          backgroundColor: Color.fromARGB(249, 255, 255, 255),
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
             title: const Text(
@@ -38,40 +38,27 @@ class _RegisterNgoState extends State<RegisterNgo> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.blue,
             elevation: 0,
             flexibleSpace: Container(
               padding: const EdgeInsets.only(top: 20, left: 32, right: 32),
               width: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFFB880E0),
-                    Color(0xFFF385A4),
-                    Color.fromARGB(247, 223, 128, 109),
-                  ],
-                  stops: [
-                    0.3,
-                    0.6,
-                    1,
-                  ],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                ),
-              ),
             ),
             actions: <Widget>[
               TextButton.icon(
                   onPressed: () {
                     widget.toggleView(1);
                   },
-                  icon: const Icon(Icons.person),
+                  icon: const Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
                   label: const Text(
                     "Sign in",
                     style: TextStyle(
                       fontSize: 18.0,
                       fontFamily: 'Roboto-Black',
-                      color: Colors.deepPurple,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ))
@@ -167,7 +154,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                           hintText: 'Select any category',
                           labelText: 'SERVICE',
                         ),
-                        dropdownColor: Color(0xFFEFDBE3),
+                        dropdownColor: Color.fromARGB(255, 189, 236, 243),
                         onChanged: (String? newValue) {
                           setState(() {
                             service = newValue;
@@ -307,13 +294,19 @@ class _RegisterNgoState extends State<RegisterNgo> {
                             }
                           }
                         },
-                        child: const Text("REGISTER"),
+                        child: const Text("REGISTER",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w200,
+                                color: Colors.white)),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          elevation: 0.0,
+                          backgroundColor: Colors.blue,
                           padding: EdgeInsets.symmetric(
-                              horizontal: 44, vertical: 12),
-                          textStyle: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              horizontal: 100, vertical: 10),
                         ),
                       ),
                       const SizedBox(

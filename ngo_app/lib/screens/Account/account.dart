@@ -151,10 +151,10 @@ class _AccountState extends State<Account> {
                           onPressed: () {
                             if (data["type"] == "User") {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const history()));
+                                  builder: (context) => const history_user()));
                             } else {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const Ngo_History()));
+                                  builder: (context) => const history_ngo()));
                             }
                           },
                           child: Row(

@@ -3,14 +3,14 @@ import "package:ngo_app/modals/user.dart";
 import "package:ngo_app/services/database.dart";
 import "package:provider/provider.dart";
 
-class history extends StatefulWidget {
-  const history({super.key});
+class history_user extends StatefulWidget {
+  const history_user({super.key});
 
   @override
-  State<history> createState() => _historyState();
+  State<history_user> createState() => _history_userState();
 }
 
-class _historyState extends State<history> {
+class _history_userState extends State<history_user> {
   String uid = '';
   @override
   Widget build(BuildContext context) {

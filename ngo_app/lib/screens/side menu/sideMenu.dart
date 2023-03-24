@@ -102,11 +102,11 @@ class _sideMenuState extends State<sideMenu> {
             ),
             onTap: () {
               if (data["type"] == "User") {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const history()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const history_user()));
               } else {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const Ngo_History()));
+                    builder: (context) => const history_ngo()));
               }
             },
           ),
