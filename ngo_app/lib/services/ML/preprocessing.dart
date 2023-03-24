@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
-import 'dart:typed_data';
 // import 'package:flutter/services.dart';
 
 // import 'package:tflite/tflite.dart';
 import 'package:flutter/services.dart';
-import 'package:ngo_app/screens/home/User/Ngo%20categories/categories.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 
 List<String> stopWords = [
@@ -1241,11 +1239,12 @@ Future preProcessing(String st_tag, String st_about) async {
     }
   }
 
-  List<List<List>> a = [mapped_emb];
-  dynamic preProcessed = [a, tag];
-  // dynamic preProcessed = [tag, a];
+  List<List> a = [mapped_emb];
+  // dynamic preProcessed = [a, tag];
+  dynamic preProcessed = [tag, a];
 
   // send emb data to model.
+  // print(preProcessed);
   return preProcessed;
 }
 
@@ -1264,13 +1263,17 @@ Future _loadModel() async {
 dynamic ml(String st_tag, String st_about) async {
   await _loadModel();
   dynamic input = await preProcessing(st_tag, st_about);
-  dynamic output = [];
+  var output = List.filled(1, 0).reshape([1, 1]);
 
   _interpreter!.run(input, output);
-//   _interpreter!.allocateTensors();
-// // Print list of input tensors
-//   print(_interpreter!.getInputTensors());
-// // Print list of output tensors
-//   print(_interpreter!.getOutputTensors());
+  // _interpreter!.allocateTensors();
+// Print list of input tensors
+  var tensor = _interpreter!.getInputTensors();
+  print(tensor[0].getInputShapeIfDifferent(input));
+  print(tensor);
+  print(tensor.elementAt(0));
+// Print list of output tensors
+  print(_interpreter!.getOutputTensors());
+  print(_interpreter!.isAllocated);
   print(output);
 }
