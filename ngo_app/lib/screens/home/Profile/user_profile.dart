@@ -11,14 +11,17 @@ final snackBar = SnackBar(
   content: const Text('URl Copied to clipboard'),
 );
 
-class profile_user extends StatelessWidget {
-  const profile_user({super.key});
+// ignore: must_be_immutable
+class userProfile extends StatelessWidget {
+  Map<String, dynamic> data;
+  userProfile(this.data, {super.key});
 
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    String url = data["Imgurl"] != null ? data["Imgurl"] : " ";
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
@@ -45,19 +48,19 @@ class profile_user extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Flexible(child: Container(), flex: 0),
-                      // // (url == " ")
-                      //     ? CircleAvatar(
-                      //         radius: 70,
-                      //         backgroundImage: AssetImage("images/logo.png"),
-                      //       )
-                      //     : CircleAvatar(
-                      //         radius: 70,
-                      //         backgroundColor: Colors.purple[800],
-                      //         backgroundImage: NetworkImage(url),
-                      //       ),
+                      (url == " ")
+                          ? CircleAvatar(
+                              radius: 70,
+                              backgroundImage: AssetImage("images/logo.png"),
+                            )
+                          : CircleAvatar(
+                              radius: 70,
+                              backgroundColor: Colors.purple[800],
+                              backgroundImage: NetworkImage(url),
+                            ),
                       SizedBox(height: 10),
                       Text(
-                        'user name',
+                        data["name"],
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.w500,
@@ -65,7 +68,7 @@ class profile_user extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        ('contact details'),
+                        data["phone_number"],
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontFamily: 'Roboto-Black',
@@ -73,21 +76,27 @@ class profile_user extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        ('user address'),
+                        (data["address"] +
+                            " , " +
+                            data["city"] +
+                            " , " +
+                            data["state"] +
+                            " , " +
+                            data["country"]),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
                       Text(
-                        ('volunteering interests'),
+                        data['Volunteering Interests'],
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
                       Text(
-                        (""),
+                        data["email"],
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',

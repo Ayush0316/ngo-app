@@ -103,8 +103,8 @@ class _sideMenuState extends State<sideMenu> {
             ),
             onTap: () {
               if (data["type"] == "User") {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const profile_user()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => userProfile(data)));
               } else {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => profile(data: data)));

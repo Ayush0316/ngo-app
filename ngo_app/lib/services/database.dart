@@ -148,8 +148,10 @@ class DatabaseService {
 
   Future<Map<String, dynamic>> getDonationData(String uid) async {
     Map<String, dynamic> data = {};
-    data = await donations.doc(uid).get().then((DocumentSnapshot doc) async {
-      return doc.data() as Map<String, dynamic>;
+    await donations.doc(uid).get().then((DocumentSnapshot doc) async {
+      Map<String, dynamic> tmp = doc.data() as Map<String, dynamic>;
+      tmp["req_uid"] = doc.id;
+      data = tmp;
     });
     return data;
   }

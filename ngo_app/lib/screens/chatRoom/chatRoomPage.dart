@@ -3,6 +3,9 @@ import 'package:ngo_app/modals/messageModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ngo_app/modals/user.dart';
+import 'package:ngo_app/screens/Account/edit_profile.dart';
+import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
+import 'package:ngo_app/screens/home/Profile/user_profile.dart';
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
@@ -85,25 +88,41 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Row(
-          children: [
-            (widget.targetUser["Imgurl"] == "" ||
-                    widget.targetUser["Imgurl"] == null)
-                ? CircleAvatar(
-                    child: Icon(Icons.person),
-                  )
-                : CircleAvatar(
-                    backgroundColor: Colors.purple[800],
-                    backgroundImage: NetworkImage(widget.targetUser["Imgurl"]),
-                  ),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              widget.targetUser["name"],
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
+        title: InkWell(
+          onTap: () {
+            if (User["type"] == "Ngo") {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                return userProfile(widget.targetUser);
+              }));
+            } else {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                return profile(data: widget.targetUser);
+              }));
+            }
+          },
+          child: Row(
+            children: [
+              (widget.targetUser["Imgurl"] == "" ||
+                      widget.targetUser["Imgurl"] == null)
+                  ? CircleAvatar(
+                      child: Icon(Icons.person),
+                    )
+                  : CircleAvatar(
+                      backgroundColor: Colors.purple[800],
+                      backgroundImage:
+                          NetworkImage(widget.targetUser["Imgurl"]),
+                    ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                widget.targetUser["name"],
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
         ),
       ),
       body: SafeArea(

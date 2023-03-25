@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:intl/intl.dart";
 import "package:ngo_app/modals/user.dart";
 import "package:ngo_app/screens/notifications/details/details.dart";
 import "package:ngo_app/services/database.dart";
@@ -33,11 +34,14 @@ class _history_userState extends State<history_user> {
               future: DatabaseService(uid: uid).getHistory('user'),
               builder: (context, userData) {
                 if (userData.connectionState == ConnectionState.done) {
-                  if (userData.data != null) {
+                  if (userData.data != null && !userData.data!.isEmpty) {
                     List<Map<String, dynamic>> history = userData.data!;
                     return ListView.builder(
                         itemCount: history.length,
                         itemBuilder: (context, index) {
+                          DateTime then = history[index]["createdon"].toDate();
+                          String formattedDate =
+                              DateFormat('EEE d MMM\nkk:mm').format(then);
                           return ListTile(
                             onTap: () async {
                               if (history[index]["type"] == "donation") {
@@ -57,7 +61,7 @@ class _history_userState extends State<history_user> {
                             // leading: Text("leading"),
                             title: Text("Joined a " + history[index]["type"]),
                             subtitle: Text(history[index]["name"]),
-                            trailing: history[index]["createdon"],
+                            trailing: Text(formattedDate),
                           );
                         });
                     // return ListTile(
