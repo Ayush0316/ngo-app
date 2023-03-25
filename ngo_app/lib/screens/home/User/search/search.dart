@@ -48,7 +48,7 @@ class _searchBarState extends State<searchBar> {
                         ),
                       ),
                       itemSubmitted: (item) async {
-                        searchTextField?.textField?.controller?.text = item;
+                        // searchTextField?.textField?.controller?.text = item;
                         dynamic targetUid = result["uid"][item];
                         dynamic targetData =
                             await DatabaseService(uid: targetUid).getData();
@@ -61,7 +61,7 @@ class _searchBarState extends State<searchBar> {
                                 )));
                       },
                       key: key,
-                      clearOnSubmit: true,
+                      clearOnSubmit: false,
                       suggestions: result["data"],
                       itemBuilder: (context, item) => Padding(
                             padding: const EdgeInsets.all(8.0),

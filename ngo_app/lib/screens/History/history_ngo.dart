@@ -38,8 +38,16 @@ class _history_ngoState extends State<history_ngo> {
                         itemCount: history.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            leading: Text("leading"),
-                            title: Text("title"),
+                            onTap: () {
+                              if (history[index]["type"] == "donation") {
+                              } else if (history[index]["type"] ==
+                                  "volunteering") {
+                              } else {}
+                            },
+                            // leading: Text("leading"),
+                            title: Text("Joined a " + history[index]["type"]),
+                            subtitle: Text(history[index]["name"]),
+                            trailing: history[index]["createdon"],
                           );
                         });
                     // return ListTile(
@@ -87,7 +95,7 @@ class _history_ngoState extends State<history_ngo> {
                     ));
                   }
                 } else {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 }
               },
             ))));

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:ngo_app/modals/user.dart";
+import "package:ngo_app/screens/notifications/details/details.dart";
 import "package:ngo_app/services/database.dart";
 import "package:provider/provider.dart";
 
@@ -38,8 +39,25 @@ class _history_userState extends State<history_user> {
                         itemCount: history.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            leading: Text("leading"),
-                            title: Text("title"),
+                            onTap: () async {
+                              if (history[index]["type"] == "donation") {
+                                String req_uid = history[index]["uid"];
+                                Map<String, dynamic> data =
+                                    await DatabaseService()
+                                        .getDonationData(req_uid);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            details(notification: data)));
+                              } else if (history[index]["type"] ==
+                                  "volunteering") {
+                              } else {}
+                            },
+                            // leading: Text("leading"),
+                            title: Text("Joined a " + history[index]["type"]),
+                            subtitle: Text(history[index]["name"]),
+                            trailing: history[index]["createdon"],
                           );
                         });
                     // return ListTile(
@@ -87,7 +105,7 @@ class _history_userState extends State<history_user> {
                     ));
                   }
                 } else {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 }
               },
             ))));

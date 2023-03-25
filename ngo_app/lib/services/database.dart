@@ -126,6 +126,7 @@ class DatabaseService {
     await donations.get().then((snapshot) {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        tmp["req_uid"] = element.id;
         data.add(tmp);
       });
     });
@@ -138,17 +139,27 @@ class DatabaseService {
     await voluteers.where("Field", isEqualTo: interest).get().then((snapshot) {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        tmp["req_uid"] = element.id;
         data.add(tmp);
       });
     });
     return data;
   }
 
-  Future iAmInterested(
-      String targetNgo, String name, String type, DateTime now) async {
+  Future<Map<String, dynamic>> getDonationData(String uid) async {
+    Map<String, dynamic> data = {};
+    data = await donations.doc(uid).get().then((DocumentSnapshot doc) async {
+      return doc.data() as Map<String, dynamic>;
+    });
+    return data;
+  }
+
+  Future iAmInterested(String targetNgo, String name, String type, String req,
+      DateTime now) async {
     return await interests.add({
       "user": uid,
       "ngo": targetNgo,
+      "uid": req,
       "name": name,
       "createdon": now,
       "type": type
