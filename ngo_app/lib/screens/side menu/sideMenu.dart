@@ -10,6 +10,7 @@ import 'package:ngo_app/screens/History/history_user.dart';
 import 'package:ngo_app/screens/History/history_ngo.dart';
 import 'package:ngo_app/screens/Help and Feedback/help_feedback.dart';
 import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
+import 'package:ngo_app/screens/home/Profile/user_profile.dart';
 
 class sideMenu extends StatefulWidget {
   const sideMenu({super.key});
@@ -72,23 +73,43 @@ class _sideMenuState extends State<sideMenu> {
                   builder: (context) => const Type_Selector()));
             },
           ),
-          Visibility(
-            visible: (data["type"] == "Ngo"),
-            child: ListTile(
-              title: Text(
-                'Profile',
-                style: TextStyle(
-                  // decoration: TextDecoration.underline,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto-Black',
-                ),
+          // Visibility(
+          //   visible: (data["type"] == "Ngo"),
+          //   child: ListTile(
+          //     title: Text(
+          //       'Profile',
+          //       style: TextStyle(
+          //         // decoration: TextDecoration.underline,
+          //         fontSize: 20.0,
+          //         fontWeight: FontWeight.bold,
+          //         fontFamily: 'Roboto-Black',
+          //       ),
+          //     ),
+          //     onTap: () {
+          //       Navigator.of(context).push(MaterialPageRoute(
+          //           builder: (context) => profile(data: data)));
+          //     },
+          //   ),
+          // ),
+          ListTile(
+            title: Text(
+              'Profile',
+              style: TextStyle(
+                // decoration: TextDecoration.underline,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto-Black',
               ),
-              onTap: () {
+            ),
+            onTap: () {
+              if (data["type"] == "User") {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const profile_user()));
+              } else {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => profile(data: data)));
-              },
-            ),
+              }
+            },
           ),
           ListTile(
             title: Text(
