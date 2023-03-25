@@ -26,6 +26,9 @@ class DatabaseService {
   final CollectionReference interests =
       FirebaseFirestore.instance.collection("Interests");
 
+  final CollectionReference communities =
+      FirebaseFirestore.instance.collection("Communities");
+
   // New user registration
   Future updateUserData(Map<String, dynamic> userData) async {
     return await usersCollection.doc(uid).set(userData);
@@ -235,4 +238,21 @@ class DatabaseService {
   //   });
   //   return data;
   // }
+
+  // ************** Communities *************************
+  Future register_community(Map<String, dynamic> data) async {
+    return await communities.add(data);
+  }
+
+  Future getCommDataByTag(String tag) async {
+    List<Map<String, dynamic>> data = [];
+    await communities.where("tag", isEqualTo: tag).get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        tmp["req_uid"] = element.id;
+        data.add(tmp);
+      });
+    });
+    return data;
+  }
 }
