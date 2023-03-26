@@ -219,7 +219,11 @@ class DatabaseService {
   // ************ History ********** //
   Future<List<Map<String, dynamic>>> getHistory(String type) async {
     List<Map<String, dynamic>> data = [];
-    await interests.where(type, isEqualTo: uid).get().then((snapshot) {
+    await interests
+        .where(type, isEqualTo: uid)
+        .orderBy("createdon", descending: true)
+        .get()
+        .then((snapshot) {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
         data.add(tmp);
@@ -264,7 +268,7 @@ class DatabaseService {
     bool exists = false;
     await interests
         .where("comm_uid", isEqualTo: comm_uid)
-        .where("user_uid", isEqualTo: uid)
+        .where("user", isEqualTo: uid)
         .get()
         .then((snapshot) {
       if (snapshot.docs.length > 0) {
@@ -272,5 +276,15 @@ class DatabaseService {
       }
     });
     return exists;
+  }
+
+  Future<Map<String, dynamic>> getCommData(String uid) async {
+    Map<String, dynamic> data = {};
+    await communities.doc(uid).get().then((DocumentSnapshot doc) async {
+      Map<String, dynamic> tmp = doc.data() as Map<String, dynamic>;
+      tmp["uid"] = uid;
+      data = tmp;
+    });
+    return data;
   }
 }

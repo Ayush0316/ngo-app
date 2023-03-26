@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 import "package:ngo_app/modals/user.dart";
+import "package:ngo_app/screens/Community/community_screens.dart";
 import "package:ngo_app/screens/notifications/details/details.dart";
 import "package:ngo_app/services/database.dart";
 import "package:provider/provider.dart";
@@ -56,7 +57,17 @@ class _history_userState extends State<history_user> {
                                             details(notification: data)));
                               } else if (history[index]["type"] ==
                                   "volunteering") {
-                              } else {}
+                              } else {
+                                String comm_uid = history[index]["comm_uid"];
+                                Map<String, dynamic> data =
+                                    await DatabaseService()
+                                        .getCommData(comm_uid);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            community_profile(data)));
+                              }
                             },
                             // leading: Text("leading"),
                             title: Text("Joined a " + history[index]["type"]),

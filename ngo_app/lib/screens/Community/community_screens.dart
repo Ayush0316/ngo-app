@@ -255,9 +255,10 @@ class _community_profileState extends State<community_profile> {
                         onPressed: () async {
                           Map<String, dynamic> toSave = {
                             "comm_uid": widget.data["uid"],
-                            "user_uid": uid,
+                            "user": uid,
                             "createdon": DateTime.now(),
-                            "type": "Comm"
+                            "type": "Community",
+                            "name": widget.data["name"]
                           };
                           await DatabaseService().joinComm(toSave);
                           setState(() {
@@ -272,7 +273,7 @@ class _community_profileState extends State<community_profile> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 10,
+                            height: 6,
                           ),
                           Text(
                             'Join our Server!!',
