@@ -264,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(
-                            width: 22,
+                            width: 10,
                           ),
                           ElevatedButton(
                             onPressed: () {
