@@ -13,7 +13,7 @@ class noti_user extends StatefulWidget {
 
 class _noti_userState extends State<noti_user> {
   List<Map<String, dynamic>> notifications = [];
-  List<Map<String, dynamic>> vol_not = [];
+  // List<Map<String, dynamic>> vol_not = [];
 
   Future<void> get_notifications() async {
     dynamic interests = [
@@ -31,12 +31,16 @@ class _noti_userState extends State<noti_user> {
       ins = "Any Other";
     }
     notifications = await DatabaseService().notifications();
-    vol_not = await DatabaseService().vol_notifications(ins);
+    notifications.addAll(await DatabaseService().vol_notifications(ins));
+    notifications.sort((m1, m2) {
+      return m2["createdon"].compareTo(m1["createdon"]);
+    });
+    print(notifications);
   }
 
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    String formattedDate = DateFormat('EEE d MMM\nkk:mm').format(now);
+    // DateTime now = DateTime.now();
+    // String formattedDate = DateFormat('EEE d MMM\nkk:mm').format(now);
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
@@ -61,6 +65,10 @@ class _noti_userState extends State<noti_user> {
                     } else {
                       return ListView.builder(
                           itemBuilder: ((context, index) {
+                            DateTime then =
+                                notifications[index]["createdon"].toDate();
+                            String formattedDate =
+                                DateFormat('EEE d MMM\nkk:mm').format(then);
                             return Card(
                               elevation: 0.0,
                               child: ListTile(
@@ -70,7 +78,7 @@ class _noti_userState extends State<noti_user> {
                                     MaterialPageRoute(builder: (context) {
                                       return details(
                                         notification: notifications[index],
-                                        type: "Donated",
+                                        type: notifications[index]["type"],
                                       );
                                     }),
                                   )
