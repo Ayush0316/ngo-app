@@ -142,8 +142,10 @@ class _req_volunteersState extends State<req_volunteers> {
                                   formData["name"] = name;
                                   formData["uid"] = uid;
                                   formData["Imgurl"] = Imgurl;
+                                  formData["createdon"] = DateTime.now();
                                   await DatabaseService().vol_req(formData);
                                   setState(() {
+                                    _formKey.currentState!.reset();
                                     error = "Request posted successfully!!";
                                   });
                                 }

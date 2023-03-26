@@ -164,8 +164,10 @@ class _req_donationsState extends State<req_donations> {
                                   formData['name'] = name;
                                   formData["uid"] = uid;
                                   formData['Imgurl'] = Imgurl;
+                                  formData["createdon"] = DateTime.now();
                                   await DatabaseService().don_Req(formData);
                                   setState(() {
+                                    _formKey.currentState!.reset();
                                     error = "Request posted successfully!!";
                                   });
                                 }

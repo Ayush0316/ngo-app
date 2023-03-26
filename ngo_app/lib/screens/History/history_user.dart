@@ -32,7 +32,7 @@ class _history_userState extends State<history_user> {
                 backgroundColor: Colors.blue),
             body: SafeArea(
                 child: FutureBuilder(
-              future: DatabaseService(uid: uid).getHistory('user'),
+              future: DatabaseService(uid: uid).getHistory(),
               builder: (context, userData) {
                 if (userData.connectionState == ConnectionState.done) {
                   if (userData.data != null && !userData.data!.isEmpty) {
