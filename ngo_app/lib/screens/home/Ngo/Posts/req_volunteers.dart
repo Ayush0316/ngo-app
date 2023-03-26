@@ -42,7 +42,7 @@ class _req_volunteersState extends State<req_volunteers> {
           elevation: 0.0,
         ),
         body: SafeArea(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
             child: Container(
               child: Column(
