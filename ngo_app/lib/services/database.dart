@@ -249,10 +249,28 @@ class DatabaseService {
     await communities.where("tag", isEqualTo: tag).get().then((snapshot) {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
-        tmp["req_uid"] = element.id;
+        tmp["uid"] = element.id;
         data.add(tmp);
       });
     });
     return data;
+  }
+
+  Future joinComm(Map<String, dynamic> data) async {
+    await interests.add(data);
+  }
+
+  Future isJoined(String comm_uid) async {
+    bool exists = false;
+    await interests
+        .where("comm_uid", isEqualTo: comm_uid)
+        .where("user_uid", isEqualTo: uid)
+        .get()
+        .then((snapshot) {
+      if (snapshot.docs.length > 0) {
+        exists = true;
+      }
+    });
+    return exists;
   }
 }

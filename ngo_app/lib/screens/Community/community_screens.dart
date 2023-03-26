@@ -1,16 +1,41 @@
 import "package:flutter/material.dart";
+import 'package:ngo_app/modals/user.dart';
 import 'package:ngo_app/responsive.dart';
 import 'package:flutter/services.dart';
+import 'package:ngo_app/services/database.dart';
+import 'package:provider/provider.dart';
 
 final snackBar = SnackBar(
   content: const Text('URl Copied to clipboard'),
 );
 
-class community_profile extends StatelessWidget {
-  const community_profile({super.key});
+// ignore: must_be_immutable
+class community_profile extends StatefulWidget {
+  Map<String, dynamic> data;
+
+  community_profile(this.data, {super.key});
+
+  @override
+  State<community_profile> createState() => _community_profileState();
+}
+
+class _community_profileState extends State<community_profile> {
+  String url = " ";
+  String? uid;
+  bool visible = false;
+
+  checkJoined(uid, comm_uid) async {
+    visible = await DatabaseService(uid: uid).isJoined(comm_uid);
+    if (this.mounted) {
+      setState(() {});
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    uid = Provider.of<CustUser?>(context)!.uid;
+    checkJoined(uid, widget.data["uid"]);
+    url = widget.data["Imgurl"] != null ? widget.data["Imgurl"] : " ";
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
@@ -23,7 +48,7 @@ class community_profile extends StatelessWidget {
           ),
           backgroundColor: Colors.blue,
           title: Text(
-            "name of the community",
+            widget.data["name"],
             style: TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.w400,
@@ -39,15 +64,19 @@ class community_profile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Flexible(child: Container(), flex: 0),
-                  CircleAvatar(
-                    radius: 70,
-                    backgroundImage: AssetImage(
-                      "images/logo.png",
-                    ),
-                  ),
+                  (url == " ")
+                      ? CircleAvatar(
+                          backgroundImage: AssetImage("images/logo.png"),
+                          radius: 60,
+                        )
+                      : CircleAvatar(
+                          radius: 60,
+                          backgroundColor: Colors.blue[300],
+                          backgroundImage: NetworkImage(url),
+                        ),
                   SizedBox(height: 10),
                   Text(
-                    'name of the community',
+                    widget.data["name"],
                     style: TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.w500,
@@ -55,7 +84,7 @@ class community_profile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'main fileds of comunity working',
+                    widget.data["tag"],
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto-Black',
@@ -63,7 +92,14 @@ class community_profile extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'community admins contact details',
+                    widget.data["phone_number"],
+                    style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'Roboto-Black',
+                    ),
+                  ),
+                  Text(
+                    widget.data["email"],
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       fontFamily: 'Roboto-Black',
@@ -91,7 +127,7 @@ class community_profile extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      ('text about the working of the community'),
+                      (widget.data["about"]),
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.w500,
@@ -133,8 +169,8 @@ class community_profile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              // data["website"],
-                              'website link, socials of the community like instagram or personal website',
+                              widget.data["socials"],
+                              // 'website link, socials of the community like instagram or personal website',
 
                               style: TextStyle(
                                 color: Colors.white,
@@ -148,13 +184,154 @@ class community_profile extends StatelessWidget {
                               size: 30,
                               color: Colors.white,
                             )
-                            //join the community 
+                            //join the community
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Website',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Roboto-Black',
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  SizedBox(
+                    height: 60,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          side: BorderSide(
+                            color: Colors.blue,
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)))),
+                      // olor: Colors.blue,
+                      // elevation: 0.0,
+                      onPressed: () => {},
+                      onLongPress: () async {
+                        //copy the link address and show message
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, left: 10, right: 10, bottom: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              widget.data["website"],
+                              // 'website link, socials of the community like instagram or personal website',
+
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Roboto-Black',
+                              ),
+                            ),
+                            Icon(
+                              Icons.link,
+                              size: 30,
+                              color: Colors.white,
+                            )
+                            //join the community
                           ],
                         ),
                       ),
                     ),
                   ),
                   SizedBox(height: 10),
+                  Visibility(
+                    visible: !visible,
+                    child: ElevatedButton.icon(
+                        onPressed: () async {
+                          Map<String, dynamic> toSave = {
+                            "comm_uid": widget.data["uid"],
+                            "user_uid": uid,
+                            "createdon": DateTime.now(),
+                            "type": "Comm"
+                          };
+                          await DatabaseService().joinComm(toSave);
+                          setState(() {
+                            visible = true;
+                          });
+                        },
+                        icon: Icon(Icons.add),
+                        label: Text("I am Interested")),
+                  ),
+                  Visibility(
+                      visible: visible,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Join our Server!!',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Roboto-Black',
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          SizedBox(
+                            height: 60,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                  side: BorderSide(
+                                    color: Colors.blue,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)))),
+                              // olor: Colors.blue,
+                              // elevation: 0.0,
+                              onPressed: () => {},
+                              onLongPress: () async {
+                                //copy the link address and show message
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 10, left: 10, right: 10, bottom: 10),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      widget.data["server"],
+                                      // 'website link, socials of the community like instagram or personal website',
+
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Roboto-Black',
+                                      ),
+                                    ),
+                                    Icon(
+                                      Icons.link,
+                                      size: 30,
+                                      color: Colors.white,
+                                    )
+                                    //join the community
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ))
                 ]),
           ),
         ),
