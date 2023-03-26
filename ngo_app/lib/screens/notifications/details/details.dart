@@ -109,7 +109,7 @@ class _detailsState extends State<details> {
                     await DatabaseService(uid: uid).iAmInterested(
                         widget.notification["uid"],
                         widget.notification["title"],
-                        "donation",
+                        "Donated",
                         widget.notification["req_uid"],
                         DateTime.now());
                     final ChatRoomModel chatroom =

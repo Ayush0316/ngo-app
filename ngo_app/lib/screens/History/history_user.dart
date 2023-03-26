@@ -45,7 +45,7 @@ class _history_userState extends State<history_user> {
                               DateFormat('EEE d MMM\nkk:mm').format(then);
                           return ListTile(
                             onTap: () async {
-                              if (history[index]["type"] == "donation") {
+                              if (history[index]["type"] == "Donated") {
                                 String req_uid = history[index]["uid"];
                                 Map<String, dynamic> data =
                                     await DatabaseService()
@@ -70,48 +70,13 @@ class _history_userState extends State<history_user> {
                               }
                             },
                             // leading: Text("leading"),
-                            title: Text("Joined a " + history[index]["type"]),
+                            title: (history[index]["type"] == "Community")
+                                ? Text("Joined a " + history[index]["type"])
+                                : Text("You " + history[index]["type"]),
                             subtitle: Text(history[index]["name"]),
                             trailing: Text(formattedDate),
                           );
                         });
-                    // return ListTile(
-                    //   onTap: () {
-                    //     Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(builder: (context) {
-                    //         return ChatRoomPage(
-                    //           chatroom: chatRoomModel,
-                    //           targetUser: targetUser,
-                    //         );
-                    //       }),
-                    //     );
-                    //   },
-                    //   leading: (targetUser["Imgurl"] != null)
-                    //       ? CircleAvatar(
-                    //           backgroundImage:
-                    //               NetworkImage(targetUser["Imgurl"]),
-                    //         )
-                    //       : CircleAvatar(
-                    //           child: Icon(Icons.person),
-                    //         ),
-                    //   title: Text(targetUser["name"]),
-                    //   subtitle: (chatRoomModel.lastMessage != null)
-                    //       ? Text(
-                    //           chatRoomModel.lastMessage.toString(),
-                    //           style: TextStyle(
-                    //               color: Colors.black54,
-                    //               fontSize: 12),
-                    //         )
-                    //       : Text(
-                    //           "Say hi!!",
-                    //           style: TextStyle(
-                    //             color: Theme.of(context)
-                    //                 .colorScheme
-                    //                 .secondary,
-                    //           ),
-                    //         ),
-                    // );
                   } else {
                     return Center(
                         child: Text(
