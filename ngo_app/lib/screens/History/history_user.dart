@@ -60,6 +60,17 @@ class _history_userState extends State<history_user> {
                                             )));
                               } else if (history[index]["type"] ==
                                   "volunteered") {
+                                String req_uid = history[index]["uid"];
+                                Map<String, dynamic> data =
+                                    await DatabaseService().getVolData(req_uid);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            details(
+                                              notification: data,
+                                              type: history[index]["type"],
+                                            )));
                               } else {
                                 String comm_uid = history[index]["comm_uid"];
                                 Map<String, dynamic> data =

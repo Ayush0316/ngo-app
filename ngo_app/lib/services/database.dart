@@ -159,6 +159,16 @@ class DatabaseService {
     return data;
   }
 
+  Future<Map<String, dynamic>> getVolData(String uid) async {
+    Map<String, dynamic> data = {};
+    await voluteers.doc(uid).get().then((DocumentSnapshot doc) async {
+      Map<String, dynamic> tmp = doc.data() as Map<String, dynamic>;
+      tmp["req_uid"] = doc.id;
+      data = tmp;
+    });
+    return data;
+  }
+
   Future iAmInterested(String targetNgo, String name, String type, String req,
       DateTime now) async {
     return await interests.add({
