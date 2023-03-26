@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 class notification_ngo extends StatefulWidget {
   const notification_ngo({super.key});
@@ -10,18 +11,6 @@ class notification_ngo extends StatefulWidget {
 class _notification_ngoState extends State<notification_ngo> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // color: Colors.yellow,
-      height: 300,
-      width: double.infinity,
-      child: Text(
-        "some of the recent notifications \n like a user just contacted the ngo... ",
-        style: TextStyle(
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Roboto-Black',
-          fontSize: 15.0,
-        ),
-      ),
-    );
+    return const Placeholder();
   }
 }

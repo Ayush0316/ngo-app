@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:math';
 // import 'package:flutter/services.dart';
 
@@ -1169,26 +1170,58 @@ List<String> stopWords = [
   "zz"
 ];
 
-Map<String, List<List<dynamic>>> Tags = {
-  "Medical": [
-    [1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  ],
-  "PickUp and Distribution": [
-    [0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
-  ],
-  "More": [
-    [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
-  ],
-  "Teaching": [
-    [0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
-  ],
-  "Cleanliness Drives": [
-    [0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
-  ],
-  "Women Empowerment": [
-    [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
-  ]
-};
+List<String> Tags = [
+  "Art & Culture",
+  "Children ",
+  "EnvironmenT & Forests",
+  "Health",
+  "Family Welfare",
+  "Legal AAwareness & Aid",
+  "Vocational Training ",
+  "Women's development & Empowerment",
+  "Youth affairs",
+  "Agriculture",
+  "Teaching",
+  "Human Rights",
+  "Panchayti Raj",
+  "Urban Development & Poverty Alleviation",
+  "Women's Development & Empowerment",
+  "Civic Issues",
+  "Differently abled",
+  "tourism",
+  "sports",
+  "aged/elderly",
+  "Nutrition",
+  "hiv/aids",
+  "minority issues",
+  "science & technoloy",
+  "water resources",
+  "Information & commnication technology",
+  "skill development",
+  "micro finance",
+  "rural development",
+  "food processing",
+  "dairying & fisheries",
+  "animal husbandry",
+  "tribal affairs",
+  "drinking water",
+  "micro small & medium enterprises",
+  "labours & employement",
+  "industrial reseach",
+  "new & renewable energy",
+  "advocacy",
+  "prisoner's issues",
+  "housing",
+  "land resources",
+  "disaster management",
+  "biotechnology",
+  "monuments conservation",
+  "student counselling",
+  "Clean city",
+  "Peace",
+  "Dalit upliftment",
+  "any other"
+];
 
 Future readJsonFile(String filePath) async {
   final _json = filePath;
@@ -1203,11 +1236,60 @@ Future readJsonFile(String filePath) async {
 //   await Tflite.loadModel(model: "model.tfilte");
 // }
 
-Future preProcessing(String st_tag, String st_about) async {
+Future preProcessing(String st_tag) async {
   // embedding tag & pin code.
-  dynamic tag = Tags[st_tag];
+  List<double> init = List.filled(50, 0.0);
+  int index = Tags.indexOf(st_tag);
+  print(index);
+  init[index] = 1.0;
+  // List<List<double>> processed_tag = List.filled(50, init);
 
-  // embedding about content.
+  // // embedding about content.
+  // st_about = st_about.replaceAll(RegExp("[^a-z]+"), " ");
+  // List<String> about = st_about.split(" ");
+  // List filtered_about = about.where((x) => !stopWords.contains(x)).toList();
+  // // print("_______________________________________");
+  // // Directory dir = Directory("services");
+  // // print(dir.absolute);
+  // // print("_______________________________________");
+  // // dynamic data2 = await rootBundle.loadString("assets/jsonfile.json");
+  // dynamic data = await readJsonFile("assets/jsonfile.json");
+
+  // List<List> mapped_emb = [];
+  // List ini = [];
+  // for (int i = 0; i < 50; i++) {
+  //   ini.add(0.0);
+  // }
+  // for (int i = 0; i < 50; i++) {
+  //   mapped_emb.add(ini);
+  // }
+
+  // int max = min(filtered_about.length, 50);
+
+  // int count = 0;
+
+  // for (int i = 0; i < max; i++) {
+  //   List? embData = data[filtered_about[i]];
+  //   if (embData != null) {
+  //     mapped_emb[count] = embData;
+  //     count++;
+  //   }
+  // }
+
+  // List<List> a = [mapped_emb];
+  // // dynamic preProcessed = [a, tag];
+  // dynamic preProcessed = [
+  //   [processed_tag],
+  //   a
+  // ];
+
+  // // send emb data to model.
+  // // print(preProcessed);
+  // return preProcessed;
+  return init;
+}
+
+Future preProcessabout(st_about) async {
   st_about = st_about.replaceAll(RegExp("[^a-z]+"), " ");
   List<String> about = st_about.split(" ");
   List filtered_about = about.where((x) => !stopWords.contains(x)).toList();
@@ -1239,41 +1321,32 @@ Future preProcessing(String st_tag, String st_about) async {
     }
   }
 
-  List<List> a = [mapped_emb];
-  // dynamic preProcessed = [a, tag];
-  dynamic preProcessed = [tag, a];
-
-  // send emb data to model.
-  // print(preProcessed);
-  return preProcessed;
+  return [mapped_emb];
 }
 
 Interpreter? _interpreter;
 
-Future _loadModel() async {
+Future _loadModel(String name) async {
   // Creating the interpreter using Interpreter.fromAsset
   // Interpreter.fromFile(modelFile)
   // _interpreter = await Interpreter.fromAddress("model.tflite");
   // var interpreterOptions = InterpreterOptions()..useNnApiForAndroid = true;
-  final _name = "model_2.tflite";
+  final _name = name;
   _interpreter = await Interpreter.fromAsset(_name);
   print('Interpreter loaded successfully');
 }
 
 dynamic ml(String st_tag, String st_about) async {
-  await _loadModel();
-  dynamic input = await preProcessing(st_tag, st_about);
+  await _loadModel("model2.tflite");
+  dynamic input = await preProcessing(st_tag);
   var output = List.filled(1, 0).reshape([1, 1]);
-
   _interpreter!.run(input, output);
-  // _interpreter!.allocateTensors();
-// Print list of input tensors
-  var tensor = _interpreter!.getInputTensors();
-  print(tensor[0].getInputShapeIfDifferent(input));
-  print(tensor);
-  print(tensor.elementAt(0));
-// Print list of output tensors
-  print(_interpreter!.getOutputTensors());
-  print(_interpreter!.isAllocated);
+
+  await _loadModel("model2.tflite");
+  dynamic input_2 = await preProcessabout(st_about);
+  var output_2 = List.filled(50, 0).reshape([50, 1]);
+  _interpreter!.run(input_2, output_2);
+
   print(output);
+  print(output_2);
 }
