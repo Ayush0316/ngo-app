@@ -241,7 +241,7 @@ class DatabaseService {
 
   // ************** Communities *************************
   Future register_community(Map<String, dynamic> data) async {
-    return await communities.add(data);
+    return await communities.doc(uid).set(data);
   }
 
   Future getCommDataByTag(String tag) async {
