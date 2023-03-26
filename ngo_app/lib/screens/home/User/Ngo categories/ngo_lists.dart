@@ -42,7 +42,15 @@ class ngo_list extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(
                       top: 0, left: 20, right: 20, bottom: 10),
-                  child: Text(textList[1]),
+                  child: Text(
+                    textList[1],
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: Color(0xFFF333333),
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Roboto-Black',
+                    ),
+                  ),
                 ),
                 preferredSize: Size.zero),
             elevation: 0.0,
