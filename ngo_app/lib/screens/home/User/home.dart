@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
             key: _key,
-            backgroundColor: Colors.blue[50],
+            backgroundColor: Colors.white,
             appBar: AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.menu),

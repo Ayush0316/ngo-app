@@ -56,62 +56,66 @@ class ngo_list extends StatelessWidget {
             elevation: 0.0,
           ),
           body: SafeArea(
-              child: FutureBuilder(
-            future: getNames(),
-            builder: ((context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                return ListView.separated(
-                  itemBuilder: ((context, index) {
-                    return InkWell(
-                      onTap: () => {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return profile(data: ngoNames[index], user: true);
-                            // return details(
-                            //     notification: notifications[index]);
-                          }),
-                        )
-                      },
-                      child: Card(
-                        color: Colors.blue[50],
-                        elevation: 0.0,
-                        child: ListTile(
-                          leading: ngoNames[index]["Imgurl"] != null
-                              ? CircleAvatar(
-                                  backgroundImage:
-                                      NetworkImage(ngoNames[index]["Imgurl"]))
-                              : CircleAvatar(child: Icon(Icons.person)),
-                          title: Text(ngoNames[index]["name"]),
-                          subtitle: Text(ngoNames[index]["address"] +
-                              " " +
-                              ngoNames[index]["city"] +
-                              ", " +
-                              ngoNames[index]["state"]),
+            child: Container(
+                padding: const EdgeInsets.only(top: 0, left: 10, right: 10),
+                child: FutureBuilder(
+                  future: getNames(),
+                  builder: ((context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return ListView.separated(
+                        itemBuilder: ((context, index) {
+                          return InkWell(
+                            onTap: () => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return profile(
+                                      data: ngoNames[index], user: true);
+                                  // return details(
+                                  //     notification: notifications[index]);
+                                }),
+                              )
+                            },
+                            child: Card(
+                              color: Colors.blue[50],
+                              elevation: 0.0,
+                              child: ListTile(
+                                leading: ngoNames[index]["Imgurl"] != null
+                                    ? CircleAvatar(
+                                        backgroundImage: NetworkImage(
+                                            ngoNames[index]["Imgurl"]))
+                                    : CircleAvatar(child: Icon(Icons.person)),
+                                title: Text(ngoNames[index]["name"]),
+                                subtitle: Text(ngoNames[index]["address"] +
+                                    " " +
+                                    ngoNames[index]["city"] +
+                                    ", " +
+                                    ngoNames[index]["state"]),
+                              ),
+                            ),
+                          );
+                        }),
+                        itemCount: ngoNames.length,
+                        separatorBuilder: (context, index) => SizedBox(
+                          height: 2,
                         ),
-                      ),
-                    );
+                      );
+                    }
                   }),
-                  itemCount: ngoNames.length,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: 2,
-                  ),
-                );
-              }
-            }),
-            // child: SingleChildScrollView(
-            // padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-            // child: Column(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     //this will contain the entire list of the ngos in this rerspective section
-            //   ],
-            // ))
-          )),
+                  // child: SingleChildScrollView(
+                  // padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                  // child: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     //this will contain the entire list of the ngos in this rerspective section
+                  //   ],
+                  // ))
+                )),
+          ),
         ));
   }
 }

@@ -26,7 +26,7 @@ class _recentChatsState extends State<recentChats> {
       User["uid"] = Provider.of<CustUser?>(context)!.uid;
     }
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
@@ -34,6 +34,7 @@ class _recentChatsState extends State<recentChats> {
       ),
       body: SafeArea(
         child: Container(
+          padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
           child: StreamBuilder(
             stream: FirebaseFirestore.instance
                 .collection("chatrooms")
@@ -66,42 +67,45 @@ class _recentChatsState extends State<recentChats> {
                               ConnectionState.done) {
                             if (userData.data != null) {
                               Map<String, dynamic> targetUser = userData.data!;
-                              return ListTile(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) {
-                                      return ChatRoomPage(
-                                        chatroom: chatRoomModel,
-                                        targetUser: targetUser,
-                                      );
-                                    }),
-                                  );
-                                },
-                                leading: (targetUser["Imgurl"] != null)
-                                    ? CircleAvatar(
-                                        backgroundImage:
-                                            NetworkImage(targetUser["Imgurl"]),
-                                      )
-                                    : CircleAvatar(
-                                        child: Icon(Icons.person),
-                                      ),
-                                title: Text(targetUser["name"]),
-                                subtitle: (chatRoomModel.lastMessage != null)
-                                    ? Text(
-                                        chatRoomModel.lastMessage.toString(),
-                                        style: TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 12),
-                                      )
-                                    : Text(
-                                        "Say hi!!",
-                                        style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .secondary,
+                              return Card(
+                                elevation: 0,
+                                child: ListTile(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return ChatRoomPage(
+                                          chatroom: chatRoomModel,
+                                          targetUser: targetUser,
+                                        );
+                                      }),
+                                    );
+                                  },
+                                  leading: (targetUser["Imgurl"] != null)
+                                      ? CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              targetUser["Imgurl"]),
+                                        )
+                                      : CircleAvatar(
+                                          child: Icon(Icons.person),
                                         ),
-                                      ),
+                                  title: Text(targetUser["name"]),
+                                  subtitle: (chatRoomModel.lastMessage != null)
+                                      ? Text(
+                                          chatRoomModel.lastMessage.toString(),
+                                          style: TextStyle(
+                                              color: Colors.black54,
+                                              fontSize: 12),
+                                        )
+                                      : Text(
+                                          "Say hi!!",
+                                          style: TextStyle(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                          ),
+                                        ),
+                                ),
                               );
                             } else {
                               return Container();

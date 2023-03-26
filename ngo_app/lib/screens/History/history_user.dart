@@ -22,7 +22,7 @@ class _history_userState extends State<history_user> {
         //adding a search bar
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-            backgroundColor: Color.fromARGB(249, 255, 255, 255),
+            backgroundColor: Colors.blue[50],
             appBar: AppBar(
                 leading: BackButton(
                   onPressed: () => Navigator.of(context).pop(false),
@@ -31,77 +31,93 @@ class _history_userState extends State<history_user> {
                 elevation: 0.0,
                 backgroundColor: Colors.blue),
             body: SafeArea(
+              child: Container(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
                 child: FutureBuilder(
-              future: DatabaseService(uid: uid).getHistory(),
-              builder: (context, userData) {
-                if (userData.connectionState == ConnectionState.done) {
-                  if (userData.data != null && !userData.data!.isEmpty) {
-                    List<Map<String, dynamic>> history = userData.data!;
-                    return ListView.builder(
-                        itemCount: history.length,
-                        itemBuilder: (context, index) {
-                          DateTime then = history[index]["createdon"].toDate();
-                          String formattedDate =
-                              DateFormat('EEE d MMM\nkk:mm').format(then);
-                          return ListTile(
-                            onTap: () async {
-                              if (history[index]["type"] == "Donated") {
-                                String req_uid = history[index]["uid"];
-                                Map<String, dynamic> data =
-                                    await DatabaseService()
-                                        .getDonationData(req_uid);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            details(
-                                              notification: data,
-                                              type: history[index]["type"],
-                                            )));
-                              } else if (history[index]["type"] ==
-                                  "volunteered") {
-                                String req_uid = history[index]["uid"];
-                                Map<String, dynamic> data =
-                                    await DatabaseService().getVolData(req_uid);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            details(
-                                              notification: data,
-                                              type: history[index]["type"],
-                                            )));
-                              } else {
-                                String comm_uid = history[index]["comm_uid"];
-                                Map<String, dynamic> data =
-                                    await DatabaseService()
-                                        .getCommData(comm_uid);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            community_profile(data)));
-                              }
-                            },
-                            // leading: Text("leading"),
-                            title: (history[index]["type"] == "Community")
-                                ? Text("Joined a " + history[index]["type"])
-                                : Text("You " + history[index]["type"]),
-                            subtitle: Text(history[index]["name"]),
-                            trailing: Text(formattedDate),
-                          );
-                        });
-                  } else {
-                    return Center(
-                        child: Text(
-                      "No History avaliable",
-                      style: TextStyle(color: Colors.black54),
-                    ));
-                  }
-                } else {
-                  return Center(child: CircularProgressIndicator());
-                }
-              },
-            ))));
+                  future: DatabaseService(uid: uid).getHistory(),
+                  builder: (context, userData) {
+                    if (userData.connectionState == ConnectionState.done) {
+                      if (userData.data != null && !userData.data!.isEmpty) {
+                        List<Map<String, dynamic>> history = userData.data!;
+                        return ListView.builder(
+                            itemCount: history.length,
+                            itemBuilder: (context, index) {
+                              DateTime then =
+                                  history[index]["createdon"].toDate();
+                              String formattedDate =
+                                  DateFormat('EEE d MMM\nkk:mm').format(then);
+                              return Card(
+                                  elevation: 0.0,
+                                  child: ListTile(
+                                    onTap: () async {
+                                      if (history[index]["type"] == "Donated") {
+                                        String req_uid = history[index]["uid"];
+                                        Map<String, dynamic> data =
+                                            await DatabaseService()
+                                                .getDonationData(req_uid);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        details(
+                                                          notification: data,
+                                                          type: history[index]
+                                                              ["type"],
+                                                        )));
+                                      } else if (history[index]["type"] ==
+                                          "volunteered") {
+                                        String req_uid = history[index]["uid"];
+                                        Map<String, dynamic> data =
+                                            await DatabaseService()
+                                                .getVolData(req_uid);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        details(
+                                                          notification: data,
+                                                          type: history[index]
+                                                              ["type"],
+                                                        )));
+                                      } else {
+                                        String comm_uid =
+                                            history[index]["comm_uid"];
+                                        Map<String, dynamic> data =
+                                            await DatabaseService()
+                                                .getCommData(comm_uid);
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    community_profile(data)));
+                                      }
+                                    },
+                                    // leading: Text("leading"),
+                                    title: (history[index]["type"] ==
+                                            "Community")
+                                        ? Text("Joined a " +
+                                            history[index]["type"])
+                                        : Text("You " + history[index]["type"]),
+                                    subtitle: Text(history[index]["name"]),
+                                    trailing: Text(formattedDate),
+                                  ));
+                            });
+                      } else {
+                        return Center(
+                            child: Text(
+                          "No History avaliable",
+                          style: TextStyle(color: Colors.black54),
+                        ));
+                      }
+                    } else {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                ),
+              ),
+            )));
   }
 }
