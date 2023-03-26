@@ -249,14 +249,79 @@ class DatabaseService {
   }
 
   Future getCommDataByTag(String tag) async {
+    List<String> options = [
+      "Art & Culture",
+      "Children",
+      "EnvironmenT & Forests",
+      "Medical",
+      "Family Welfare",
+      "Legal Awareness & Aid",
+      "Vocational Training",
+      "Women's development & Empowerment",
+      "Youth affairs",
+      "Agriculture",
+      "Teaching",
+      "Human Rights",
+      "Panchayti Raj",
+      "Urban Development & Poverty Alleviation",
+      "Women's Development & Empowerment",
+      "Civic Issues",
+      "Differently abled",
+      "tourism",
+      "sports",
+      "aged/elderly",
+      "Nutrition",
+      "hiv/aids",
+      "minority issues",
+      "science & technoloy",
+      "water resources",
+      "Information & commnication technology",
+      "skill development",
+      "micro finance",
+      "rural development",
+      "food processing",
+      "dairying & fisheries",
+      "animal husbandry",
+      "tribal affairs",
+      "drinking water",
+      "micro small & medium enterprises",
+      "labours & employement",
+      "industrial reseach",
+      "new & renewable energy",
+      "advocacy",
+      "prisoner's issues",
+      "housing",
+      "land resources",
+      "disaster management",
+      "biotechnology",
+      "monuments conservation",
+      "student counselling",
+      "Clean city",
+      "Peace",
+      "Dalit upliftment",
+      "Any Other",
+    ];
     List<Map<String, dynamic>> data = [];
-    await communities.where("tag", isEqualTo: tag).get().then((snapshot) {
-      snapshot.docs.forEach((element) {
-        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
-        tmp["uid"] = element.id;
-        data.add(tmp);
+    if (tag != "More") {
+      await communities.where("tag", isEqualTo: tag).get().then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          tmp["uid"] = element.id;
+          data.add(tmp);
+        });
       });
-    });
+    } else {
+      await communities
+          .where("tag", whereNotIn: options)
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          tmp["uid"] = element.id;
+          data.add(tmp);
+        });
+      });
+    }
     return data;
   }
 

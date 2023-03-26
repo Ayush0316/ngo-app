@@ -61,33 +61,33 @@ class _noti_userState extends State<noti_user> {
                     } else {
                       return ListView.builder(
                           itemBuilder: ((context, index) {
-                            return InkWell(
-                              onTap: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) {
-                                    return details(
-                                        notification: notifications[index]);
-                                  }),
-                                )
-                              },
-                              child: Card(
-                                elevation: 0.0,
-                                child: ListTile(
-                                  leading: (notifications[index]["Imgurl"] !=
-                                          null)
-                                      ? CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              notifications[index]["Imgurl"]),
-                                        )
-                                      : CircleAvatar(child: Icon(Icons.person)),
-                                  title: Text(notifications[index]["title"]),
-                                  subtitle: Text(notifications[index]["name"]),
-                                  // trailing: Icon(Icons.forward),
-                                  trailing: Text(
-                                    formattedDate,
-                                    style: TextStyle(fontSize: 10),
-                                  ),
+                            return Card(
+                              elevation: 0.0,
+                              child: ListTile(
+                                onTap: () => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return details(
+                                        notification: notifications[index],
+                                        type: "Donated",
+                                      );
+                                    }),
+                                  )
+                                },
+                                leading: (notifications[index]["Imgurl"] !=
+                                        null)
+                                    ? CircleAvatar(
+                                        backgroundImage: NetworkImage(
+                                            notifications[index]["Imgurl"]),
+                                      )
+                                    : CircleAvatar(child: Icon(Icons.person)),
+                                title: Text(notifications[index]["title"]),
+                                subtitle: Text(notifications[index]["name"]),
+                                // trailing: Icon(Icons.forward),
+                                trailing: Text(
+                                  formattedDate,
+                                  style: TextStyle(fontSize: 10),
                                 ),
                               ),
                             );

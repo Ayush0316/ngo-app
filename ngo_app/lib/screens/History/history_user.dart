@@ -54,9 +54,12 @@ class _history_userState extends State<history_user> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
-                                            details(notification: data)));
+                                            details(
+                                              notification: data,
+                                              type: history[index]["type"],
+                                            )));
                               } else if (history[index]["type"] ==
-                                  "volunteering") {
+                                  "volunteered") {
                               } else {
                                 String comm_uid = history[index]["comm_uid"];
                                 Map<String, dynamic> data =

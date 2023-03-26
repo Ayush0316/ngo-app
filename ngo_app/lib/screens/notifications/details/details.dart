@@ -10,8 +10,9 @@ import 'package:ngo_app/responsive.dart';
 // ignore: must_be_immutable
 class details extends StatefulWidget {
   Map<String, dynamic> notification;
+  String type;
 
-  details({super.key, required this.notification});
+  details({super.key, required this.notification, required this.type});
 
   @override
   State<details> createState() => _detailsState();
@@ -109,7 +110,7 @@ class _detailsState extends State<details> {
                     await DatabaseService(uid: uid).iAmInterested(
                         widget.notification["uid"],
                         widget.notification["title"],
-                        "Donated",
+                        widget.type,
                         widget.notification["req_uid"],
                         DateTime.now());
                     final ChatRoomModel chatroom =
