@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Flexible(child: Container(), flex: 0),
                 // buildLogo(),
                 Text(
-                  'Careezy.comm',
+                  'Careezy',
                   style: TextStyle(
                     color: Colors.blue,
                     fontSize: 42.0,
