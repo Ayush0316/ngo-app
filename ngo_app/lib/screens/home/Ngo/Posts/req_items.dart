@@ -44,7 +44,7 @@ class _req_donationsState extends State<req_donations> {
               elevation: 0.0,
             ),
             body: SafeArea(
-              child: Padding(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
                 child: Container(
                     child: FormBuilder(

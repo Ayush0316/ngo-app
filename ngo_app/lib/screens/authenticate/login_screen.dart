@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Flexible(child: Container(), flex: 0),
                 // buildLogo(),
                 Text(
-                  'Careezy.comm',
+                  'Careezy',
                   style: TextStyle(
                     color: Colors.blue,
                     fontSize: 42.0,
@@ -264,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(
-                            width: 22,
+                            width: 10,
                           ),
                           ElevatedButton(
                             onPressed: () {
