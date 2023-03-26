@@ -11,6 +11,7 @@ import 'package:ngo_app/screens/home/widgets/Quote/divider.dart';
 import 'package:ngo_app/screens/home/Ngo/Notifications/notifications.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/post.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/title_post.dart';
+import 'package:ngo_app/services/ML/preprocessing.dart';
 
 class NgoHome extends StatefulWidget {
   const NgoHome({super.key});
@@ -40,9 +41,11 @@ class _NgoHomeState extends State<NgoHome> {
               elevation: 0.0,
               actions: <Widget>[
                 IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const ngoNotifications()));
+                    onPressed: () async {
+                      await ml("Teaching",
+                          "Teaching is one of the best professions via which we can built the future of any society.");
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => const ngoNotifications()));
                     },
                     icon: Icon(Icons.notifications)),
                 IconButton(

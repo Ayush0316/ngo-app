@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/Account/account.dart';
+import 'package:ngo_app/screens/home/Ngo/Notifications/notifications.dart';
 import 'package:ngo_app/screens/home/selector.dart';
+import 'package:ngo_app/screens/notifications/ngo_notifications.dart';
 import "package:ngo_app/services/auth.dart";
 import 'package:ngo_app/services/UserProvider.dart';
 import 'package:provider/provider.dart';
@@ -142,8 +144,13 @@ class _sideMenuState extends State<sideMenu> {
               ),
             ),
             onTap: () async {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const noti_user()));
+              if (data["type"] == "User") {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const noti_user()));
+              } else {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ngoNotifications()));
+              }
             },
           ),
           ListTile(
