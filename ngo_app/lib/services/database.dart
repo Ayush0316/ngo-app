@@ -130,6 +130,7 @@ class DatabaseService {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
         tmp["req_uid"] = element.id;
+        tmp["type"] = "Donated";
         data.add(tmp);
       });
     });
@@ -143,6 +144,7 @@ class DatabaseService {
       snapshot.docs.forEach((element) {
         Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
         tmp["req_uid"] = element.id;
+        tmp["type"] = "Volunteered";
         data.add(tmp);
       });
     });
