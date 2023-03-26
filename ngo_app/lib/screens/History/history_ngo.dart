@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 import "package:ngo_app/modals/user.dart";
+import "package:ngo_app/screens/Community/community_screens.dart";
 import "package:ngo_app/services/database.dart";
 import "package:provider/provider.dart";
 
@@ -30,7 +31,7 @@ class _history_ngoState extends State<history_ngo> {
                 backgroundColor: Colors.blue),
             body: SafeArea(
                 child: FutureBuilder(
-              future: DatabaseService(uid: uid).getHistory('ngo'),
+              future: DatabaseService(uid: uid).getHistoryNgo(),
               builder: (context, userData) {
                 if (userData.connectionState == ConnectionState.done) {
                   if (userData.data != null) {
@@ -42,54 +43,32 @@ class _history_ngoState extends State<history_ngo> {
                           String formattedDate =
                               DateFormat('EEE d MMM\nkk:mm').format(then);
                           return ListTile(
-                            onTap: () {
-                              if (history[index]["type"] == "donation") {
-                              } else if (history[index]["type"] ==
-                                  "volunteering") {
-                              } else {}
+                            onTap: () async {
+                              if (history[index]["type"] == "Community") {
+                                String comm_uid = history[index]["comm_uid"];
+                                Map<String, dynamic> data =
+                                    await DatabaseService()
+                                        .getCommData(comm_uid);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            community_profile(data)));
+                              }
+                              // if (history[index]["type"] == "donation") {
+                              // } else if (history[index]["type"] ==
+                              //     "volunteering") {
+                              // } else {}
                             },
-                            title: Text("Joined a " + history[index]["type"]),
-                            subtitle: Text(history[index]["name"]),
+                            title: (history[index]["type"] == "Community")
+                                ? Text("Joined a " + history[index]["type"])
+                                : Text("Requested " + history[index]["type"]),
+                            subtitle: (history[index]["type"] == "Community")
+                                ? Text(history[index]["name"])
+                                : Text(history[index]["title"]),
                             trailing: Text(formattedDate),
                           );
                         });
-                    // return ListTile(
-                    //   onTap: () {
-                    //     Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(builder: (context) {
-                    //         return ChatRoomPage(
-                    //           chatroom: chatRoomModel,
-                    //           targetUser: targetUser,
-                    //         );
-                    //       }),
-                    //     );
-                    //   },
-                    //   leading: (targetUser["Imgurl"] != null)
-                    //       ? CircleAvatar(
-                    //           backgroundImage:
-                    //               NetworkImage(targetUser["Imgurl"]),
-                    //         )
-                    //       : CircleAvatar(
-                    //           child: Icon(Icons.person),
-                    //         ),
-                    //   title: Text(targetUser["name"]),
-                    //   subtitle: (chatRoomModel.lastMessage != null)
-                    //       ? Text(
-                    //           chatRoomModel.lastMessage.toString(),
-                    //           style: TextStyle(
-                    //               color: Colors.black54,
-                    //               fontSize: 12),
-                    //         )
-                    //       : Text(
-                    //           "Say hi!!",
-                    //           style: TextStyle(
-                    //             color: Theme.of(context)
-                    //                 .colorScheme
-                    //                 .secondary,
-                    //           ),
-                    //         ),
-                    // );
                   } else {
                     return Center(
                         child: Text(

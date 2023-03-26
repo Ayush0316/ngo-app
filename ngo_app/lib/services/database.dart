@@ -227,10 +227,10 @@ class DatabaseService {
   }
 
   // ************ History ********** //
-  Future<List<Map<String, dynamic>>> getHistory(String type) async {
+  Future<List<Map<String, dynamic>>> getHistory() async {
     List<Map<String, dynamic>> data = [];
     await interests
-        .where(type, isEqualTo: uid)
+        .where('user', isEqualTo: uid)
         .orderBy("createdon", descending: true)
         .get()
         .then((snapshot) {
@@ -242,16 +242,37 @@ class DatabaseService {
     return data;
   }
 
-  // Future<List<Map<String, dynamic>>> getHistoryNgo() async {
-  //   List<Map<String, dynamic>> data = [];
-  //   await interests.where("ngo", isEqualTo: uid).get().then((snapshot) {
-  //     snapshot.docs.forEach((element) {
-  //       Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
-  //       data.add(tmp);
-  //     });
-  //   });
-  //   return data;
-  // }
+  Future<List<Map<String, dynamic>>> getHistoryNgo() async {
+    List<Map<String, dynamic>> data = [];
+    await donations.where("uid", isEqualTo: uid).get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        tmp["type"] = 'donations';
+        data.add(tmp);
+      });
+    });
+    await voluteers.where("uid", isEqualTo: uid).get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        tmp["type"] = 'volunteers';
+        data.add(tmp);
+      });
+    });
+    await interests
+        .where("user", isEqualTo: uid)
+        .where("type", isEqualTo: "Community")
+        .get()
+        .then((snapshot) {
+      snapshot.docs.forEach((element) {
+        Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+        data.add(tmp);
+      });
+    });
+    data.sort((m1, m2) {
+      return m2["createdon"].compareTo(m1["createdon"]);
+    });
+    return data;
+  }
 
   // ************** Communities *************************
   Future register_community(Map<String, dynamic> data) async {
