@@ -17,7 +17,6 @@ class _Comu_recomState extends State<Comu_recom> {
 
   double getMinDiff(List data, double ml) {
     double min = 100.0;
-    print(33);
     for (int i = 0; i < data.length; i++) {
       if (data[i]["ml"] - ml >= 0) {
         if (min > data[i]["ml"] - ml) {
@@ -29,7 +28,6 @@ class _Comu_recomState extends State<Comu_recom> {
         }
       }
     }
-    print(34);
     return min;
   }
 
@@ -61,22 +59,11 @@ class _Comu_recomState extends State<Comu_recom> {
     List rawComm = await commsToBeRecommFrom(commJoinedByMe);
     List commJoinedByMeData = await getCommsData(commJoinedByMe);
     List rawCommData = await getCommsData(rawComm);
-    print(1);
-    print(commJoinedByMe);
-    print(2);
-    print(commJoinedByMeData);
-    print(3);
-    print(rawComm);
-    print(4);
-    print(rawCommData);
     if (rawComm.length == 5) {
       comms = rawCommData;
     } else if (rawComm.length < 5) {
       int max = 5;
-      print("else if");
       List allComms = await DatabaseService().getAllCommsUid();
-      print(allComms);
-      print(7);
       List remComms = List.from(Set.from(allComms)
           .difference(Set.from(commJoinedByMe))
           .difference(Set.from(rawComm)));
@@ -84,8 +71,6 @@ class _Comu_recomState extends State<Comu_recom> {
       if (remComms.length + rawCommData.length < 5) {
         max = remComms.length + rawCommData.length;
       }
-      print(remComms);
-      print(8);
       comms = [];
       comms = rawCommData;
 
@@ -94,52 +79,26 @@ class _Comu_recomState extends State<Comu_recom> {
       for (int i = 0; i < max - rawComm.length; i++) {
         recomms.add(remComms[i]);
       }
-      print(recomms);
-      print(9);
       List recommsdata = await getCommsData(recomms);
-      print(recommsdata);
-      print(10);
       for (int i = 0; i < recommsdata.length; i++) {
         comms.add(recommsdata[i]);
       }
     } else {
-      print("else");
-      print(rawCommData);
-      print(10);
-      for (int i = 0; i < rawCommData.length; i++) {
-        print(i);
-        if (i == 2) {
-          print(21);
-          rawCommData[i];
-          print(22);
-        }
-        rawCommData[i]["min"] =
-            getMinDiff(commJoinedByMeData, rawCommData[i]["ml"]);
-        print(rawCommData[i]["min"]);
-      }
-      // rawCommData
-      // rawCommData.sort((m1, m2) {
-      //   print(30);
-      //   double m1Min = getMinDiff(commJoinedByMeData, m1["ml"]);
-      //   print(m1Min);
-      //   double m2Min = getMinDiff(commJoinedByMeData, m2["ml"]);
-      //   print(m2Min);
-      //   return m1Min.compareTo(m2Min);
-      // });
-      print(rawCommData);
-      print(6);
+      rawCommData.sort((m1, m2) {
+        double m1Min = getMinDiff(commJoinedByMeData, m1["ml"].toDouble());
+        double m2Min = getMinDiff(commJoinedByMeData, m2["ml"].toDouble());
+        return m1Min.compareTo(m2Min);
+      });
+      comms = [];
       for (int i = 0; i < 5; i++) {
         comms.add(rawCommData[i]);
       }
     }
-    print("hello");
-    print(comms);
   }
 
   @override
   Widget build(BuildContext context) {
     userUid = Provider.of<CustUser?>(context)!.uid;
-    // RocommComm()
     if (comms.length == 0) {
       return FutureBuilder(
         future: RocommComm(),
@@ -163,7 +122,6 @@ class _Comu_recomState extends State<Comu_recom> {
                   elevation: 0.0,
                   child: ListTile(
                     onTap: () {
-                      print("dhfkas");
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) {
