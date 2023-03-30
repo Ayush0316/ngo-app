@@ -62,7 +62,7 @@ class _NgoHomeState extends State<NgoHome> {
                 padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
                 child: Column(
                   children: [
-                    notification_ngo(),
+                    // notification_ngo(),
                     SizedBox(
                       height: 5,
                     ),
@@ -70,6 +70,9 @@ class _NgoHomeState extends State<NgoHome> {
                     Container(
                       child: post_ngo(),
                       // height: 255,
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(child: text_community()),
                     SizedBox(

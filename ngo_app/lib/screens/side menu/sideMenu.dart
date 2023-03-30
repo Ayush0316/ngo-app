@@ -35,6 +35,9 @@ class _sideMenuState extends State<sideMenu> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
             accountEmail: Text(
               (data["email"] != null ? data["email"] : "Email"),
               style: TextStyle(
@@ -60,6 +63,7 @@ class _sideMenuState extends State<sideMenu> {
                     backgroundImage: NetworkImage(url),
                   ),
           ),
+
           ListTile(
             title: Text(
               'Home',

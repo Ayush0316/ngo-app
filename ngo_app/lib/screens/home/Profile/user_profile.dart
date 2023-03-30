@@ -89,169 +89,170 @@ class userProfile extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        data['Volunteering Interests'],
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontFamily: 'Roboto-Black',
-                        ),
-                      ),
-                      Text(
                         data["email"],
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
-                      Container(
-                        constraints: BoxConstraints(
-                          minHeight: 100,
-                          maxHeight: Responsive.isSmallScreen(context)
-                              ? height / 3
-                              : height,
-                          maxWidth:
-                              Responsive.isSmallScreen(context) ? width : width,
-                          minWidth:
-                              Responsive.isSmallScreen(context) ? width : width,
-                        ), //BoxConstraints
-
-                        margin: const EdgeInsets.all(15.0),
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, top: 15, bottom: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 2,
-                          ),
-                        ),
-
-                        child: Text(
-                          ("may be about the user"),
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Roboto-Black',
-                          ),
-                        ),
-                      ),
                       Text(
-                        'Website',
+                        "Volunteering Interests : " +
+                            data['Volunteering Interests'],
                         style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.bold,
                           fontFamily: 'Roboto-Black',
                         ),
                       ),
-                      SizedBox(height: 10),
-                      SizedBox(
-                        height: 60,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              side: BorderSide(
-                                color: Colors.blue,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)))),
-                          // olor: Colors.blue,
-                          // elevation: 0.0,
-                          onPressed: () => {},
-                          onLongPress: () async {
-                            // Clipboard.setData(
-                            //         ClipboardData(text: widget.data["website"]))
-                            //     .then((value) {
-                            //   ScaffoldMessenger.of(context)
-                            //       .showSnackBar(snackBar);
-                            // });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10, left: 10, right: 10, bottom: 10),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  // data["website"],
-                                  'website',
+                      // Container(
+                      //   constraints: BoxConstraints(
+                      //     minHeight: 100,
+                      //     maxHeight: Responsive.isSmallScreen(context)
+                      //         ? height / 3
+                      //         : height,
+                      //     maxWidth:
+                      //         Responsive.isSmallScreen(context) ? width : width,
+                      //     minWidth:
+                      //         Responsive.isSmallScreen(context) ? width : width,
+                      //   ), //BoxConstraints
 
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Roboto-Black',
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.link,
-                                  size: 30,
-                                  color: Colors.white,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Socials',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Roboto-Black',
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      SizedBox(
-                        height: 60,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              side: BorderSide(
-                                color: Colors.blue,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)))),
-                          // olor: Colors.blue,
-                          // elevation: 0.0,
-                          onPressed: () => {},
-                          onLongPress: () async {
-                            Clipboard.setData(ClipboardData(text: 'copied'))
-                                .then((value) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(snackBar);
-                            });
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10, left: 10, right: 10, bottom: 10),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  // data["website"],
-                                  'website',
+                      //   margin: const EdgeInsets.all(15.0),
+                      //   padding: const EdgeInsets.only(
+                      //       left: 15, right: 15, top: 15, bottom: 15),
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(10),
+                      //     border: Border.all(
+                      //       color: Colors.black,
+                      //       width: 2,
+                      //     ),
+                      //   ),
 
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Roboto-Black',
-                                  ),
-                                ),
-                                Icon(
-                                  Icons.people_alt_rounded,
-                                  size: 30,
-                                  color: Colors.white,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      //   child: Text(
+                      //     ("may be about the user"),
+                      //     style: TextStyle(
+                      //       fontSize: 14.0,
+                      //       fontWeight: FontWeight.w500,
+                      //       fontFamily: 'Roboto-Black',
+                      //     ),
+                      //   ),
+                      // ),
+                      // Text(
+                      //   'Website',
+                      //   style: TextStyle(
+                      //     fontSize: 18.0,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontFamily: 'Roboto-Black',
+                      //   ),
+                      // ),
+                      // SizedBox(height: 10),
+                      // SizedBox(
+                      //   height: 60,
+                      //   child: OutlinedButton(
+                      //     style: OutlinedButton.styleFrom(
+                      //         backgroundColor: Colors.blue,
+                      //         side: BorderSide(
+                      //           color: Colors.blue,
+                      //         ),
+                      //         shape: RoundedRectangleBorder(
+                      //             borderRadius:
+                      //                 BorderRadius.all(Radius.circular(10)))),
+                      //     // olor: Colors.blue,
+                      //     // elevation: 0.0,
+                      //     onPressed: () => {},
+                      //     onLongPress: () async {
+                      //       // Clipboard.setData(
+                      //       //         ClipboardData(text: widget.data["website"]))
+                      //       //     .then((value) {
+                      //       //   ScaffoldMessenger.of(context)
+                      //       //       .showSnackBar(snackBar);
+                      //       // });
+                      //     },
+                      // child: Padding(
+                      //   padding: const EdgeInsets.only(
+                      //       top: 10, left: 10, right: 10, bottom: 10),
+                      //   child: Row(
+                      //     crossAxisAlignment: CrossAxisAlignment.center,
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       Text(
+                      //         // data["website"],
+                      //         'website',
+
+                      //         style: TextStyle(
+                      //           color: Colors.white,
+                      //           fontSize: 18.0,
+                      //           fontWeight: FontWeight.w600,
+                      //           fontFamily: 'Roboto-Black',
+                      //         ),
+                      //       ),
+                      //       Icon(
+                      //         Icons.link,
+                      //         size: 30,
+                      //         color: Colors.white,
+                      //       )
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                      // SizedBox(height: 10),
+                      // Text(
+                      //   'Socials',
+                      //   style: TextStyle(
+                      //     fontSize: 18.0,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontFamily: 'Roboto-Black',
+                      //   ),
+                      // ),
+                      // SizedBox(height: 10),
+                      // SizedBox(
+                      //   height: 60,
+                      //   child: OutlinedButton(
+                      //     style: OutlinedButton.styleFrom(
+                      //         backgroundColor: Colors.blue,
+                      //         side: BorderSide(
+                      //           color: Colors.blue,
+                      //         ),
+                      //         shape: RoundedRectangleBorder(
+                      //             borderRadius:
+                      //                 BorderRadius.all(Radius.circular(10)))),
+                      //     // olor: Colors.blue,
+                      //     // elevation: 0.0,
+                      //     onPressed: () => {},
+                      //     onLongPress: () async {
+                      //       Clipboard.setData(ClipboardData(text: 'copied'))
+                      //           .then((value) {
+                      //         ScaffoldMessenger.of(context)
+                      //             .showSnackBar(snackBar);
+                      //       });
+                      //     },
+                      //   child: Padding(
+                      //     padding: const EdgeInsets.only(
+                      //         top: 10, left: 10, right: 10, bottom: 10),
+                      //     child: Row(
+                      //       crossAxisAlignment: CrossAxisAlignment.center,
+                      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //       children: [
+                      //         Text(
+                      //           // data["website"],
+                      //           'website',
+
+                      //           style: TextStyle(
+                      //             color: Colors.white,
+                      //             fontSize: 18.0,
+                      //             fontWeight: FontWeight.w600,
+                      //             fontFamily: 'Roboto-Black',
+                      //           ),
+                      //         ),
+                      //         Icon(
+                      //           Icons.people_alt_rounded,
+                      //           size: 30,
+                      //           color: Colors.white,
+                      //         )
+                      //       ],
+                      //     ),
+                      // ),
+                      // ),
+                      // ),
                       // (widget.user)
                       //     ? Align(
                       //         alignment: Alignment.bottomCenter,

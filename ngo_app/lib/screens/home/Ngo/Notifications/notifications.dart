@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
@@ -11,6 +14,8 @@ class notification_ngo extends StatefulWidget {
 class _notification_ngoState extends State<notification_ngo> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      height: 300,
+    );
   }
 }
