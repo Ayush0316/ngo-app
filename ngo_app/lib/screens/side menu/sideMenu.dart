@@ -205,7 +205,7 @@ class _sideMenuState extends State<sideMenu> {
           ListTile(
             leading: Icon(
               Icons.logout_sharp,
-              color: Colors.deepPurple,
+              color: Colors.blue,
             ),
             title: Text(
               "LogOut",
