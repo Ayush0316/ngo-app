@@ -185,7 +185,7 @@ class _sideMenuState extends State<sideMenu> {
           ),
           ListTile(
             title: Text(
-              'Help and Feedback',
+              'Create Community',
               style: TextStyle(
                 // decoration: TextDecoration.underline,
                 fontSize: 20.0,
