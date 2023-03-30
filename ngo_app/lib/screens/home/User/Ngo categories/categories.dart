@@ -25,7 +25,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Nutrition";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Our team believes in the power of nutrition-based community service to improve the health and well-being of individuals and families. Through education, access to nutritious food, and community partnerships, we promote healthy eating habits and prevent malnutrition in our local communities.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],

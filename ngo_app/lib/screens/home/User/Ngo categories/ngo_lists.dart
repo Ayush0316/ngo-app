@@ -24,7 +24,7 @@ class ngo_list extends StatelessWidget {
           backgroundColor: Color.fromARGB(249, 255, 255, 255),
           appBar: AppBar(
             toolbarHeight:
-                Responsive.isSmallScreen(context) ? height / 6 : height,
+                Responsive.isSmallScreen(context) ? height / 5 : height,
             leading: BackButton(
               onPressed: () => Navigator.of(context).pop(false),
             ),

@@ -9,13 +9,23 @@ import 'package:flutter/services.dart';
 import 'package:ngo_app/screens/chatRoom/chatRoomPage.dart';
 import 'package:ngo_app/services/database.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final snackBar = SnackBar(
-  content: const Text('URl Copied to clipboard'),
+  content: Text(' Copied to Clipboard'),
 );
 
 // ignore: must_be_immutable
 class profile extends StatefulWidget {
+  _launchURLBrowser(String url) async {
+    url = '$url';
+    if (await launch(url)) {
+      await canLaunch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   dynamic data;
   bool user;
   profile({super.key, required this.data, this.user = false});
@@ -179,7 +189,9 @@ class _profileState extends State<profile> {
                                       BorderRadius.all(Radius.circular(10)))),
                           // olor: Colors.blue,
                           // elevation: 0.0,
-                          onPressed: () => {},
+                          onPressed: () async {
+                            // _launchURLBrowser(url);
+                          },
                           onLongPress: () async {
                             Clipboard.setData(
                                     ClipboardData(text: widget.data["website"]))
