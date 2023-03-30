@@ -84,49 +84,49 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
       }
       widget.startingMsg = "";
     }
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: InkWell(
-          onTap: () {
-            if (User["type"] == "Ngo") {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return userProfile(widget.targetUser);
-              }));
-            } else {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return profile(data: widget.targetUser);
-              }));
-            }
-          },
-          child: Row(
-            children: [
-              (widget.targetUser["Imgurl"] == "" ||
-                      widget.targetUser["Imgurl"] == null)
-                  ? CircleAvatar(
-                      child: Icon(Icons.person),
-                    )
-                  : CircleAvatar(
-                      backgroundColor: Colors.purple[800],
-                      backgroundImage:
-                          NetworkImage(widget.targetUser["Imgurl"]),
-                    ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                widget.targetUser["name"],
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: InkWell(
+            onTap: () {
+              if (User["type"] == "Ngo") {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return userProfile(widget.targetUser);
+                }));
+              } else {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return profile(data: widget.targetUser);
+                }));
+              }
+            },
+            child: Row(
+              children: [
+                (widget.targetUser["Imgurl"] == "" ||
+                        widget.targetUser["Imgurl"] == null)
+                    ? CircleAvatar(
+                        child: Icon(Icons.person),
+                      )
+                    : CircleAvatar(
+                        backgroundColor: Colors.purple[800],
+                        backgroundImage:
+                            NetworkImage(widget.targetUser["Imgurl"]),
+                      ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  widget.targetUser["name"],
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Container(
+        body: Container(
           child: Column(
             children: [
               // This is where the chats will go
@@ -154,6 +154,8 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                   MessageModel.fromMap(dataSnapshot.docs[index]
                                       .data() as Map<String, dynamic>);
 
+                              print(MediaQuery.of(context).size.width);
+
                               return Row(
                                 mainAxisAlignment:
                                     (currentMessage.sender == User["uid"])
@@ -161,26 +163,33 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                         : MainAxisAlignment.start,
                                 children: [
                                   Container(
-                                      margin: EdgeInsets.symmetric(
-                                        vertical: 2,
+                                    width: (currentMessage.text!.length >=
+                                            MediaQuery.of(context).size.width /
+                                                8)
+                                        ? MediaQuery.of(context).size.width - 50
+                                        : null,
+                                    margin: EdgeInsets.symmetric(
+                                      vertical: 2,
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color:
+                                          (currentMessage.sender == User["uid"])
+                                              ? Colors.grey
+                                              : Colors.blue,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Text(
+                                      currentMessage.text.toString(),
+                                      softWrap: true,
+                                      style: TextStyle(
+                                        color: Colors.white,
                                       ),
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 10,
-                                        horizontal: 10,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: (currentMessage.sender ==
-                                                User["uid"])
-                                            ? Colors.grey
-                                            : Colors.blue,
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Text(
-                                        currentMessage.text.toString(),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      )),
+                                    ),
+                                  ),
                                 ],
                               );
                             },

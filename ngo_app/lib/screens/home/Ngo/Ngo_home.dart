@@ -42,10 +42,8 @@ class _NgoHomeState extends State<NgoHome> {
               actions: <Widget>[
                 IconButton(
                     onPressed: () async {
-                      await ml("Teaching",
-                          "Teaching is one of the best professions via which we can built the future of any society.");
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => const ngoNotifications()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const ngoNotifications()));
                     },
                     icon: Icon(Icons.notifications)),
                 IconButton(
