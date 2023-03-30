@@ -154,8 +154,6 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                                   MessageModel.fromMap(dataSnapshot.docs[index]
                                       .data() as Map<String, dynamic>);
 
-                              print(MediaQuery.of(context).size.width);
-
                               return Row(
                                 mainAxisAlignment:
                                     (currentMessage.sender == User["uid"])

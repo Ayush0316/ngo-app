@@ -93,6 +93,8 @@ class _recentChatsState extends State<recentChats> {
                                   subtitle: (chatRoomModel.lastMessage != null)
                                       ? Text(
                                           chatRoomModel.lastMessage.toString(),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.clip,
                                           style: TextStyle(
                                               color: Colors.black54,
                                               fontSize: 12),
