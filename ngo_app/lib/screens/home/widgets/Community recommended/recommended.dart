@@ -61,6 +61,7 @@ class _Comu_recomState extends State<Comu_recom> {
     List rawCommData = await getCommsData(rawComm);
     if (rawComm.length == 5) {
       comms = rawCommData;
+      return;
     } else if (rawComm.length < 5) {
       int max = 5;
       List allComms = await DatabaseService().getAllCommsUid();
@@ -71,8 +72,6 @@ class _Comu_recomState extends State<Comu_recom> {
       if (remComms.length + rawCommData.length < 5) {
         max = remComms.length + rawCommData.length;
       }
-      comms = [];
-      comms = rawCommData;
 
       List recomms = [];
 
@@ -80,9 +79,12 @@ class _Comu_recomState extends State<Comu_recom> {
         recomms.add(remComms[i]);
       }
       List recommsdata = await getCommsData(recomms);
+      comms = [];
+      comms = rawCommData;
       for (int i = 0; i < recommsdata.length; i++) {
         comms.add(recommsdata[i]);
       }
+      return;
     } else {
       rawCommData.sort((m1, m2) {
         double m1Min = getMinDiff(commJoinedByMeData, m1["ml"].toDouble());
@@ -93,76 +95,46 @@ class _Comu_recomState extends State<Comu_recom> {
       for (int i = 0; i < 5; i++) {
         comms.add(rawCommData[i]);
       }
+      return;
     }
   }
+
+  bool first = true;
 
   @override
   Widget build(BuildContext context) {
     userUid = Provider.of<CustUser?>(context)!.uid;
-    if (comms.length == 0) {
-      return FutureBuilder(
-        future: RocommComm(),
-        builder: ((context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Container(
-              height: 400,
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          } else {
-            if (comms.length == 0) {
-              return Center(
-                  child: Text("You already joined all the communities."));
-            }
-            return ListView.separated(
-              itemBuilder: ((context, index) {
-                return Card(
-                  color: Colors.blue[50],
-                  elevation: 0.0,
-                  child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return community_profile(comms[index]);
-                        }),
-                      );
-                    },
-                    leading: comms[index]["Imgurl"] != null
-                        ? CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(comms[index]["Imgurl"]))
-                        : CircleAvatar(child: Icon(Icons.person)),
-                    title: Text(comms[index]["name"]),
-                    subtitle: Text(comms[index]["tag"]),
-                  ),
-                );
-              }),
-              itemCount: comms.length,
-              separatorBuilder: (context, index) => SizedBox(
-                height: 2,
-              ),
-            );
+    return FutureBuilder(
+      future: RocommComm(),
+      builder: ((context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            height: 400,
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else {
+          if (comms.length == 0) {
+            return Center(
+                child: Text("You already joined all the communities."));
           }
-        }),
-      );
-    } else {
-      return ListView.separated(
-        itemBuilder: ((context, index) {
-          return InkWell(
-              onTap: () => {
+          return ListView.separated(
+            itemBuilder: ((context, index) {
+              return Card(
+                color: Colors.blue[50],
+                elevation: 0.0,
+                child: ListTile(
+                  onTap: () {
+                    first = false;
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
                         return community_profile(comms[index]);
                       }),
-                    )
+                    );
+                    setState(() {});
                   },
-              child: Card(
-                color: Colors.blue[50],
-                elevation: 0.0,
-                child: ListTile(
                   leading: comms[index]["Imgurl"] != null
                       ? CircleAvatar(
                           backgroundImage: NetworkImage(comms[index]["Imgurl"]))
@@ -170,13 +142,15 @@ class _Comu_recomState extends State<Comu_recom> {
                   title: Text(comms[index]["name"]),
                   subtitle: Text(comms[index]["tag"]),
                 ),
-              ));
-        }),
-        itemCount: comms.length,
-        separatorBuilder: (context, index) => SizedBox(
-          height: 2,
-        ),
-      );
-    }
+              );
+            }),
+            itemCount: comms.length,
+            separatorBuilder: (context, index) => SizedBox(
+              height: 2,
+            ),
+          );
+        }
+      }),
+    );
   }
 }
