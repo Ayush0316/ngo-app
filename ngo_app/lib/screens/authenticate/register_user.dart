@@ -231,7 +231,7 @@ class _RegisterUserState extends State<RegisterUser> {
                         items: <String>[
                           "Art & Culture",
                           "Children",
-                          "EnvironmenT & Forests",
+                          "Environment & Forests",
                           "Medical",
                           "Family Welfare",
                           "Legal Awareness & Aid",
