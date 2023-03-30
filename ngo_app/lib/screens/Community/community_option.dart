@@ -58,55 +58,58 @@ class community_option extends StatelessWidget {
             elevation: 0.0,
           ),
           body: SafeArea(
-              child: FutureBuilder(
-            future: getComm(),
-            builder: ((context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                return ListView.separated(
-                  itemBuilder: ((context, index) {
-                    return InkWell(
-                        onTap: () => {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return community_profile(comm[index]);
-                                }),
-                              )
-                            },
-                        child: Card(
-                          color: Colors.blue[50],
-                          elevation: 0.0,
-                          child: ListTile(
-                            leading: comm[index]["Imgurl"] != null
-                                ? CircleAvatar(
-                                    backgroundImage:
-                                        NetworkImage(comm[index]["Imgurl"]))
-                                : CircleAvatar(child: Icon(Icons.person)),
-                            title: Text(comm[index]["name"]),
-                            subtitle: Text(comm[index]["tag"]),
-                          ),
-                        ));
+            child: Container(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: FutureBuilder(
+                  future: getComm(),
+                  builder: ((context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      return ListView.separated(
+                        itemBuilder: ((context, index) {
+                          return InkWell(
+                              onTap: () => {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return community_profile(comm[index]);
+                                      }),
+                                    )
+                                  },
+                              child: Card(
+                                color: Colors.blue[50],
+                                elevation: 0.0,
+                                child: ListTile(
+                                  leading: comm[index]["Imgurl"] != null
+                                      ? CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              comm[index]["Imgurl"]))
+                                      : CircleAvatar(child: Icon(Icons.person)),
+                                  title: Text(comm[index]["name"]),
+                                  subtitle: Text(comm[index]["tag"]),
+                                ),
+                              ));
+                        }),
+                        itemCount: comm.length,
+                        separatorBuilder: (context, index) => SizedBox(
+                          height: 2,
+                        ),
+                      );
+                    }
                   }),
-                  itemCount: comm.length,
-                  separatorBuilder: (context, index) => SizedBox(
-                    height: 2,
-                  ),
-                );
-              }
-            }),
-            // child: SingleChildScrollView(
-            // padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-            // child: Column(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     //this will contain the entire list of the ngos in this rerspective section
-            //   ],
-            // ))
-          )),
+                  // child: SingleChildScrollView(
+                  // padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                  // child: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  //   children: [
+                  //     //this will contain the entire list of the ngos in this rerspective section
+                  //   ],
+                  // ))
+                )),
+          ),
         ));
   }
 }

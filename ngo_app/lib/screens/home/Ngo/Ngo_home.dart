@@ -28,7 +28,7 @@ class _NgoHomeState extends State<NgoHome> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
             key: _key,
-            backgroundColor: Colors.blue[50],
+            backgroundColor: Colors.white,
             appBar: AppBar(
               leading: IconButton(
                 icon: const Icon(Icons.menu),
