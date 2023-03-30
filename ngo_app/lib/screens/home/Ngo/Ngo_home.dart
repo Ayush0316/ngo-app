@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/chatRoom/recentChats.dart';
+import 'package:ngo_app/screens/home/User/about%20us/about.dart';
+import 'package:ngo_app/screens/home/User/about%20us/text_about.dart';
+import 'package:ngo_app/screens/home/User/about%20us/title_about.dart';
+import 'package:ngo_app/screens/home/User/search/search.dart';
 import 'package:ngo_app/screens/notifications/ngo_notifications.dart';
 import 'package:ngo_app/screens/side%20menu/sideMenu.dart';
 import 'package:ngo_app/screens/home/widgets/Community%20options/community.dart';
@@ -62,9 +66,10 @@ class _NgoHomeState extends State<NgoHome> {
                 padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
                 child: Column(
                   children: [
+                    searchBar(),
                     // notification_ngo(),
                     SizedBox(
-                      height: 5,
+                      height: 10,
                     ),
                     title_post(),
                     Container(
@@ -92,6 +97,15 @@ class _NgoHomeState extends State<NgoHome> {
                     SizedBox(
                       height: 10,
                     ),
+                    title_aboutUs(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    text_aboutUS(),
+                    // SizedBox(
+                    //   height: 5,
+                    // ),
+                    aboutUS(),
                     divider_line(),
                     end_text(),
                   ],
