@@ -376,6 +376,16 @@ class DatabaseService {
     return exists;
   }
 
+  Future<List> getAllCommsUid() async {
+    List data = [];
+    await communities.get().then((snapshot) {
+      snapshot.docs.forEach((element) {
+        data.add(element.id);
+      });
+    });
+    return data;
+  }
+
   Future<Map<String, dynamic>> getCommData(String uid) async {
     Map<String, dynamic> data = {};
     await communities.doc(uid).get().then((DocumentSnapshot doc) async {
@@ -383,6 +393,40 @@ class DatabaseService {
       tmp["uid"] = uid;
       data = tmp;
     });
+    return data;
+  }
+
+  Future<List> commJoinedBySomeone(List personUid) async {
+    List data = [];
+    for (int i = 0; i < personUid.length; i++) {
+      await interests
+          .where("user", isEqualTo: personUid[i])
+          .where("type", isEqualTo: "Community")
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          data.add(tmp["comm_uid"]);
+        });
+      });
+    }
+    return data;
+  }
+
+  Future<List> peopleJoinedComm(List commUid) async {
+    List data = [];
+    for (int i = 0; i < commUid.length; i++) {
+      await interests
+          .where("comm_uid", isEqualTo: commUid[i])
+          .where("type", isEqualTo: "Community")
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          data.add(tmp["user"]);
+        });
+      });
+    }
     return data;
   }
 }

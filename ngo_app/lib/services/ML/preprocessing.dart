@@ -6,7 +6,7 @@ List<String> Tags = [
   "EnvironmenT & Forests",
   "Health",
   "Family Welfare",
-  "Legal AAwareness & Aid",
+  "Legal Awareness & Aid",
   "Vocational Training ",
   "Women's development & Empowerment",
   "Youth affairs",

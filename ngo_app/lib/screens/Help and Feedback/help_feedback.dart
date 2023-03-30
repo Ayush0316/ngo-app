@@ -328,11 +328,12 @@ class _help_feedbackState extends State<help_feedback> {
                             if (tag != "Any Other") {
                               formData["tag"] = tag;
                             }
-                            formData["ml"] = ml(tag!);
+                            formData["ml"] = await ml(tag!);
                             await DatabaseService(uid: uid)
                                 .register_community(formData);
 
                             setState(() {
+                              _formKey.currentState!.reset();
                               error = "Done successfully!!";
                             });
                           }

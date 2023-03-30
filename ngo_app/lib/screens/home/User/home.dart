@@ -84,7 +84,9 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 10,
                     ),
-                    Comu_recom(),
+                    ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: 300),
+                        child: Comu_recom()),
                     SizedBox(
                       height: 5,
                     ),

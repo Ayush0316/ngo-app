@@ -83,7 +83,9 @@ class _NgoHomeState extends State<NgoHome> {
                     SizedBox(
                       height: 10,
                     ),
-                    Comu_recom(),
+                    ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: 300),
+                        child: Comu_recom()),
                     SizedBox(
                       height: 10,
                     ),
