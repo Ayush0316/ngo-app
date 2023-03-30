@@ -35,7 +35,7 @@ class _searchBarState extends State<searchBar> {
                   new Column(children: <Widget>[
                     searchTextField = AutoCompleteTextField<String>(
                         decoration: InputDecoration(
-                          hintText: "Search NGO by name",
+                          hintText: "Search NGOs/Communities",
                           hintStyle: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w100),
                           prefixIcon: const Icon(Icons.search),
