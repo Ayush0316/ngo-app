@@ -25,7 +25,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Nutrition";
                 description =
-                    "Our team believes in the power of nutrition-based community service to improve the health and well-being of individuals and families. Through education, access to nutritious food, and community partnerships, we promote healthy eating habits and prevent malnutrition in our local communities.";
+                    "Nutrition NGOs are dedicated organizations that aim to tackle malnutrition and improve food security. They work towards providing education, resources, and support to communities in need, with a focus on promoting healthy eating habits and nutrition.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -66,7 +66,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Environment";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Environmental NGOs are non-profit organizations that work towards protecting and preserving the natural environment. They promote sustainable practices, advocate for policies that support conservation, and raise awareness about environmental issues.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -105,7 +105,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Education";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Education NGOs focus on improving access to education and promoting literacy. They provide resources, support, and advocacy for communities in need, with a focus on increasing educational opportunities and improving quality of education.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -143,7 +143,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Human Rights";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Human rights NGOs are organizations that promote and protect human rights through advocacy, education, and support for marginalized communities. They work to ensure that human rights are respected, protected, and fulfilled.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -181,7 +181,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Sports";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Sports NGOs promote physical and mental health, social inclusion, and community development through sports. They provide resources, support, and education to communities, with the goal of enhancing well-being and creating positive social change.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -217,9 +217,9 @@ class _ngoCategoriesState extends State<ngoCategories> {
             ),
             InkWell(
               onTap: () async {
-                option = "Tourism";
+                option = "Housing";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Housing NGOs work to ensure safe, affordable, and adequate housing for all. They provide resources, support, and advocacy to communities, with the goal of reducing homelessness, improving living conditions, and promoting sustainable housing policies.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -241,12 +241,12 @@ class _ngoCategoriesState extends State<ngoCategories> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      Icons.festival_sharp,
+                      Icons.house_siding_outlined,
                       size: 45,
                       color: Colors.red,
                     ),
                     Text(
-                      "Tourism",
+                      "Housing",
                       style: TextStyle(color: Colors.white, fontSize: 15),
                     )
                   ],
@@ -257,7 +257,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Health";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Health NGOs aim to improve healthcare access, quality, and outcomes. They provide resources, support, and education to communities, with the goal of promoting health and well-being, preventing disease, and reducing health disparities.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -295,7 +295,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Employment";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Employment NGOs focus on creating job opportunities, providing skills training, and promoting fair labor practices. They provide resources, support, and advocacy to reduce unemployment, improve livelihoods, and promote decent work for all.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
@@ -333,7 +333,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               onTap: () async {
                 option = "Others";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "NGOs are non-profit organizations that work towards social, environmental, or humanitarian causes, often through direct action or advocacy.\nThis category consists the list of NGOs working in different fields";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ngo_list(
                           textList: [option, description],
