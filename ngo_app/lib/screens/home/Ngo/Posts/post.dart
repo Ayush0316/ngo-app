@@ -32,7 +32,7 @@ class _post_ngoState extends State<post_ngo> {
                 alignment: Alignment.bottomLeft,
                 child: RichText(
                   text: TextSpan(
-                    text: 'Post regarding requirement of Donations\n',
+                    text: 'Appeal for Donations\n',
                     style: TextStyle(
                       height: 1.5,
                       fontSize: 18.0,
@@ -43,7 +43,7 @@ class _post_ngoState extends State<post_ngo> {
                     children: const <TextSpan>[
                       TextSpan(
                         text:
-                            "more text just for the description of this option \n like what actually this option does",
+                            "Raise funds for a specific cause or project\nby reaching out to potential donors",
                         style: TextStyle(
                             color: Colors.black,
                             height: 1.2,
@@ -79,7 +79,7 @@ class _post_ngoState extends State<post_ngo> {
                 alignment: Alignment.bottomLeft,
                 child: RichText(
                   text: TextSpan(
-                    text: 'Post regarding requirement of Volunteers \n',
+                    text: 'Call for Volunteers\n',
                     style: TextStyle(
                       height: 1.5,
                       fontSize: 18.0,
@@ -90,7 +90,7 @@ class _post_ngoState extends State<post_ngo> {
                     children: const <TextSpan>[
                       TextSpan(
                         text:
-                            "more text just for the description of this option \n like what actually this option does",
+                            "Seeks individuals who are willing to offer\ntheir time and skills to support a cause or project",
                         style: TextStyle(
                             color: Colors.black,
                             height: 1.2,

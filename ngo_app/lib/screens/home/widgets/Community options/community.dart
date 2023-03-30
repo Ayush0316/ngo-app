@@ -38,7 +38,7 @@ class _communityOptionsState extends State<communityOptions> {
               onTap: () async {
                 option = "Teaching";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Teaching communities involves providing education and training to groups of people with a common interest or need. This can include formal or informal learning, mentorship, and skill-building activities. ";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => community_option(
                           textList: [option, description],
@@ -92,9 +92,9 @@ class _communityOptionsState extends State<communityOptions> {
             ),
             InkWell(
               onTap: () async {
-                option = "Cleanliness Drives";
+                option = "Clean City";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Cleanliness communities are groups of people who work together to promote and maintain hygiene and cleanliness in their surroundings, often through community-driven efforts and advocacy. ";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => community_option(
                           textList: [option, description],
@@ -131,7 +131,7 @@ class _communityOptionsState extends State<communityOptions> {
                       child: const Padding(
                         padding: EdgeInsets.all(4.0),
                         child: Text(
-                          "Cleanliness Drives",
+                          "Clean City",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             letterSpacing: 1.5,
@@ -150,7 +150,7 @@ class _communityOptionsState extends State<communityOptions> {
               onTap: () async {
                 option = "Women Empowerment";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Women empowerment communities involve groups of people who work towards promoting gender equality and empowering women, often through education, advocacy, and supporting women's rights.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => community_option(
                           textList: [option, description],
@@ -206,7 +206,7 @@ class _communityOptionsState extends State<communityOptions> {
               onTap: () async {
                 option = "Medical";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Medical communities consist of healthcare professionals who collaborate to provide patient care, share knowledge and experience, and advance research in a specific field or specialty. ";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => community_option(
                           textList: [option, description],
@@ -260,9 +260,9 @@ class _communityOptionsState extends State<communityOptions> {
             ),
             InkWell(
               onTap: () async {
-                option = "PickUp and Distribution";
+                option = "Skill Development";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Skill development communities involve groups of people who come together to learn, practice, and improve their skills, often with the goal of advancing their careers or pursuing personal interests.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => community_option(
                           textList: [option, description],
@@ -280,7 +280,7 @@ class _communityOptionsState extends State<communityOptions> {
                         strokeAlign: BorderSide.strokeAlignInside,
                       ),
                       image: DecorationImage(
-                        image: AssetImage("images/distribution.jpeg"),
+                        image: AssetImage("images/distribution.jpg"),
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
                         opacity: 1.8,
@@ -299,7 +299,7 @@ class _communityOptionsState extends State<communityOptions> {
                       child: const Padding(
                         padding: EdgeInsets.all(4.0),
                         child: Text(
-                          "PickUp and Distribution",
+                          "Skill Development",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             letterSpacing: 1.5,
@@ -318,7 +318,7 @@ class _communityOptionsState extends State<communityOptions> {
               onTap: () async {
                 option = "More";
                 description =
-                    "this area is supposed to describe the selected files in few words (30-40 ) Words,Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam turpis ex, dictum et luctus nec, malesuada id nisl. Pellentesque ";
+                    "Communities are groups of people with common interests, values, and goals.\nThis category encompasses communities that work in various fields and industries, each with their own unique goals, values, and interests.";
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => community_option(
                           textList: [option, description],

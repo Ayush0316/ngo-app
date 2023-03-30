@@ -283,6 +283,7 @@ class _AccountState extends State<Account> {
                         child: Row(children: [
                           Icon(
                             Icons.logout_sharp,
+                            color: Colors.blue,
                             size: 22,
                           ),
                           SizedBox(
