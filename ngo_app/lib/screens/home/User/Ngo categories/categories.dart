@@ -367,7 +367,7 @@ class _ngoCategoriesState extends State<ngoCategories> {
               crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
         ),
       ),
-      height: 375,
+      height: 350,
     );
   }
 }

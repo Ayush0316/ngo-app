@@ -43,7 +43,7 @@ class _post_ngoState extends State<post_ngo> {
                     children: const <TextSpan>[
                       TextSpan(
                         text:
-                            "Raise funds and donations for a specific cause or project\nby reaching out to potential donors",
+                            "Raise funds for a specific cause or project\nby reaching out to potential donors",
                         style: TextStyle(
                             color: Colors.black,
                             height: 1.2,

@@ -60,8 +60,8 @@ class DatabaseService {
     return data;
   }
 
-  Future getNgosName() async {
-    Map<String, String> uid = {};
+  Future getSearchOptions() async {
+    Map<String, dynamic> uid = {};
     List<String> data = [];
     Map<String, dynamic> result = {};
     await ngosCollection.get().then((snapshot) {
@@ -69,7 +69,18 @@ class DatabaseService {
         (element) {
           Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
           data.add(tmp["name"]);
-          uid[tmp["name"]] = element.id;
+          Map<String, dynamic> ele = {"uid": element.id, "type": "ngo"};
+          uid[tmp["name"]] = ele;
+        },
+      );
+    });
+    communities.get().then((snapshot) {
+      snapshot.docs.forEach(
+        (element) {
+          Map<String, dynamic> tmp = element.data() as Map<String, dynamic>;
+          data.add(tmp["name"]);
+          Map<String, dynamic> ele = {"uid": element.id, "type": "comm"};
+          uid[tmp["name"]] = ele;
         },
       );
     });

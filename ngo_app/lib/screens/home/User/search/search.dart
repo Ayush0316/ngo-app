@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ngo_app/screens/Community/community_screens.dart';
 import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
 import "package:ngo_app/services/database.dart";
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
@@ -24,7 +25,7 @@ class _searchBarState extends State<searchBar> {
   Widget build(BuildContext context) {
     if (result == null) {
       return FutureBuilder(
-          future: DatabaseService().getNgosName(),
+          future: DatabaseService().getSearchOptions(),
           builder: (context, userData) {
             if (userData.connectionState == ConnectionState.done) {
               if (userData.data != null) {
@@ -33,8 +34,6 @@ class _searchBarState extends State<searchBar> {
                     child: new Column(children: <Widget>[
                   new Column(children: <Widget>[
                     searchTextField = AutoCompleteTextField<String>(
-                        // width: double.infinity,
-                        // height: 45,
                         decoration: InputDecoration(
                           hintText: "Search NGO by name",
                           hintStyle: TextStyle(
@@ -49,20 +48,38 @@ class _searchBarState extends State<searchBar> {
                           ),
                         ),
                         itemSubmitted: (item) async {
+                          if (item == "") {
+                            setState(() {
+                              result = null;
+                            });
+                          }
                           // searchTextField?.textField?.controller?.text = item;
-                          dynamic targetUid = result["uid"][item];
-                          dynamic targetData =
-                              await DatabaseService(uid: targetUid).getData();
+                          dynamic targetItemData = result["uid"][item];
+                          if (targetItemData["type"] == "ngo") {
+                            dynamic targetUid = targetItemData["uid"];
+                            dynamic targetData =
+                                await DatabaseService(uid: targetUid).getData();
 
-                          targetData["uid"] = targetUid;
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => profile(
-                                    data: targetData,
-                                    user: true,
-                                  )));
+                            targetData["uid"] = targetUid;
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => profile(
+                                      data: targetData,
+                                      user: true,
+                                    )));
+                          } else {
+                            dynamic targetUid = targetItemData["uid"];
+                            dynamic targetData =
+                                await DatabaseService().getCommData(targetUid);
+
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    community_profile(targetData)));
+                          }
+                          setState(() {
+                            result = null;
+                          });
                         },
                         key: key,
-                        clearOnSubmit: false,
                         suggestions: result["data"],
                         itemBuilder: (context, item) => Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -93,8 +110,13 @@ class _searchBarState extends State<searchBar> {
           searchTextField = AutoCompleteTextField<String>(
               // width: double.infinity,
               // height: 45,
+              onFocusChanged: (value) {
+                setState(() {
+                  result = null;
+                });
+              },
               decoration: InputDecoration(
-                hintText: "Search NGO by name",
+                hintText: "Search NGOs/Communities",
                 hintStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w100),
                 prefixIcon: const Icon(Icons.search),
                 filled: true,
@@ -106,20 +128,37 @@ class _searchBarState extends State<searchBar> {
                 ),
               ),
               itemSubmitted: (item) async {
+                if (item == "") {
+                  result = null;
+                }
+                // WidgetsFlutterBinding.ensureInitialized();
                 // searchTextField?.textField?.controller?.text = item;
-                dynamic targetUid = result["uid"][item];
-                dynamic targetData =
-                    await DatabaseService(uid: targetUid).getData();
 
-                targetData["uid"] = targetUid;
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => profile(
-                          data: targetData,
-                          user: true,
-                        )));
+                dynamic targetItemData = result["uid"][item];
+                if (targetItemData["type"] == "ngo") {
+                  dynamic targetUid = targetItemData["uid"];
+                  dynamic targetData =
+                      await DatabaseService(uid: targetUid).getData();
+
+                  targetData["uid"] = targetUid;
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => profile(
+                            data: targetData,
+                            user: true,
+                          )));
+                } else {
+                  dynamic targetUid = targetItemData["uid"];
+                  dynamic targetData =
+                      await DatabaseService().getCommData(targetUid);
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => community_profile(targetData)));
+                }
+                setState(() {
+                  result = null;
+                });
               },
               key: key,
-              clearOnSubmit: false,
               suggestions: result["data"],
               itemBuilder: (context, item) => Padding(
                     padding: const EdgeInsets.all(8.0),
