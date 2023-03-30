@@ -6,6 +6,7 @@ import "package:form_builder_phone_field/form_builder_phone_field.dart";
 import "package:form_builder_validators/form_builder_validators.dart";
 import "package:image_cropper/image_cropper.dart";
 import "package:image_picker/image_picker.dart";
+import "package:ngo_app/services/ML/preprocessing.dart";
 import "package:ngo_app/services/database.dart";
 import "package:uuid/uuid.dart";
 
@@ -293,55 +294,6 @@ class _help_feedbackState extends State<help_feedback> {
                           FormBuilderValidators.required(),
                         ]),
                       ),
-                      // DropdownButtonFormField(
-                      //   decoration: const InputDecoration(
-                      //     labelText: 'Volunteering Interests',
-                      //     hintText: 'Select any category',
-                      //   ),
-                      //   dropdownColor: Color.fromARGB(255, 189, 236, 243),
-                      //   onChanged: (String? newValue) {
-                      //     setState(() {
-                      //       voluteering_intrust = newValue;
-                      //       _formKey.currentState?.save();
-                      //       if (newValue == "Any Other") {
-                      //         other2 = true;
-                      //       } else {
-                      //         other2 = false;
-                      //       }
-                      //     });
-                      //   },
-                      //   items: <String>[
-                      //     'Cleanliness Drives',
-                      //     'Teaching',
-                      //     'Medical',
-                      //     'Women Empowerment',
-                      //     'Pickup and Distribution',
-                      //     'Any Other',
-                      //   ].map<DropdownMenuItem<String>>((String value) {
-                      //     return DropdownMenuItem<String>(
-                      //       value: value,
-                      //       child: Text(
-                      //         value,
-                      //       ),
-                      //     );
-                      //   }).toList(),
-                      //   validator: FormBuilderValidators.compose([
-                      //     FormBuilderValidators.required(),
-                      //   ]),
-                      // ),
-                      // // FormBuilderCheckbox(name: name, title: title)
-                      // Visibility(
-                      //   visible: other2,
-                      //   child: FormBuilderTextField(
-                      //     name: "Volunteering Interests",
-                      //     decoration: const InputDecoration(
-                      //       labelText: "If other(specify)",
-                      //     ),
-                      //     validator: FormBuilderValidators.compose([
-                      //       FormBuilderValidators.required(),
-                      //     ]),
-                      //   ),
-                      // ),
                       FormBuilderPhoneField(
                         name: 'phone_number',
                         decoration: const InputDecoration(
@@ -354,55 +306,6 @@ class _help_feedbackState extends State<help_feedback> {
                           FormBuilderValidators.required(),
                         ]),
                       ),
-                      // FormBuilderTextField(
-                      //   name: "address",
-                      //   decoration: const InputDecoration(
-                      //     labelText: 'ADDRESS',
-                      //     suffixIcon: Icon(
-                      //       Icons.location_on,
-                      //     ),
-                      //   ),
-                      //   validator: FormBuilderValidators.compose([
-                      //     FormBuilderValidators.required(),
-                      //     FormBuilderValidators.maxLength(100),
-                      //   ]),
-                      // ),
-                      // FormBuilderTextField(
-                      //   name: "pin_code",
-                      //   decoration: const InputDecoration(
-                      //     labelText: 'POSTAL CODE/ZIP',
-                      //   ),
-                      //   validator: FormBuilderValidators.compose([
-                      //     FormBuilderValidators.required(),
-                      //   ]),
-                      // ),
-                      // FormBuilderTextField(
-                      //   name: "city",
-                      //   decoration: const InputDecoration(
-                      //     labelText: 'TOWN/CITY',
-                      //   ),
-                      //   validator: FormBuilderValidators.compose([
-                      //     FormBuilderValidators.required(),
-                      //   ]),
-                      // ),
-                      // FormBuilderTextField(
-                      //   name: "state",
-                      //   decoration: const InputDecoration(
-                      //     labelText: 'STATE',
-                      //   ),
-                      //   validator: FormBuilderValidators.compose([
-                      //     FormBuilderValidators.required(),
-                      //   ]),
-                      // ),
-                      // FormBuilderTextField(
-                      //   name: "country",
-                      //   decoration: const InputDecoration(
-                      //     labelText: 'COUNTRY',
-                      //   ),
-                      //   validator: FormBuilderValidators.compose([
-                      //     FormBuilderValidators.required(),
-                      //   ]),
-                      // ),
                       const SizedBox(
                         height: 20,
                       ),
@@ -425,22 +328,13 @@ class _help_feedbackState extends State<help_feedback> {
                             if (tag != "Any Other") {
                               formData["tag"] = tag;
                             }
-                            // formData["type"] = "User";
-                            // dynamic result = await _auth
-                            //     .registerWithEmailAndPassword(formData);
+                            formData["ml"] = ml(tag!);
                             await DatabaseService(uid: uid)
                                 .register_community(formData);
 
                             setState(() {
                               error = "Done successfully!!";
                             });
-
-                            // if (result == null) {
-                            //   setState(() {
-                            //     error = "Invalid Email Id!!";
-                            //   });
-                            // }
-                            // }
                           }
                         },
                         child: const Text(
