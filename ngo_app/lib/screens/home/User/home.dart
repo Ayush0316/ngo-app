@@ -70,7 +70,11 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       height: 5,
                     ),
-                    ngoCategories(),
+                    // ngoCategories(),
+                    SizedBox(
+                      height: 380,
+                      child: ngoCategories(),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
