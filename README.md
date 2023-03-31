@@ -75,17 +75,17 @@ Our app has an additional feature of community build-up. Many students, and teen
 3. Now open 2 diffrent terminals simultaneously.
 4. In First terminal, run the follwing commands.
     ```
-    cd app
+    $ cd app
     ```
     ```
-    node server.js
+    $ node server.js
     ```
 5. In Second terminal, run the follwing commands.
     ```
-    cd app_ui
+    $ cd app_ui
     ```
     ```
-    npm start
+    $ npm start
     ```
 6. Now open your browser and visit localhost:3000
 
