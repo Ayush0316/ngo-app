@@ -117,7 +117,7 @@ ngo-app
 
 <a name="developers"></a>
 # Developers
-<a href="https://github.com/Ayush0316"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/95131125?v=4" /></a>
-<a href="https://github.com/Sehaj-kahlon/"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/114355575?v=4" /></a>
-<a href="https://github.com/Sar-thak-3"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/100359818?v=4" /></a>
-<a href="https://github.com/NamanGoyal9102"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/122034533?v=4" /></a>
+<a href="https://github.com/Ayush0316">![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/95131125?v=4&h=80&w=80&fit=cover&mask=circle&maxage=7d)</a>
+<a href="https://github.com/Sehaj-kahlon/">![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/114355575?v=4&h=80&w=80&fit=cover&mask=circle&maxage=7d)</a>
+<a href="https://github.com/Sar-thak-3">![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/100359818?v=4&h=80&w=80&fit=cover&mask=circle&maxage=7d)</a>
+<a href="https://github.com/NamanGoyal9102">![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/122034533?v=4&h=80&w=80&fit=cover&mask=circle&maxage=7d)</a>
