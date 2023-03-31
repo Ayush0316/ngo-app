@@ -33,8 +33,8 @@ Our app deals with both these problems together and provide the users interface,
 # Sustainable Development Goals
 Our app takes account 2 UNs Sustainable Development goals:-
 <ul>
-<li>Partnerships for goals</li>
-<li>Peace, justice and strong institutions</li>
+<li><a href="https://sdgs.un.org/goals/goal17">Partnerships for goals</a></li>
+<li><a href="https://sdgs.un.org/goals/goal16">Peace, justice and strong institutions</a></li>
 </ul>
 
 <br>
