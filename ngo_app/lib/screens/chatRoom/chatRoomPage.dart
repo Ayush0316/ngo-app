@@ -3,7 +3,6 @@ import 'package:ngo_app/modals/messageModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ngo_app/modals/user.dart';
-import 'package:ngo_app/screens/Account/edit_profile.dart';
 import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
 import 'package:ngo_app/screens/home/Profile/user_profile.dart';
 import 'package:ngo_app/services/UserProvider.dart';
