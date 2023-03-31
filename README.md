@@ -1,4 +1,4 @@
-# <div align="center"> Google Solution Challenge 2023 - Careezy.com</div> 
+# <div align="center"> Google Solution Challenge 2023 - Creezy</div> 
 # Problem Statement
 Distributed data and information for the donators is a big problem. One who wants to contribute in NGOs in the form of wealth, food, cloth, shelter and many more needs to crawl over the entire web to find the best NGOs of their interest. No single site solution is available to them. 
 
