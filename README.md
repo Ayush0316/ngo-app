@@ -6,7 +6,9 @@
 3. [ Sustainable Development Goals ](#goals)
 4. [ How app deals with sustaianable goals? ](#deal)
 5. [ SetUp on local env. ](#setup)
-6. [ Directory Structure ](#structure)
+6. [How to Install](#install)
+7. [ Directory Structure ](#structure)
+8. [Developers](#developers)
 
 <a name="problemstatement"></a>
 # Problem Statement
@@ -73,11 +75,15 @@ Our app has an additional feature of community build-up. Many students, and teen
 4. In First terminal, run the follwing commands.
     ```
     cd app
+    ```
+    ```
     node server.js
     ```
 5. In Second terminal, run the follwing commands.
     ```
     cd app_ui
+    ```
+    ```
     npm start
     ```
 6. Now open your browser and visit localhost:3000
@@ -86,6 +92,13 @@ Our app has an additional feature of community build-up. Many students, and teen
 
 <b>All done, now you should be able to see the webpage of our website.</b>
 
+<br>
+
+<a name="install"></a>
+# How to Install
+
+
+<h3><u>Only available for android as for now</u></h3>
 <br>
 
 <a name="structure"></a>
@@ -99,3 +112,12 @@ ngo-app
 |    |    |--- index.html
 |    |--- pubspec.yaml          # yaml file for the app
 ```
+
+<br>
+
+<a name="developers"></a>
+# Developers
+<a href="https://github.com/Ayush0316"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/95131125?v=4" /></a>
+<a href="https://github.com/Sehaj-kahlon/"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/114355575?v=4" /></a>
+<a href="https://github.com/Sar-thak-3"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/100359818?v=4" /></a>
+<a href="https://github.com/NamanGoyal9102"><img width="80px" style="border-radius: 100%" src="https://avatars.githubusercontent.com/u/122034533?v=4" /></a>
