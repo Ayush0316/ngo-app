@@ -7,8 +7,9 @@
 4. [ How app deals with sustaianable goals? ](#deal)
 5. [ SetUp on local env. ](#setup)
 6. [How to Install](#install)
-7. [ Directory Structure ](#structure)
-8. [Developers](#developers)
+7. [Work Flow](#workflow)
+8. [ Directory Structure ](#structure)
+9. [Developers](#developers)
 
 <a name="problemstatement"></a>
 # Problem Statement
@@ -99,6 +100,20 @@ Our app has an additional feature of community build-up. Many students, and teen
 
 
 <h3><u>Only available for android as for now</u></h3>
+<br>
+
+<a name="workflow"></a>
+# Work Flow
+|   S.No        |   Features        |
+|   --------    |   -------------   |
+|    1.         | Any user can login and register to the app simply using email and password and some basic information                  |
+| 2.    | Logged in user have options to explore NGOs and communities to choose of his/her interest |
+| 3. | User who wants to contribute can simply click on button provided for each community/NGO which gives notification to concerned authorities and their contact information is shared.   |
+| 4. | User can chat to the community owners/ NGOs through chatbot provided in app |
+| 5. | Regular notifications to user regarding new contributions needed or communities. |
+| 6. | Any user can themselves too create community | 
+| 7. | Recommendations to the user on the basis of previous contributions |
+
 <br>
 
 <a name="structure"></a>
