@@ -177,8 +177,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               error = "Username or password is incorrect!!";
                             });
                           }
+                        } else {
+                          Navigator.pop(context);
                         }
-                        Navigator.pop(context);
                       },
                       child: const Text(
                         "Login",

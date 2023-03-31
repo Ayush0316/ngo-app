@@ -315,8 +315,9 @@ class _RegisterNgoState extends State<RegisterNgo> {
                                 });
                               }
                             }
+                          } else {
+                            Navigator.pop(context);
                           }
-                          Navigator.pop(context);
                         },
                         child: const Text("REGISTER",
                             style: TextStyle(

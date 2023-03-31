@@ -403,8 +403,9 @@ class _RegisterUserState extends State<RegisterUser> {
                                 });
                               }
                             }
+                          } else {
+                            Navigator.pop(context);
                           }
-                          Navigator.pop(context);
                         },
                         child: const Text(
                           "REGISTER",
