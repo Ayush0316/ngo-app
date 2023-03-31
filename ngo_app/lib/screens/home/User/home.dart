@@ -13,7 +13,6 @@ import 'package:ngo_app/screens/home/User/about us/text_about.dart';
 import 'package:ngo_app/screens/home/widgets/Quote/text.dart';
 import 'package:ngo_app/screens/home/widgets/Quote/divider.dart';
 import 'package:ngo_app/screens/notifications/user_notifications.dart';
-import 'package:ngo_app/services/ML/preprocessing.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

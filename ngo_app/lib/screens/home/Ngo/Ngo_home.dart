@@ -12,10 +12,8 @@ import 'package:ngo_app/screens/home/widgets/Community%20recommended/recommended
 import 'package:ngo_app/screens/home/widgets/Community%20recommended/text_recommended.dart';
 import 'package:ngo_app/screens/home/widgets/Quote/text.dart';
 import 'package:ngo_app/screens/home/widgets/Quote/divider.dart';
-import 'package:ngo_app/screens/home/Ngo/Notifications/notifications.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/post.dart';
 import 'package:ngo_app/screens/home/Ngo/Posts/title_post.dart';
-import 'package:ngo_app/services/ML/preprocessing.dart';
 
 class NgoHome extends StatefulWidget {
   const NgoHome({super.key});
