@@ -72,12 +72,10 @@ class _HomeState extends State<Home> {
                     ),
                     // ngoCategories(),
                     SizedBox(
-                      height: 380,
+                      height: 375,
                       child: ngoCategories(),
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
+
                     text_community(),
                     communityOptions(),
                     SizedBox(
