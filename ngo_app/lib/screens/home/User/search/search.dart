@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngo_app/screens/Community/community_screens.dart';
 import 'package:ngo_app/screens/home/Profile/ngo_profile.dart';
+import 'package:ngo_app/screens/showLoader.dart';
 import "package:ngo_app/services/database.dart";
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
@@ -48,8 +49,10 @@ class _searchBarState extends State<searchBar> {
                           ),
                         ),
                         itemSubmitted: (item) async {
+                          showLoaderDialog(context);
                           if (item == "") {
                             setState(() {
+                              Navigator.pop(context);
                               result = null;
                             });
                           }
@@ -61,21 +64,24 @@ class _searchBarState extends State<searchBar> {
                                 await DatabaseService(uid: targetUid).getData();
 
                             targetData["uid"] = targetUid;
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => profile(
-                                      data: targetData,
-                                      user: true,
-                                    )));
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                                    builder: (context) => profile(
+                                          data: targetData,
+                                          user: true,
+                                        )));
                           } else {
                             dynamic targetUid = targetItemData["uid"];
                             dynamic targetData =
                                 await DatabaseService().getCommData(targetUid);
 
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    community_profile(targetData)));
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        community_profile(targetData)));
                           }
                           setState(() {
+                            Navigator.pop(context);
                             result = null;
                           });
                         },
@@ -128,8 +134,12 @@ class _searchBarState extends State<searchBar> {
                 ),
               ),
               itemSubmitted: (item) async {
+                showLoaderDialog(context);
                 if (item == "") {
-                  result = null;
+                  setState(() {
+                    Navigator.pop(context);
+                    result = null;
+                  });
                 }
                 // WidgetsFlutterBinding.ensureInitialized();
                 // searchTextField?.textField?.controller?.text = item;
@@ -141,7 +151,7 @@ class _searchBarState extends State<searchBar> {
                       await DatabaseService(uid: targetUid).getData();
 
                   targetData["uid"] = targetUid;
-                  Navigator.of(context).push(MaterialPageRoute(
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => profile(
                             data: targetData,
                             user: true,
@@ -151,10 +161,11 @@ class _searchBarState extends State<searchBar> {
                   dynamic targetData =
                       await DatabaseService().getCommData(targetUid);
 
-                  Navigator.of(context).push(MaterialPageRoute(
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => community_profile(targetData)));
                 }
                 setState(() {
+                  Navigator.pop(context);
                   result = null;
                 });
               },

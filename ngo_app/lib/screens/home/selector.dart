@@ -16,6 +16,9 @@ class Type_Selector extends StatelessWidget {
     } else if (type == "Ngo") {
       return NgoHome();
     }
+    // return CircularProgressIndicator(
+    //   semanticsLabel: "Please Wait!!",
+    // );
     return ShowError();
   }
 }

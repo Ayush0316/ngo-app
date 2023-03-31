@@ -8,34 +8,38 @@ class ShowError extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
     return Scaffold(
-        body: SafeArea(
-      child: Column(
-        children: [
-          const Text("Error screen for undefined type"),
-          TextButton(
-            child: Row(
-              children: [
-                Icon(Icons.person),
-                Text(
-                  "LogOut",
-                  style: TextStyle(
-                    // decoration: TextDecoration.underline,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto-Black',
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text("Home"),
+          backgroundColor: Colors.blue,
+          actions: [
+            TextButton(
+              child: Row(
+                children: [
+                  Icon(Icons.person),
+                  Text(
+                    "LogOut",
+                    style: TextStyle(
+                      // decoration: TextDecoration.underline,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Roboto-Black',
+                    ),
                   ),
-                ),
-              ],
-            ),
-            onPressed: () async {
-              while (Navigator.canPop(context)) {
-                Navigator.pop(context);
-              }
-              await _auth.signOut();
-            },
-          )
-        ],
-      ),
-    ));
+                ],
+              ),
+              onPressed: () async {
+                while (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
+                await _auth.signOut();
+              },
+            )
+          ],
+        ),
+        body: SafeArea(
+            child: Center(
+          child: CircularProgressIndicator(),
+        )));
   }
 }

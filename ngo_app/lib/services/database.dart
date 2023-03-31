@@ -296,7 +296,7 @@ class DatabaseService {
     List<String> options = [
       "Art & Culture",
       "Children",
-      "EnvironmenT & Forests",
+      "Environment & Forests",
       "Medical",
       "Family Welfare",
       "Legal Awareness & Aid",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:ngo_app/screens/showLoader.dart';
 import 'package:ngo_app/services/auth.dart';
 import 'package:form_builder_phone_field/form_builder_phone_field.dart';
 
@@ -22,6 +23,25 @@ class _RegisterNgoState extends State<RegisterNgo> {
   String error = "";
   RegExp passwordCheck =
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])$');
+
+  // showLoaderDialog(BuildContext context) {
+  //   AlertDialog alert = AlertDialog(
+  //     content: new Row(
+  //       children: [
+  //         CircularProgressIndicator(),
+  //         Container(
+  //             margin: EdgeInsets.only(left: 7), child: Text("Loading...")),
+  //       ],
+  //     ),
+  //   );
+  //   showDialog(
+  //     barrierDismissible: false,
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alert;
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -267,6 +287,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
+                          showLoaderDialog(context);
                           _formKey.currentState?.save();
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> formData = {
@@ -275,6 +296,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                             if (formData["password"] !=
                                 formData["confirm_password"]) {
                               setState(() {
+                                Navigator.pop(context);
                                 error =
                                     "Password must match confirm Password!!";
                               });
@@ -286,6 +308,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                               dynamic result = await _auth
                                   .registerWithEmailAndPassword(formData);
 
+                              Navigator.pop(context);
                               if (result == null) {
                                 setState(() {
                                   error = "Invalid Email Id!!";
@@ -293,6 +316,7 @@ class _RegisterNgoState extends State<RegisterNgo> {
                               }
                             }
                           }
+                          Navigator.pop(context);
                         },
                         child: const Text("REGISTER",
                             style: TextStyle(

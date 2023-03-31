@@ -19,6 +19,25 @@ class _LoginScreenState extends State<LoginScreen> {
   String error = "";
   final _formKey = GlobalKey<FormBuilderState>();
 
+  showLoaderDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+      content: new Row(
+        children: [
+          CircularProgressIndicator(),
+          Container(
+              margin: EdgeInsets.only(left: 7), child: Text("Loading...")),
+        ],
+      ),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   Widget buildLogo() {
     return CircleAvatar(
       backgroundColor: Color(0xFFFCD5CE),
@@ -145,18 +164,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () async {
+                        showLoaderDialog(context);
                         _formKey.currentState?.save();
                         if (_formKey.currentState!.validate()) {
                           final formData = _formKey.currentState?.value;
                           dynamic result =
                               await _auth.signInWithEmailAndPassword(
                                   formData?["email"], formData?["password"]);
+                          Navigator.pop(context);
                           if (result == null) {
                             setState(() {
                               error = "Username or password is incorrect!!";
                             });
                           }
                         }
+                        Navigator.pop(context);
                       },
                       child: const Text(
                         "Login",

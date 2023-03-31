@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:ngo_app/screens/showLoader.dart';
 import 'package:ngo_app/services/auth.dart';
 import 'package:form_builder_phone_field/form_builder_phone_field.dart';
 
@@ -370,6 +371,7 @@ class _RegisterUserState extends State<RegisterUser> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
+                          showLoaderDialog(context);
                           _formKey.currentState?.save();
                           if (_formKey.currentState!.validate()) {
                             Map<String, dynamic> formData = {
@@ -379,6 +381,7 @@ class _RegisterUserState extends State<RegisterUser> {
                             if (formData["password"] !=
                                 formData["confirm_password"]) {
                               setState(() {
+                                Navigator.pop(context);
                                 error =
                                     "Password must match confirm Password!!";
                               });
@@ -393,7 +396,7 @@ class _RegisterUserState extends State<RegisterUser> {
                               formData["type"] = "User";
                               dynamic result = await _auth
                                   .registerWithEmailAndPassword(formData);
-
+                              Navigator.pop(context);
                               if (result == null) {
                                 setState(() {
                                   error = "Invalid Email Id!!";
@@ -401,6 +404,7 @@ class _RegisterUserState extends State<RegisterUser> {
                               }
                             }
                           }
+                          Navigator.pop(context);
                         },
                         child: const Text(
                           "REGISTER",

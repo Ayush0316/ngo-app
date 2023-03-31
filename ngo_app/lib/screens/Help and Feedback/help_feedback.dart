@@ -214,7 +214,7 @@ class _help_feedbackState extends State<help_feedback> {
                           items: <String>[
                             "Art & Culture",
                             "Children",
-                            "EnvironmenT & Forests",
+                            "Environment & Forests",
                             "Medical",
                             "Family Welfare",
                             "Legal Awareness & Aid",

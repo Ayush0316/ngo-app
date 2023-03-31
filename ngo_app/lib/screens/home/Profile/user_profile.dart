@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_app/responsive.dart';
-// import 'package:provider/provider.dart';
-import 'package:ngo_app/modals/chatRoomModel.dart';
-import 'package:ngo_app/modals/user.dart';
-import 'package:flutter/services.dart';
-import 'package:ngo_app/screens/chatRoom/chatRoomPage.dart';
-import 'package:ngo_app/services/database.dart';
 
 final snackBar = SnackBar(
   content: const Text('URl Copied to clipboard'),
@@ -18,9 +11,6 @@ class userProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     String url = data["Imgurl"] != null ? data["Imgurl"] : " ";
     return GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
