@@ -35,9 +35,9 @@ Our app has an additional feature of community build-up. Many students, and teen
 ```
 ngo-app
 |--- ngo_app
-|           |--- assets               # All assets of app like recommendation models
-|           |--- images               # All images used in app(static files) 
-|           |--- public
-|           |         |--- index.html
-|           |--- pubspec.yaml               # yaml file for the app
+|    |--- assets               # All assets of app like recommendation models
+|    |--- images               # All images used in app(static files) 
+|    |--- public
+|    |    |--- index.html
+|    |--- pubspec.yaml          # yaml file for the app
 ```
