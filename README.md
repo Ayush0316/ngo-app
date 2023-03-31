@@ -30,3 +30,14 @@ As a teenager and social problems conscious, we always keep looking for a single
 <b><u> We know many sites already of such type exist, but what's different in ours? </u></b>
 
 Our app has an additional feature of community build-up. Many students, and teenagers are constantly looking for opportunities where they can volunteer part-time for some good cause. So our app is solving this problem by bringing people from all over the world to single app and form community according to their interests.
+
+# Directory Structure
+```
+ngo-app
+|--- ngo_app
+|           |--- assets               # All assets of app like recommendation models
+|           |--- images               # All images used in app(static files) 
+|           |--- public
+|           |         |--- index.html
+|           |--- pubspec.yaml               # yaml file for the app
+```
