@@ -5,7 +5,8 @@
 2. [ Solution ](#solution)
 3. [ Sustainable Development Goals ](#goals)
 4. [ How app deals with sustaianable goals? ](#deal)
-5. [ Directory Structure ](#structure)
+5. [ SetUp on local env. ](#setup)
+6. [ Directory Structure ](#structure)
 
 <a name="problemstatement"></a>
 # Problem Statement
@@ -42,6 +43,50 @@ As a teenager and social problems conscious, we always keep looking for a single
 <b><u> We know many sites already of such type exist, but what's different in ours? </u></b>
 
 Our app has an additional feature of community build-up. Many students, and teenagers are constantly looking for opportunities where they can volunteer part-time for some good cause. So our app is solving this problem by bringing people from all over the world to single app and form community according to their interests.
+
+<br>
+
+<a name="setup"></a>
+# SetUp on local env.
+1. Fork the repo and clone all the files.
+2. Now open a terminal ,run the follwing commands and close this terminal.
+
+    ```
+    $ cd JSON-Transformation
+    ```
+    ``` 
+    $ cd app
+    ```
+    ```
+    $ npm
+     ```
+    ```
+    $ cd..
+    ```
+    ``` 
+    $ cd app_ui
+    ```
+    ```
+    $ npm i
+    ```
+3. Now open 2 diffrent terminals simultaneously.
+4. In First terminal, run the follwing commands.
+    ```
+    cd app
+    node server.js
+    ```
+5. In Second terminal, run the follwing commands.
+    ```
+    cd app_ui
+    npm start
+    ```
+6. Now open your browser and visit localhost:3000
+
+<br>
+
+<b>All done, now you should be able to see the webpage of our website.</b>
+
+<br>
 
 <a name="structure"></a>
 # Directory Structure
