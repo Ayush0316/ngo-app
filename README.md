@@ -1,4 +1,4 @@
-# <div align="center"> Google Solution Challenge 2023 - Creezy</div>
+# <div align="center"> Google Solution Challenge 2023 - Careezy</div>
 
 # Table of Contents
 1. [ Problem Statement ](#problemstatement)
@@ -9,7 +9,8 @@
 6. [How to Install](#install)
 7. [Work Flow](#workflow)
 8. [ Directory Structure ](#structure)
-9. [Developers](#developers)
+9. [ Demo Video ](#demoVideo)
+10. [Developers](#developers)
 
 <a name="problemstatement"></a>
 # Problem Statement
@@ -127,6 +128,13 @@ ngo-app
 |    |    |--- index.html
 |    |--- pubspec.yaml          # yaml file for the app
 ```
+
+<br>
+
+<a name="demoVideo"></a>
+# Demo Video
+
+https://user-images.githubusercontent.com/100359818/229307134-77fb2ad2-4cd8-45f9-b69c-9f3874e99fff.mp4
 
 <br>
 
