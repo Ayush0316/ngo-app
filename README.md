@@ -6,11 +6,10 @@
 3. [ Sustainable Development Goals ](#goals)
 4. [ How app deals with sustaianable goals? ](#deal)
 5. [ SetUp on local env. ](#setup)
-6. [How to Install](#install)
-7. [Work Flow](#workflow)
-8. [ Directory Structure ](#structure)
-9. [ Demo Video ](#demoVideo)
-10. [Developers](#developers)
+6. [Work Flow](#workflow)
+7. [ Directory Structure ](#structure)
+8. [ Demo Video ](#demoVideo)
+9. [Developers](#developers)
 
 <a name="problemstatement"></a>
 # Problem Statement
@@ -66,13 +65,9 @@ Our app has an additional feature of community build-up. Many students, and teen
 
 <br>
 
-<b>All done, now you should be able to see the webpage of our website.</b>
+<b>All done, now you should be able to see the login screen in your emulator.</b>
 
 <br>
-
-<a name="install"></a>
-# How to Install
-
 
 <h3><u>Only available for android as for now</u></h3>
 <br>
@@ -98,6 +93,10 @@ ngo-app
 |--- ngo_app
 |    |--- assets               # All assets of app like recommendation models
 |    |--- images               # All images used in app(static files) 
+|    |--- lib
+|    |    |--- modals          # All modals used in the app.
+|    |    |--- screen          # All screens used in the app.
+|    |    |--- services        # ML and firebase related functions.
 |    |--- public
 |    |    |--- index.html
 |    |--- pubspec.yaml          # yaml file for the app
