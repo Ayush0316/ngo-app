@@ -55,6 +55,15 @@ Our app has an additional feature of community build-up. Many students, and teen
 <a name="setup"></a>
 # SetUp on local env.
 1. Fork the repo and clone all the files.
+open the folder in the terminal in which you want to clone the project 
+
+    ```
+    $ cd folder_name
+    ```
+    ```
+    $ git clone https://github.com/Ayush0316/ngo-app.git
+    ```
+a folder by the name ngo-app will be visible
 2. Now open a terminal ,run the follwing commands.
 
     ```
