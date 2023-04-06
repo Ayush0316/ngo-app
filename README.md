@@ -78,15 +78,6 @@ Our app has an additional feature of community build-up. Many students, and teen
     ```
     flutter run
     ```
-    ```
-    $ cd ngo-app
-    ```
-    ``` 
-    $ code .
-    ```
-3. Connect your andriod emulator.
-4. Press Ctrl + F5 or click on Run then click on Run without Debugging.
-
 <br>
 
 <b>All done, now you should be able to see the login screen in your emulator.</b>
