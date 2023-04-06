@@ -53,42 +53,16 @@ Our app has an additional feature of community build-up. Many students, and teen
 <a name="setup"></a>
 # SetUp on local env.
 1. Fork the repo and clone all the files.
-2. Now open a terminal ,run the follwing commands and close this terminal.
+2. Now open a terminal ,run the follwing commands.
 
     ```
-    $ cd JSON-Transformation
+    $ cd ngo-app
     ```
     ``` 
-    $ cd app
+    $ code .
     ```
-    ```
-    $ npm
-     ```
-    ```
-    $ cd..
-    ```
-    ``` 
-    $ cd app_ui
-    ```
-    ```
-    $ npm i
-    ```
-3. Now open 2 diffrent terminals simultaneously.
-4. In First terminal, run the follwing commands.
-    ```
-    $ cd app
-    ```
-    ```
-    $ node server.js
-    ```
-5. In Second terminal, run the follwing commands.
-    ```
-    $ cd app_ui
-    ```
-    ```
-    $ npm start
-    ```
-6. Now open your browser and visit localhost:3000
+3. Connect your andriod emulator.
+4. Press Ctrl + F5 or click on Run then click on Run without Debugging.
 
 <br>
 
