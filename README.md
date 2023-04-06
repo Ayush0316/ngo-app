@@ -55,17 +55,29 @@ Our app has an additional feature of community build-up. Many students, and teen
 <a name="setup"></a>
 # SetUp on local env.
 1. Fork the repo and clone all the files.
-open the folder in the terminal in which you want to clone the project 
 
+    1. Open the folder in the terminal in which you want to clone the project 
     ```
     $ cd folder_name
     ```
     ```
     $ git clone https://github.com/Ayush0316/ngo-app.git
     ```
-a folder by the name ngo-app will be visible
-2. Now open a terminal ,run the follwing commands.
-
+    
+    a folder by the name ngo-app will be visible</br>
+    
+    2. open the main folder 
+    ```
+    $ cd ngo_app
+    ```
+    
+2. Run the project </br>
+    ***Install the flutter extension***</br>
+    Run ***Flutter pub get*** to install all the dependencies<br>
+    Now either by using an emulator or physical device run the app by the command 
+    ```
+    flutter run
+    ```
     ```
     $ cd ngo-app
     ```
