@@ -38,6 +38,7 @@ The central UN Sustainable Development Goals and targets we choose for our solut
 <li><a href="https://sdgs.un.org/goals/goal4">Quality Education</a></li>
 <li><a href="https://sdgs.un.org/goals/goal16">Peace, justice and strong institutions</a></li>
 </ul>
+The inspiration to choose these SDGs was the fact that we, the world, have enough resources it needs to sustain all people of the world comfortably for the time being, be it food for all, health services for all, quality education for all, sanitation for all but the sole drawback is the inability of these resources to reach the people in need and unjustified distribution so if like-minded people decide to share their resources and talents we think, hunger, poverty, illiteracy, inadequate health services can be reduced. Also, after being supported, the vulnerable communities can have a better chance at growing and being part of the system to their total capacity.
 
 <br>
 
