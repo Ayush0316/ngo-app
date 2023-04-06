@@ -31,9 +31,11 @@ Our app deals with both these problems together and provide the users interface,
 
 <a name="goals"></a>
 # Sustainable Development Goals
-Our app takes account 2 UNs Sustainable Development goals:-
+The central UN Sustainable Development Goals and targets we choose for our solution are:-
 <ul>
-<li><a href="https://sdgs.un.org/goals/goal17">Partnerships for goals</a></li>
+    <li><a href="https://sdgs.un.org/goals/goal2">Zero Hunger</a></li>
+    <li><a href="https://sdgs.un.org/goals/goal3">Good Health and Well-being></a></li>
+<li><a href="https://sdgs.un.org/goals/goal4">Quality Education</a></li>
 <li><a href="https://sdgs.un.org/goals/goal16">Peace, justice and strong institutions</a></li>
 </ul>
 
